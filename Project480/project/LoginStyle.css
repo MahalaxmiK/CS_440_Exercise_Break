@@ -1,0 +1,40 @@
+/*
+    Mahin Patel, Yvette Rojas -- CS480 -- UI Health Project
+    
+    File Name: LoginStyle.css
+    File Description: handles the css for the loginPage
+
+    Last Updated: 11/19/23
+
+*/
+
+body {
+    background-color: rgb(253, 210, 217); /* Background color */
+}
+
+#form{
+    background-color: rgb(255, 255, 255);
+    width:25%;
+    border-radius: 4px;
+    margin:120px auto;
+    padding:50px;
+    box-shadow: 5px 5px rgb(82, 11, 77);
+}
+
+#btn{
+    color:rgb(0, 0, 0);
+    background-color: rgb(253, 210, 217);
+    padding:5px;
+    align-self: center;
+    font-size: medium;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+@media screen and (max-width: 570px) {
+    #form {
+      width: 65%;
+      margin-left:none;
+      padding:40px;
+    }
+  }

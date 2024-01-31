@@ -1,0 +1,79 @@
+/*
+    Mahin Patel, Yvette Rojas -- CS480 -- UI Health Project
+    
+    File Name: adminStyle.css
+    File Description: handles the css for the adminDashboard
+
+    Last Updated: 11/22/23
+
+*/
+
+body {
+    background-color:rgb(191,217,255);
+}
+
+h1 {
+    text-align: center;
+}
+
+h3 {
+    text-align: center;
+}
+
+h4 {
+    padding: 4px 4px;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+#editbtn{
+    color:rgb(0, 0, 0);
+    background-color:rgb(255, 180, 180);
+    padding: 4px 4px;
+    align-self: right;
+    border-radius: 5px;
+    float: right;
+}
+
+#textInput {
+     width: 300px; /* Set the width to make it wider */
+     height: 40px; /* Set the height to make it taller */
+}
+
+#viewbtn{
+    color:rgb(0, 0, 0);
+    background-color:rgb(199,217,190);
+    padding: 4px 4px;
+    align-self: center;
+    font-size: small;
+    margin: 5px;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+#btn{
+    color:rgb(0, 0, 0);
+    background-color:rgb(191,217,255);
+    padding: 4px 4px;
+    align-self: center;
+    font-size: small;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+#form{
+    background-color:rgb(255, 255, 255);
+    width:50%;
+    border-radius: 4px;
+    margin:120px auto;
+    padding:50px;
+    box-shadow: 5px 5px rgb(0,0,102);
+}
+
+@media screen and (max-width: 570px) {
+    #form {
+      width: 65%;
+      margin-left:none;
+      padding:40px;
+    }
+  }
