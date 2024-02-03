@@ -1,5 +1,5 @@
 # CS_440_Exercise_Break
 
-# Contributions Made So Far:
+### Contributions Made So Far:
 
-# Added Existing User Login Screen
+#### Added Existing User Login Screen
