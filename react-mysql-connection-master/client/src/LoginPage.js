@@ -16,7 +16,7 @@ function LoginPage() {
     }).then((response) => {
       if (response.data.message) {
         setLoginStatus(response.data.message);
-        //window.location.href = "/workout";
+        window.location.href = "/workout";
       } else {
         // Redirect to the workout page after successful login
         window.location.href = "/workout";

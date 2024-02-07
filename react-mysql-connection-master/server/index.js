@@ -19,7 +19,7 @@ con.connect((err) => {
         console.error('Error connecting to the database:', err);
         return;
     }
-    console.log('Successfully connected to the database');
+    console.log('Successfully Connected To MySQL database instance!!');
 });
 
 
@@ -43,5 +43,5 @@ app.post("/login", (req, res) => {
 })
 
 app.listen(3000, () => {
-    console.log("running backend server");
+    console.log("Running Exercise Break App Server!!");
 })

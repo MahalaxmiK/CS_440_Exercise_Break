@@ -16,9 +16,17 @@ body {
   margin: 30px auto 0;
 }
 
+.exercisecontainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 30px auto 0;
+  grid-area: title_component;
+}
+
 .container .loginForm {
   margin: 100px auto;
-  /* Adjusted to center horizontally */
 }
 
 .container .loginForm form {
@@ -90,12 +98,81 @@ body {
 
 .container .loginForm h1 {
   font-size: 36px;
-  /* Set the font size of the header */
   margin-bottom: 20px;
-  /* Add margin below the header */
   text-align: center;
 }
 
 label i {
   margin: 0px 10px;
+}
+
+.exercisecontainer .exercise {
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 600px;
+  width: 400px;
+  padding: 0 20px;
+  border: 1px solid rgb(219, 219, 219)
+}
+
+.exercisecontainer .exercise h1 {
+  font-size: 37px;
+  font-family: 'Trebuchet MS';
+  display: flex;
+  flex-direction: initial;
+  align-items: first baseline;
+  gap: 9px;
+  width: 100%;
+  padding-bottom: 100px;
+  padding-left: 10px;
+  padding-right: 10px;
+  color: blue
+}
+
+.exercisecontainer .exercise .exercise-logo {
+  width: 150px;
+  height: 150px;
+  margin-left: 110px;
+  margin-bottom: 50px;
+  align-items: center;
+}
+
+.exercisecontainer .exercise .start {
+  width: auto;
+  padding: 15px 30px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: 2px solid black;
+  outline: none;
+  border-radius: 5px;
+  font-family: Cambria;
+  font-size: 25px;
+  margin-bottom: 40px;
+  margin-left: 80px;
+  margin-right: 60px;
+  background-color: rgb(226, 129, 129)
+}
+
+.exercisecontainer .exercise .exit {
+  width: auto;
+  padding: 15px 30px 15px 30px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: 2px solid black;
+  outline: none;
+  border-radius: 5px;
+  font-family: Cambria;
+  font-size: 25px;
+  margin-left: 70px;
+  margin-right: 50px;
+  margin-top: 3px;
+  background-color: rgb(197, 85, 141)
 }

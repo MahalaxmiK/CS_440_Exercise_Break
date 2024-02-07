@@ -3,3 +3,5 @@
 ### Contributions Made So Far:
 
 #### Added Existing User Login Screen
+
+#### Added Exercise Dashboard Screen (Start Workout or Exit App)

@@ -1,15 +1,15 @@
-import { BrowserRouter as Router, Route, Routes} from "react-router-dom";
+import { BrowserRouter, Routes, Route} from "react-router-dom";
 import LoginPage from "./LoginPage";
 import WorkOutPage from "./WorkOutPage";
 
 function App() {
   return (
-    <Router>
+    <BrowserRouter>
       <Routes>
         <Route path="/" element={<LoginPage />} exact />
-        <Route path="/workout" element={<WorkOutPage />} />
+        <Route path="/workout" element={<WorkOutPage />} exact />
       </Routes>
-    </Router>
+    </BrowserRouter>
   );
 }
 
