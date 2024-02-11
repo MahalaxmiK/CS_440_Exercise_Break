@@ -13,13 +13,23 @@ const con = mysql.createConnection({
     password: "",
     database: "register"
 })
+con.connect((err) => {
+    if(err) {
+      console.error('Error connecting to the database:', err);
+      return;
+    }
+    console.log('Connected to the database');
+  });
 
 app.post('/register', (req, res) => {
     const email = req.body.email;
-    const username = req.body.username;
     const password = req.body.password;
+    const gender = req.body.gender;
+    const height = req.body.height;
+    const weight = req.body.weight;
+    const age = req.body.age;
 
-    con.query("INSERT INTO users (email, username, password) VALUES (?, ?, ?)", [email, username, password], 
+    con.query("INSERT INTO users (email, password, gender, height, weight, age) VALUES (?, ?, ?, ?, ?,?)", [email, password, gender, height, weight, age], 
         (err, result) => {
             if(result){
                 res.send(result);
@@ -30,24 +40,7 @@ app.post('/register', (req, res) => {
     )
 })
 
-app.post("/login", (req, res) => {
-    const username = req.body.username;
-    const password = req.body.password;
-    con.query("SELECT * FROM users WHERE username = ? AND password = ?", [username, password], 
-        (err, result) => {
-            if(err){
-                req.setEncoding({err: err});
-            }else{
-                if(result.length > 0){
-                    res.send(result);
-                }else{
-                    res.send({message: "WRONG USERNAME OR PASSWORD!"})
-                }
-            }
-        }
-    )
-})
 
-app.listen(3001, () => {
+app.listen(3000, () => {
     console.log("running backend server");
 })
