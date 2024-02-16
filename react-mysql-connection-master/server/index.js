@@ -26,7 +26,7 @@ con.connect((err) => {
 app.post("/login", (req, res) => {
     const email = req.body.email;
     const password = req.body.password;
-    con.query("SELECT * FROM users WHERE email = ? AND password = ?", [email, password], 
+    con.query("SELECT * FROM user WHERE email = ? AND password = ?", [email, password], 
         (err, result) => {
             if (err) {
                 req.setEncoding({err: err});

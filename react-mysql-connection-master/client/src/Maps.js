@@ -200,5 +200,5 @@ const Maps = ({ google }) => {
 };
 
 export default GoogleApiWrapper({
-  apiKey: 'API_KEY'
+  apiKey: 'AIzaSyBbC24ktucWWxLeiVgwQ4LhnoT9NC3ebq0'
 })(Maps);
