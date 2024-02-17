@@ -29,13 +29,16 @@ app.post("/login", (req, res) => {
     con.query("SELECT * FROM user WHERE email = ? AND password = ?", [email, password], 
         (err, result) => {
             if (err) {
-                req.setEncoding({err: err});
+                console.error("Error querying the database:", err);
+                res.status(500).send({ message: "Internal server error" });
             } else {
                 console.log(result);
                 if (result.length > 0) {
-                    res.send({message: "Successfully logged in!"});
+                    // Send HTTP status code 200 for successful login
+                    res.status(200).send({ message: "Successfully logged in!" });
                 } else {
-                    res.send({message: "Wrong email or password or both!!"})
+                    // Send HTTP status code 401 for unauthorized access
+                    res.status(401).send({ message: "Wrong email or password or both!" });
                 }
             }
         }

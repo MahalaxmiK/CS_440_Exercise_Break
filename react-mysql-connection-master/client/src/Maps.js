@@ -48,7 +48,7 @@ const Maps = ({ google }) => {
     };
 
     getUserLocation();
-  }, []); 
+  }, []);
 
   const fetchNearbyStores = (location) => {
     const service = new google.maps.places.PlacesService(document.createElement('div'));
@@ -61,7 +61,7 @@ const Maps = ({ google }) => {
       },
       (results, status) => {
         if (status === google.maps.places.PlacesServiceStatus.OK) {
-          const promises = results.slice(0, 10).map(store => {
+          const promises = results.slice(0, 11).map(store => {
             return new Promise((resolve, reject) => {
               service.getDetails({ placeId: store.place_id }, (result, status) => {
                 if (status === google.maps.places.PlacesServiceStatus.OK) {
@@ -200,5 +200,5 @@ const Maps = ({ google }) => {
 };
 
 export default GoogleApiWrapper({
-  apiKey: 'NEW_API'
+  apiKey: 'API_KEY'
 })(Maps);

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate  } from "react-router-dom";
 import "./App.css";
 import Axios from "axios";
 import login_logo from './assets/exercise.png';
@@ -7,6 +8,7 @@ function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loginStatus, setLoginStatus] = useState("");
+  const navigate = useNavigate();
 
   const login = (e) => {
     e.preventDefault();
@@ -14,13 +16,19 @@ function LoginPage() {
       email: email,
       password: password,
     }).then((response) => {
-      if (response.data.message) {
+      if (response.status === 200) {
         setLoginStatus(response.data.message);
-        window.location.href = "/maps";
-      } else {
-        // Redirect to the workout page after successful login
-        window.location.href = "/maps";
+        // Delay redirect by 1 second
+        setTimeout(() => {
+          navigate('/maps');
+        }, 1000);
+      } else if (response.status === 401) {
+        setLoginStatus(response.data.message);
+        console.error("Login failed:", response.data.message);
       }
+    }).catch((error) => {
+      console.error("Login error:", error);
+      setLoginStatus("Error occurred to login. Please try again or try later!");
     });
   };
 
