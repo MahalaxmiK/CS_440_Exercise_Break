@@ -6,7 +6,7 @@ import meditationImg from './meditation.png'
 import musicImg from './music.png'
 
 
-const API  = 'API_KEY'
+const API  =  "AIzaSyDQjZ79ul59xynIC9vdJ7IM5XQYLi_mKt8"
 const channelId = "UChSpME3QaSFAWK8Hpmg-Dyw"
 
 const fetchURL = `https://www.googleapis.com/youtube/v3/search?key=${API}&channelId=${channelId}&part=snippet,id&order=date&maxResult=10`;
@@ -27,7 +27,10 @@ const Relax = () => {
     console.log(allvideos)
     
     const handleMeditationVid = (video) => {
-        setMeditationVid(video);
+        const randomGenerator = Math.ceil(Math.random() * allvideos.length)
+        const getIndex = allvideos[randomGenerator]
+        const videoURL = `https://www.youtube.com/embed/${getIndex.id.videoId}`
+        window.open(videoURL, '_blank')
     }
 
     return(
@@ -61,13 +64,20 @@ const Relax = () => {
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                                 allowfullscreen
                 ></iframe>
+
                         </div>
                     )
+
                 })}
+                
+                
             </div>
+
         )}
         </div>
     );
   };
 
 export default Relax
+
+
