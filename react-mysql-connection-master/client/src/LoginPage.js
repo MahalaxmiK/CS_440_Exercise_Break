@@ -21,7 +21,9 @@ function LoginPage() {
     }).then((response) => {
       if (response.status === 200) {
         setLoginStatus(response.data.message);
-        navigate('/drinkOption');
+        setTimeout(() => {
+          navigate('/drinkOption');
+        }, 1000);
       } else if (response.status === 401) {
         setLoginStatus(response.data.message);
         console.error("Login failed:", response.data.message);
