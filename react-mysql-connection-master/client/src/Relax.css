@@ -1,0 +1,51 @@
+.relax-container {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 250px;
+    margin-bottom: 200px;
+    background: rgb(176, 178, 198);
+    padding-bottom: 30px;
+    border: 1px solid rgb(219, 219, 219);
+    max-width: 500px;
+    box-sizing: border-box;
+}
+
+.relax-btn {
+    position: relative;
+    width: 100px;
+    height: 40px;
+    color: #fff;
+    background: blue;
+    padding: 10px;
+    margin-block: 30;
+    font-weight: 700;
+    cursor: pointer;
+    left: 40%;
+    margin-top: 10px;
+
+}
+
+.relax-button-container {
+    position: relative;
+    align-items: center;
+    margin-bottom: 10px;
+    margin-top: 30px;
+}
+
+.relax-divider {
+    height: 20px;
+}
+
+img {
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+}
+
+.relax-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}

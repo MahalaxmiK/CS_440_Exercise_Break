@@ -1,53 +1,86 @@
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-body{
+/*
+  CSS For Mahalaxmi's Screens
+*/
+
+body {
   font-family: sans-serif;
 }
 
-.container{
+.container {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100vh;
+  margin: 30px auto 0;
 }
 
-.container .loginForm{
-  margin: 100px;
+.exercisecontainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 30px auto 0;
+  grid-area: title_component;
 }
 
-.container .loginForm form{
-  background-color: wheat;
+.container .loginForm {
+  margin: 100px auto;
+}
+
+.container .loginForm form {
+  background-color: transparent;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 50vh;
-  width: 150%;
+  height: 600px;
+  width: 400px;
   padding: 0 20px;
+  border: 1px solid rgb(219, 219, 219)
 }
 
-.container .loginForm form h4{
-  font-size: 30px;
-  text-align: center;
+.container .loginForm form h4 {
+  font-size: 48px;
+  font-family: 'Trebuchet MS';
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 9px;
+  width: 100%;
+  padding-bottom: 30px;
+}
+
+.container .loginForm form .app-logo {
+  width: 140px;
+  height: 170px;
+  padding-top: 30px;
+  margin-left: 115px;
+  margin-right: 115px;
   margin-bottom: 30px;
+  align-items: center;
 }
 
-.container .loginForm form label{
-  margin-bottom: 7px;
+.container .loginForm form label {
+  margin-bottom: 12px;
+  font-family: Georgia;
+  font-size: 20px;
 }
 
-.container .loginForm form .textInput{
+.container .loginForm form .textInput {
   width: 100%;
   height: 40px;
   margin-bottom: 20px;
   outline: none;
   padding: 0px 10px;
+  border: 2px solid rgb(32, 30, 30)
 }
 
-.container .loginForm form .button{
+.container .loginForm form .button {
   width: auto;
   padding: 8px 30px;
   text-align: center;
@@ -55,10 +88,95 @@ body{
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  border: 1px solid black;
+  border: 2px solid black;
   outline: none;
+  border-radius: 5px;
+  font-family: Cambria;
+  font-size: 25px;
+  background-color:rgb(222, 173, 173)
 }
 
-.container .loginForm form .button:hover{
+.container .loginForm form .button:hover {
   background-color: aliceblue;
+}
+
+.container .loginForm h1 {
+  font-size: 36px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+label i {
+  margin: 0px 10px;
+}
+
+.exercisecontainer .exercise {
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 600px;
+  width: 400px;
+  padding: 0 20px;
+  border: 1px solid rgb(219, 219, 219)
+}
+
+.exercisecontainer .exercise h1 {
+  font-size: 37px;
+  font-family: 'Trebuchet MS';
+  display: flex;
+  flex-direction: initial;
+  align-items: first baseline;
+  gap: 9px;
+  width: 100%;
+  padding-bottom: 100px;
+  padding-left: 10px;
+  padding-right: 10px;
+  color: blue
+}
+
+.exercisecontainer .exercise .exercise-logo {
+  width: 150px;
+  height: 150px;
+  margin-left: 105px;
+  margin-bottom: 50px;
+  align-items: center;
+}
+
+.exercisecontainer .exercise .start {
+  width: auto;
+  padding: 15px 30px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: 2px solid black;
+  outline: none;
+  border-radius: 5px;
+  font-family: Cambria;
+  font-size: 25px;
+  margin-bottom: 40px;
+  margin-left: 80px;
+  margin-right: 60px;
+  background-color: rgb(226, 129, 129)
+}
+
+.exercisecontainer .exercise .exit {
+  width: auto;
+  padding: 15px 30px 15px 30px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: 2px solid black;
+  outline: none;
+  border-radius: 5px;
+  font-family: Cambria;
+  font-size: 25px;
+  margin-left: 70px;
+  margin-right: 50px;
+  margin-top: 3px;
+  background-color: rgb(197, 85, 141)
 }

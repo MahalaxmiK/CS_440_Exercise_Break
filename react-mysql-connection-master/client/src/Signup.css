@@ -1,0 +1,95 @@
+.signup-container {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 200px;
+    background: #fff;
+    padding-bottom: 30px;
+    border: 1px solid rgb(219, 219, 219);
+    max-width: 500px;
+    box-sizing: border-box;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    position: realative;
+}
+
+.text {
+    color: blue;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px
+}
+
+.label {
+    margin-bottom: 10px;
+}
+
+input {
+    /* input box  */
+    display: flex;
+    align-items: center;
+    margin: auto;
+    background: #eaeaea;
+    border-radius: 6px;
+    width: 200px;
+    padding: 8px;
+    font-weight: 600;
+}
+
+.submit-container {
+    display: flex;
+    gap: 30px;
+    margin: 60px auto;
+}
+
+.signup-submit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 40px;
+    color: #fff;
+    background: blue;
+    border-radius: 50px;
+    font-weight: 700;
+    cursor: pointer;
+} 
+
+
+.disabled {
+    background-color: #d3d3d3;
+    /* Use your desired background color for the disabled state */
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.btn {
+    width: 100px;
+    height: 40px;
+    color: #fff;
+    background: blue;
+
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.text-dark {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
