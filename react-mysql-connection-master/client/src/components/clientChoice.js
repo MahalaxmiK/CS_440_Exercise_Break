@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import '../Home.css';
 import { useNavigate } from 'react-router-dom';
 
+/*
+    Noura Almasri Contribution
+*/
 const ParentComponent = () => {
     const [action, setAction] = useState("Resume Workout");
     const navigate = useNavigate();

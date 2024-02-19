@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react';
 import { useNavigate } from "react-router-dom";
 
+/*
+  Mahalaxmi Kalappareddigari Contribution
+*/
 const Maps = ({ google }) => {
   const [userLocation, setUserLocation] = useState(null);
   const [nearbyStores, setNearbyStores] = useState([]);
