@@ -18,10 +18,11 @@ function LoginPage() {
     }).then((response) => {
       if (response.status === 200) {
         setLoginStatus(response.data.message);
-        // Delay redirect by 1 second
+        navigate('/drinkOption');
+        /* // Delay redirect by 1 second
         setTimeout(() => {
           navigate('/maps');
-        }, 1000);
+        }, 1000); */
       } else if (response.status === 401) {
         setLoginStatus(response.data.message);
         console.error("Login failed:", response.data.message);

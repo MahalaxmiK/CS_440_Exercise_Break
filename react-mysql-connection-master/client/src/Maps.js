@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react';
+import { useNavigate  } from "react-router-dom";
 
 const Maps = ({ google }) => {
   const [userLocation, setUserLocation] = useState(null);
   const [nearbyStores, setNearbyStores] = useState([]);
   const [selectedStore, setSelectedStore] = useState(null);
   const [selectedMode, setSelectedMode] = useState('DRIVING');
+  const navigate = useNavigate();
   const [directions, setDirections] = useState({
     DRIVING: null,
     BICYCLING: null,
@@ -98,6 +100,9 @@ const Maps = ({ google }) => {
     calculateDirections('BICYCLING', store.geometry.location);
     calculateDirections('TRANSIT', store.geometry.location);
     calculateDirections('WALKING', store.geometry.location);
+    setTimeout(() => {
+      navigate('/resume');
+    }, 2000);
   };
 
   const handleModeChange = (mode) => {
@@ -201,5 +206,5 @@ const Maps = ({ google }) => {
 
 // update code here for code runs
 export default GoogleApiWrapper({
-  apiKey: 'API_KEY'
+  apiKey: 'AIzaSyBbC24ktucWWxLeiVgwQ4LhnoT9NC3ebq0'
 })(Maps);

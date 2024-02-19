@@ -22,11 +22,29 @@ con.connect((err) => {
     console.log('Successfully Connected To MySQL database instance!!');
 });
 
+app.post('/register', (req, res) => {
+    const email = req.body.email;
+    const password = req.body.password;
+    const gender = req.body.gender;
+    const height = req.body.height;
+    const weight = req.body.weight;
+    const age = req.body.age;
+
+    con.query("INSERT INTO users (email, password, gender, height, weight, age) VALUES (?, ?, ?, ?, ?,?)", [email, password, gender, height, weight, age], 
+        (err, result) => {
+            if(result){
+                res.send(result);
+            }else{
+                res.send({message: "ENTER CORRECT ASKED DETAILS!"})
+            }
+        }
+    )
+})
 
 app.post("/login", (req, res) => {
     const email = req.body.email;
     const password = req.body.password;
-    con.query("SELECT * FROM user WHERE email = ? AND password = ?", [email, password], 
+    con.query("SELECT * FROM users WHERE email = ? AND password = ?", [email, password], 
         (err, result) => {
             if (err) {
                 console.error("Error querying the database:", err);
@@ -44,6 +62,58 @@ app.post("/login", (req, res) => {
         }
     )
 })
+
+app.post('/handleSubmit', (req, res) => {
+    const email = req.body.email;
+    const hasDrink = req.body.hasDrink;
+  
+    console.log("Received email:", email);
+    console.log("Received hasDrink:", hasDrink);
+  
+    con.query(
+      "UPDATE users SET hasDrink = ? WHERE email = ?",
+      [hasDrink, email],
+      (err, result) => {
+        if (err) {
+          console.error('Error updating user drink status:', err);
+          res.status(500).json({ message: "Internal Server Error" });
+        } else {
+          console.log(result);
+          if (result.affectedRows > 0) {
+            res.status(200).json({ message: "Successfully added drink status!" });
+          } else {
+            res.status(404).json({ message: "Wrong Email!" });
+          }
+        }
+      }
+    );
+});
+  
+app.post('/submitWantDrink', (req, res) => {
+    const email = req.body.email;
+    const wantDrink = req.body.wantDrink;
+  
+    console.log("Received email:", email);
+    console.log("Received wantDrink:", wantDrink);
+  
+    con.query(
+      "UPDATE users SET wantDrink = ? WHERE email = ?",
+      [wantDrink, email],
+      (err, result) => {
+        if (err) {
+          console.error('Error updating user drink status:', err);
+          res.status(500).json({ message: "Internal Server Error" });
+        } else {
+          console.log(result);
+          if (result.affectedRows > 0) {
+            res.status(200).json({ message: "Successfully added want drink status!" });
+          } else {
+            res.status(404).json({ message: "Wrong Email!" });
+          }
+        }
+      }
+    );
+  });
 
 app.listen(3000, () => {
     console.log("Running Exercise Break App Server!!");
