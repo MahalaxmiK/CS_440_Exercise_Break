@@ -9,7 +9,7 @@ import HasDrink from "./HasDrink";
 import Timer from "./Timer";
 import WantDrink from "./WantDrink";
 import Relax from "./components/Relax";
-import ClientChoice from "./components/clientChoice";
+import ParentComponent from "./components/clientChoice";
 
 /*
   Team Contribution
@@ -27,7 +27,7 @@ function App() {
         <Route path="/wantDrink" element={<WantDrink />} exact />
         <Route path="/maps" element={<Maps />} exact />
         <Route path="/relax" element={<Relax />} exact />
-        <Route path="/resume" element={<ClientChoice />} exact />
+        <Route path="/resume" element={<ParentComponent />} exact />
       </Routes>
     </BrowserRouter>
   );
