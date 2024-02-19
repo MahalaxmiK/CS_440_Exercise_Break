@@ -19,7 +19,7 @@ function WantDrink() {
   const updateUserDrinkStatus = (drinkStatus) => {
         setWantDrink(drinkStatus); // Set drink status based on button click
         setSelectedButton(drinkStatus);
-      if (drinkStatus == 'yes') {
+      if (drinkStatus === 'yes') {
           setTimeout(() => {
             navigate('/maps');
         }, 1000); 

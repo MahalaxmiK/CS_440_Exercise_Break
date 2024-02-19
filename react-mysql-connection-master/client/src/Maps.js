@@ -1,30 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react';
-import { useNavigate  } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-/*
-  Mahalaxmi Kalappareddigari Contribution
-*/
 const Maps = ({ google }) => {
   const [userLocation, setUserLocation] = useState(null);
   const [nearbyStores, setNearbyStores] = useState([]);
   const [selectedStore, setSelectedStore] = useState(null);
-  const [selectedMode, setSelectedMode] = useState('DRIVING');
-  const navigate = useNavigate();
   const [directions, setDirections] = useState({
     DRIVING: null,
     BICYCLING: null,
     TRANSIT: null,
     WALKING: null
   });
-  const [infoWindowVisible, setInfoWindowVisible] = useState({
-    DRIVING: false,
-    BICYCLING: false,
-    TRANSIT: false,
-    WALKING: false
-  });
+  const [infoWindowForUserLocationVisible, setInfoWindowForUserLocationVisible] = useState(false);
+  const [infoWindowForStoreVisible, setInfoWindowForStoreVisible] = useState(false);
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [userLocationAddress, setUserLocationAddress] = useState(null); // State to store user location address
 
   useEffect(() => {
     const getUserLocation = () => {
@@ -36,6 +29,7 @@ const Maps = ({ google }) => {
               lng: position.coords.longitude
             };
             setUserLocation(location);
+            fetchUserLocationAddress(location); // Fetch user location address
             fetchNearbyStores(location);
             setLoading(false);
           },
@@ -97,19 +91,34 @@ const Maps = ({ google }) => {
     );
   };
 
+  const fetchUserLocationAddress = (location) => {
+    const geocoder = new google.maps.Geocoder();
+    geocoder.geocode({ 'location': location }, (results, status) => {
+      if (status === google.maps.GeocoderStatus.OK) {
+        if (results[0]) {
+          setUserLocationAddress(results[0].formatted_address);
+        } else {
+          console.error('No address found for user location');
+          setUserLocationAddress('Address not found');
+        }
+      } else {
+        console.error('Geocoder failed due to: ' + status);
+        setUserLocationAddress('Geocoder failed');
+      }
+    });
+  };
+
+
   const handleMarkerClick = (store) => {
     setSelectedStore(store);
+    setInfoWindowForStoreVisible(true);
     calculateDirections('DRIVING', store.geometry.location);
     calculateDirections('BICYCLING', store.geometry.location);
     calculateDirections('TRANSIT', store.geometry.location);
     calculateDirections('WALKING', store.geometry.location);
     setTimeout(() => {
-      navigate('/resume');
+        navigate('/resume');
     }, 10000);
-  };
-
-  const handleModeChange = (mode) => {
-    setSelectedMode(mode);
   };
 
   const calculateDirections = (mode, destination) => {
@@ -126,10 +135,6 @@ const Maps = ({ google }) => {
             setDirections(prevState => ({
               ...prevState,
               [mode]: result
-            }));
-            setInfoWindowVisible(prevState => ({
-              ...prevState,
-              [mode]: true
             }));
           } else {
             console.error('Error fetching directions:', status);
@@ -159,7 +164,22 @@ const Maps = ({ google }) => {
             title="Your Location"
             name="Your Location"
             position={userLocation}
+            onClick={() => setInfoWindowForUserLocationVisible(true)}
           />
+        )}
+        {userLocation && (
+          <InfoWindow
+            visible={infoWindowForUserLocationVisible}
+            onClose={() => setInfoWindowForUserLocationVisible(false)}
+            position={userLocation}
+          >
+            <div>
+              <h3>Your Current Location</h3>
+              <div>
+                {userLocationAddress && <p>Address: {userLocationAddress}</p>}
+              </div>
+            </div>
+          </InfoWindow>
         )}
         {nearbyStores.map((store, index) => (
           <Marker
@@ -172,9 +192,9 @@ const Maps = ({ google }) => {
         ))}
         {selectedStore && (
           <InfoWindow
-            visible={true}
+            visible={infoWindowForStoreVisible}
+            onClose={() => setInfoWindowForStoreVisible(false)}
             position={selectedStore.geometry.location}
-            onClose={() => setSelectedStore(null)}
           >
             <div>
               <h3>{selectedStore.name}</h3>
@@ -207,7 +227,6 @@ const Maps = ({ google }) => {
   );
 };
 
-// update code here for code runs
 export default GoogleApiWrapper({
   apiKey: 'AIzaSyBbC24ktucWWxLeiVgwQ4LhnoT9NC3ebq0'
 })(Maps);

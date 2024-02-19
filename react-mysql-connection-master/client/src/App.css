@@ -81,7 +81,7 @@ body {
 }
 
 .container .loginForm form .button {
-  width: auto;
+  width: 350px;
   padding: 8px 30px;
   text-align: center;
   display: flex;
@@ -157,7 +157,7 @@ label i {
   font-family: Cambria;
   font-size: 25px;
   margin-bottom: 40px;
-  margin-left: 80px;
+  margin-left: 70px;
   margin-right: 60px;
   background-color: rgb(226, 129, 129)
 }
@@ -175,7 +175,7 @@ label i {
   border-radius: 5px;
   font-family: Cambria;
   font-size: 25px;
-  margin-left: 70px;
+  margin-left: 60px;
   margin-right: 50px;
   margin-top: 3px;
   background-color: rgb(197, 85, 141)
