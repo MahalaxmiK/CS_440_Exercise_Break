@@ -3,6 +3,9 @@ import appLogoImage from '../assets/logos.png'
 import '../Home.css'
 import { useNavigate  } from "react-router-dom";
 
+/*
+    Noura Almasri Contribution
+*/
 const Login = () => {
     const [action, setAction] = useState("Login");
     const navigate = useNavigate();

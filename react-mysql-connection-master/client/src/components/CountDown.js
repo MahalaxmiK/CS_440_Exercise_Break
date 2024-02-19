@@ -2,6 +2,9 @@ import React, { useEffect, useRef, useState } from "react";
 import '../Home.css';
 import { useNavigate  } from "react-router-dom";
 
+/*
+    Noura Almasri Contribution
+*/
 const formatTime = (time) => {
     let minutes = Math.floor(time / 60)
     let seconds = Math.floor(time - minutes * 60)

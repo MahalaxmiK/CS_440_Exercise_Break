@@ -7,6 +7,9 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+/*
+  Team Contribution
+*/
 const con = mysql.createConnection({
     user: "root",
     host: "localhost",

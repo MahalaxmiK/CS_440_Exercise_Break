@@ -3,6 +3,9 @@ import "./Drink.css";
 import Axios from "axios";
 import { useNavigate  } from "react-router-dom";
 
+/*
+  Mahin Patel Contribution
+*/
 const home = require('./assets/homeIcon.png');
 const Logout = require('./assets/logout.png');
 
@@ -56,8 +59,8 @@ function WantDrink() {
           <button className={`button ${selectedButton === "yes" ? "selected" : ""}`} onClick={() => updateUserDrinkStatus("yes")}> Yes </button>
           <button className={`button ${selectedButton === "no" ? "selected" : ""}`} onClick={() => updateUserDrinkStatus("no")}> No </button>
           <div className="icons">
-            <img src={home} alt="home" />
-            <img src={Logout} alt="Logout" />
+            <img src={home} alt="home" onClick={() => navigate('/workout')}/>
+            <img src={Logout} alt="Logout" onClick={() => navigate('/')}/>
         </div>
         </form>
         <p>{updateStatus}</p>

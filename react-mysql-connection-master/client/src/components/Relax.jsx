@@ -7,6 +7,9 @@ import meditationImg from '../assets/meditation.png';
 import musicImg from '../assets/music.png';
 
 
+/*
+    Sakinah Chadrawala Contribution
+*/
 const API =  "AIzaSyDQjZ79ul59xynIC9vdJ7IM5XQYLi_mKt8"
 const channelId = "UChSpME3QaSFAWK8Hpmg-Dyw"
 
@@ -35,7 +38,7 @@ const Relax = () => {
         window.open(videoURL, '_blank')
         setTimeout(() => {
           navigate('/resume');
-        }, 2000);
+        }, 10000);
     }
 
     return(
