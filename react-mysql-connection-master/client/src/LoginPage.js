@@ -4,6 +4,9 @@ import "./App.css";
 import Axios from "axios";
 import login_logo from './assets/exercise.png';
 
+/*
+  Mahalaxmi Kalappareddigari Contribution
+*/
 function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -19,10 +22,6 @@ function LoginPage() {
       if (response.status === 200) {
         setLoginStatus(response.data.message);
         navigate('/drinkOption');
-        /* // Delay redirect by 1 second
-        setTimeout(() => {
-          navigate('/maps');
-        }, 1000); */
       } else if (response.status === 401) {
         setLoginStatus(response.data.message);
         console.error("Login failed:", response.data.message);
