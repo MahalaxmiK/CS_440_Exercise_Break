@@ -32,13 +32,13 @@ const Signup = () => {
             console.log(response.data);
             if(response.data.message){
                 setRegisterstatus(response.data.message)
-            } else{
+            } 
+            else{
                 setRegisterstatus("Account Created Successfully!")
                 setButtonDisabled(true);
                 setTimeout(() => {
                     navigate('/drinkOption');
                 }, 1000);
-
             }
         }).catch((error) => {
             console.error("error during registration", error)
