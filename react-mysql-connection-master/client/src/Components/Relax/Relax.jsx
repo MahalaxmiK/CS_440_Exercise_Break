@@ -7,77 +7,81 @@ import musicImg from './music.png'
 
 
 const API  =  "AIzaSyDQjZ79ul59xynIC9vdJ7IM5XQYLi_mKt8"
-const channelId = "UChSpME3QaSFAWK8Hpmg-Dyw"
+const meditationChannelId = "UChSpME3QaSFAWK8Hpmg-Dyw"
+const musicChannelID = "UCGDPhXrv1Pwi8GvPrRgK_JA"
 
-const fetchURL = `https://www.googleapis.com/youtube/v3/search?key=${API}&channelId=${channelId}&part=snippet,id&order=date&maxResult=10`;
+const fetchURL = `https://www.googleapis.com/youtube/v3/search?key=${API}&channelId=${meditationChannelId}&part=snippet,id&order=date&maxResult=10`;
 
-const Relax = () => {
-    const [allvideos,setAllvideos] = useState([]);
-    const[meditationVid, setMeditationVid] = useState(null);
+const Relax = () =>{
+    const[meditationVideos, setMeditationVideos] = useState([]);
+    const[musicVideos, setMusicnVideos] = useState([]);
 
     useEffect(() => {
-        fetch(fetchURL).then((response)=> response.json()).then((resJson)=>{
-            const result = resJson.items.map(doc=>({
-                ...doc,
-                Videolink: "https://www.youtube.com/embed/" + doc.id.videoId
-            }));
-            setAllvideos(result)
-        })
+        fetchVideos(meditationChannelId)
     }, [])
-    console.log(allvideos)
-    
-    const handleMeditationVid = (video) => {
-        const randomGenerator = Math.ceil(Math.random() * allvideos.length)
-        const getIndex = allvideos[randomGenerator]
-        const videoURL = `https://www.youtube.com/embed/${getIndex.id.videoId}`
-        window.open(videoURL, '_blank')
+
+    const fetchVideos = async(meditationChannelId) =>{
+        const meditationUrl = `https://www.googleapis.com/youtube/v3/search?key=${API}&channelId=${meditationChannelId}&part=snippet,id&order=date&maxResults=10`;
+        const musicUrl = `https://www.googleapis.com/youtube/v3/search?key=${API}&channelId=${musicChannelID}&part=snippet,id&order=date&maxResults=10`;
+        try {
+            const [meditationRes, musicRes] = await Promise.all([
+                fetch(meditationUrl),
+                fetch (musicUrl)
+            ])
+
+            if(!meditationRes.ok || !musicRes.ok) {
+                throw new Error('Url response was not fetched')
+            }
+
+            const[meditationResJson, musicResJson] = await Promise.all([
+                meditationRes.json(),
+                musicRes.json()
+            ])
+
+            const meditationArray = meditationResJson.items.map(doc => ({
+                ...doc,
+                Videolink:`https://www.youtube.com/embed/${doc.id.videoId}`
+            }))
+
+            const musicArray = musicResJson.items.map(doc => ({
+                ...doc,
+                Videolink:`https://www.youtube.com/embed/${doc.id.videoId}`
+            }))
+
+            setMeditationVideos(meditationArray)
+            setMusicnVideos(musicArray)
+        } catch(error){
+            console.error('error fetching videos: ', error)
+        }
+    }
+
+
+    const handleButtonClick = (videos) => {
+        if (videos.length === 0) return
+
+        const randomIndex = Math.floor(Math.random() * videos.length)
+        const videoUrl = `https://www.youtube.com/embed/${videos[randomIndex].id.videoId}`;
+        window.open(videoUrl, '_blank')
     }
 
     return(
-        
-        <div className="container">
-            <div className="button-container">
-                <div className= "image-container">
-                    <img src={meditationImg} alt="react logo" />
+        <div className = "container">
+            <div className = "button-container">
+                <div className = "image-container">
+                    <img src = {meditationImg} alt="meditation"/>
                 </div>
-                <button onClick={ handleMeditationVid} className="btn">Meditation</button> 
+                <button onClick={() => handleButtonClick(meditationVideos)} className="btn"> Meditation</button>
             </div>
-            <div className = "divider"></div>
+            <div className="divider"></div>
             <div className="button-container">
-                <div className= "image-container">
-                    <img src={musicImg} alt="react logo" />
+                <div className="image-container">
+                <img src = {musicImg} alt="music"/>
                 </div>
-            <button name="submit" className="btn">Music</button>
+                <button onClick={() => handleButtonClick(musicVideos)} className="btn"> Music</button>
+
             </div>
-            
-             {meditationVid && allvideos.length > 0 && (
-            <div>
-                {allvideos.map((item)=> {
-                    return(
-                        <div>
-                            <iframe 
-                                width="560" 
-                                height="315" 
-                                src= {item.Videolink}
-                                title="YouTube video player" 
-                                frameborder="0" 
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                                allowfullscreen
-                ></iframe>
-
-                        </div>
-                    )
-
-                })}
-                
-                
-            </div>
-
-        )}
         </div>
-    );
-  };
+    )
+}
 
 export default Relax
-
-
