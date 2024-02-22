@@ -13,8 +13,8 @@ app.use(cors());
 const con = mysql.createConnection({
     user: "root",
     host: "localhost",
-    // password: ""
-    password: "Cps45121690!",
+    password: "",
+    //password: "Cps45121690!",
     database: "register"
 })
 
@@ -35,14 +35,6 @@ app.post('/register', (req, res) => {
     const age = req.body.age;
 
     con.query("INSERT INTO users (email, password, gender, height, weight, age) VALUES (?, ?, ?, ?, ?,?)", [email, password, gender, height, weight, age],
-        //   (err, result) => {
-        //     if(err){
-        //         console.error(err);
-        //         res.send({ message: "Error executing the query" });
-        //     } else {
-        //         res.send(result);
-        //     }
-        // } 
         (err, result) => {
             if(result){
                 res.send(result);
