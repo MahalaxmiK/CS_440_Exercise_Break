@@ -7,6 +7,13 @@ import meditationImg from '../assets/meditation.png'
 import musicImg from '../assets/music.png'
 
 
+/*
+    Sakinah Chadrawala Contribution
+*/
+
+ 
+
+
 const API  =  "AIzaSyDQjZ79ul59xynIC9vdJ7IM5XQYLi_mKt8"
 const meditationChannelId = "UChSpME3QaSFAWK8Hpmg-Dyw"
 const musicChannelID = "UCGDPhXrv1Pwi8GvPrRgK_JA"
@@ -20,7 +27,7 @@ const Relax = () =>{
 
     useEffect(() => {
         fetchVideos(meditationChannelId)
-    }, [])
+    }, []) 
 
     const fetchVideos = async(meditationChannelId) =>{
         const meditationUrl = `https://www.googleapis.com/youtube/v3/search?key=${API}&channelId=${meditationChannelId}&part=snippet,id&order=date&maxResults=10`;
