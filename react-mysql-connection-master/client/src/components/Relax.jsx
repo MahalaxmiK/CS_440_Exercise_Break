@@ -73,7 +73,7 @@ const Relax = () =>{
         window.open(videoUrl, '_blank')
         setTimeout(() => {
           navigate('/resume');
-        }, 10000);
+        }, 20000);
     }
 
     return(

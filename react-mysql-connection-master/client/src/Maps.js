@@ -121,7 +121,7 @@ const Maps = ({ google }) => {
     calculateDirections('WALKING', store.geometry.location);
     setTimeout(() => {
         navigate('/resume');
-    }, 10000);
+    }, 20000);
   };
 
   const calculateDirections = (mode, destination) => {
