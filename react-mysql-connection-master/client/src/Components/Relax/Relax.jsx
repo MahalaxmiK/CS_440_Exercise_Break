@@ -2,8 +2,8 @@ import React, { useEffect, useState} from 'react'
 import './Relax.css'
 import Axios from "axios";
 
-import meditationImg from './meditation.png'
-import musicImg from './music.png'
+import meditationImg from './meditation.jpg'
+import musicImg from './music.jpeg'
 
 
 const API  =  "AIzaSyDQjZ79ul59xynIC9vdJ7IM5XQYLi_mKt8"
