@@ -1,12 +1,17 @@
 import React, {useState} from "react";
 import "./App.css";
+import Spotify from "./Spotify";
 
-import Signup from "./Components/Signup/Signup"; 
+// import Relax from "./Components/Relax/Relax"; 
+import Menu from "./Components/Menu/Menu"; 
+
 function App(){
   return (
     <div>
-      <Signup/>
+      <Menu/>
     </div>
   );
 }
+
+
 export default App;
