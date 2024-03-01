@@ -1,24 +1,17 @@
 import React, { useEffect, useState} from 'react'
 import '../Relax.css'
-import Axios from "axios";
 import { useNavigate  } from "react-router-dom";
-
 import meditationImg from '../assets/meditation.png'
 import musicImg from '../assets/music.png'
-
 
 /*
     Sakinah Chadrawala Contribution
 */
 
- 
-
-
 const API  =  "AIzaSyDQjZ79ul59xynIC9vdJ7IM5XQYLi_mKt8"
 const meditationChannelId = "UChSpME3QaSFAWK8Hpmg-Dyw"
 const musicChannelID = "UCGDPhXrv1Pwi8GvPrRgK_JA"
 
-const fetchURL = `https://www.googleapis.com/youtube/v3/search?key=${API}&channelId=${meditationChannelId}&part=snippet,id&order=date&maxResult=10`;
 
 const Relax = () =>{
     const[meditationVideos, setMeditationVideos] = useState([]);

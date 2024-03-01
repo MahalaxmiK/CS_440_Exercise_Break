@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react';
-import { useNavigate } from "react-router-dom";
+//import { useNavigate } from "react-router-dom";
+import { FaHome, FaUser, FaSignOutAlt, FaBars } from 'react-icons/fa'; // Import bottom navigation bar & menu option icons
 
 /*
   Mahalaxmi Kalappareddigari Contribution
@@ -17,7 +18,7 @@ const Maps = ({ google }) => {
   });
   const [infoWindowForUserLocationVisible, setInfoWindowForUserLocationVisible] = useState(false);
   const [infoWindowForStoreVisible, setInfoWindowForStoreVisible] = useState(false);
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [userLocationAddress, setUserLocationAddress] = useState(null); // State to store user location address
@@ -119,9 +120,9 @@ const Maps = ({ google }) => {
     calculateDirections('BICYCLING', store.geometry.location);
     calculateDirections('TRANSIT', store.geometry.location);
     calculateDirections('WALKING', store.geometry.location);
-    setTimeout(() => {
-        navigate('/resume');
-    }, 20000);
+    // setTimeout(() => {
+    //     navigate('/resume');
+    // }, 20000);
   };
 
   const calculateDirections = (mode, destination) => {
@@ -147,6 +148,27 @@ const Maps = ({ google }) => {
     }
   };
 
+  // Release 2 Sprint 1 -> Temporary Placeholder Logic For OnClick Functionality
+  const exitMaps = () => {
+    window.confirm("Would you like to exit Google Maps?");
+  };
+
+  const homeClick = () => {
+    window.confirm("Would you like to return to the home screen?");
+  };
+
+  const profileClick = () => {
+    window.confirm("Would you like to see your profile?");
+  };
+
+  const logoutClick = () => {
+    window.confirm("Would you like to exit the Exercise Break App?");
+  };
+
+  const menuOptionClick = () => {
+    window.confirm("Would you like to head back to the Menu Page?");
+  };
+
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -156,12 +178,28 @@ const Maps = ({ google }) => {
   }
 
   return (
-    <div>
+    <div classname="maps-container"> 
       <Map
         google={google}
+        style={{
+          width: '22%',
+          height: '90%',
+          borderTop: '8px solid #333', // Define top, left, & right borders to add bottom navigation bar better
+          borderLeft: '8px solid #333', 
+          borderRight: '8px solid #333', 
+          borderRadius: '40px', // Add border radius for nice look
+          margin: '22px auto',
+        }}
+        containerStyle={{
+          width: '100%',
+          height: '100%'
+        }}
         zoom={14}
         initialCenter={userLocation}
       >
+        <div className="exit-maps-btn">
+          <button onClick={exitMaps}>Exit Maps</button>
+        </div>
         {userLocation && (
           <Marker
             title="Your Location"
@@ -225,6 +263,28 @@ const Maps = ({ google }) => {
             </div>
           </InfoWindow>
         )}
+        <div
+          className="bottom-navbar"
+          style={{
+            position: 'absolute',
+            bottom: '0',
+            transform: 'translateX(-1%)',
+            alignItems: 'center',
+            width: '20%',
+            backgroundColor: '#f3f3f3',
+            display: 'flex',
+            justifyContent: 'space-around',
+            padding: '4px 2px',
+            margin: '45px 617px',
+            borderRadius: '40px',
+            borderBottom: '7px solid #333', 
+        }}
+      >
+        <div onClick={homeClick}><FaHome /></div>  
+        <div onClick={profileClick}><FaUser /></div>
+        <div onClick={logoutClick}><FaSignOutAlt /></div>
+        <div onClick={menuOptionClick}><FaBars /></div>
+        </div>
       </Map>
     </div>
   );
