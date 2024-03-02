@@ -4,7 +4,7 @@
     margin: auto;
     margin-top: 200px;
     margin-bottom: 200px;
-    background: rgb(176, 178, 198);
+    background: #fff5ee;
     padding-top: 30px;
     padding-bottom: 30px;
     border: 1px solid rgb(219,219,219);
@@ -17,15 +17,15 @@
 
 .w-btn {
     position: relative;
-    width: 120px;
+    width: 180px; 
     height: 40px;
-    color: #fff;
-    background: blue;
+    color: white;
+    background: #2b8ce8;
     padding: 10px;
     margin-block: 30;
-    font-weight: 700;
+    font-weight: 1000;
     cursor: pointer;
-    left: 15%;
+    left: -3%;
     margin-top: 10px;
  
 }
@@ -34,7 +34,7 @@
     width: 180px;
     height: 40px;
     color: #fff;
-    background: blue;
+    background: #2b8ce8;
     padding: 10px;
     margin-block: 30;
     font-weight: 700;
@@ -44,15 +44,15 @@
 }
 .g-btn{
     position: relative;
-    width: 150px;
+    width: 180px; 
     height: 40px;
     color: #fff;
-    background: blue;
+    background: #2b8ce8;
     padding: 10px;
     margin-block: 30;
     font-weight: 700;
     cursor: pointer;
-    left: 5%;
+    left: -3%;
     margin-top: 10px;
 }
 .button-container{
