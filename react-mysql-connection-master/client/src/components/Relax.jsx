@@ -1,8 +1,8 @@
 import React, { useEffect, useState} from 'react'
 import '../Relax.css'
 import { useNavigate  } from "react-router-dom";
-import meditationImg from '../assets/meditation.png'
-import musicImg from '../assets/music.png'
+import meditationImg from '../assets/meditation.jpg'
+import musicImg from '../assets/music.jpeg'
 
 /*
     Sakinah Chadrawala Contribution
@@ -70,7 +70,9 @@ const Relax = () =>{
     }
 
     return(
-        <div className = "relax-container">
+        <div className="relax-container">
+            <h4>Relaxation Techniques</h4>
+            <h5>Meditate & Enhance Inner Peace</h5>
             <div className = "relax-button-container">
                 <div className = "relax-image-container">
                     <img src = {meditationImg} alt="meditation"/>
@@ -78,6 +80,7 @@ const Relax = () =>{
                 <button onClick={() => handleButtonClick(meditationVideos)} className="relax-btn"> Meditation</button>
             </div>
             <div className="divider"></div>
+            <h5>Listen To Good Music</h5>
             <div className="relax-button-container">
                 <div className="relax-image-container">
                 <img src = {musicImg} alt="music"/>

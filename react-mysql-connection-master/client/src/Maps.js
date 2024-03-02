@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react';
-//import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { FaHome, FaUser, FaSignOutAlt, FaBars } from 'react-icons/fa'; // Import bottom navigation bar & menu option icons
 
 /*
@@ -18,7 +18,7 @@ const Maps = ({ google }) => {
   });
   const [infoWindowForUserLocationVisible, setInfoWindowForUserLocationVisible] = useState(false);
   const [infoWindowForStoreVisible, setInfoWindowForStoreVisible] = useState(false);
-  //const navigate = useNavigate();
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [userLocationAddress, setUserLocationAddress] = useState(null); // State to store user location address
@@ -150,7 +150,8 @@ const Maps = ({ google }) => {
 
   // Release 2 Sprint 1 -> Temporary Placeholder Logic For OnClick Functionality
   const exitMaps = () => {
-    window.confirm("Would you like to exit Google Maps?");
+    // Release 2 Sprint 2 -> Exit Maps OnClick, Redirect To Menu Option Page
+    navigate('/menu');
   };
 
   const homeClick = () => {
@@ -166,7 +167,8 @@ const Maps = ({ google }) => {
   };
 
   const menuOptionClick = () => {
-    window.confirm("Would you like to head back to the Menu Page?");
+    // Release 2 Sprint 2 -> Menu Bars Icon OnClick, Redirect To Menu Option Page
+    navigate('/menu');
   };
 
   if (loading) {

@@ -14,7 +14,7 @@ const con = mysql.createConnection({
     user: "root",
     host: "localhost",
     password: "",
-    //password: "Cps45121690!",
+    // password: "Cps45121690!",
     database: "register"
 })
 
@@ -27,6 +27,8 @@ con.connect((err) => {
 });
 
 app.post('/register', (req, res) => {
+    const fname = req.body.fname;
+    const lname = req.body.lname;
     const email = req.body.email;
     const password = req.body.password;
     const gender = req.body.gender;
@@ -34,7 +36,7 @@ app.post('/register', (req, res) => {
     const weight = req.body.weight;
     const age = req.body.age;
 
-    con.query("INSERT INTO users (email, password, gender, height, weight, age) VALUES (?, ?, ?, ?, ?,?)", [email, password, gender, height, weight, age],
+    con.query("INSERT INTO users (fname, lname, email, password, gender, height, weight, age) VALUES (?, ?, ?, ?, ?, ?, ?,?)", [fname, lname, email, password, gender, height, weight, age],
         (err, result) => {
             if(result){
                 res.send(result);

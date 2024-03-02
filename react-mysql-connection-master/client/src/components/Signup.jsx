@@ -1,13 +1,18 @@
 import React, {useState} from 'react'
 import '../Signup.css'
 import Axios from "axios";
+import login_logo from '../assets/logos.png';
 import { useNavigate  } from "react-router-dom";
 
 
 /*
-    Sakinah Chadrawala Contribution
+    Release 1: Sakinah Chadrawala's Contribution
+    Release 2: Mahin Patel's Contribution
 */
+
 const Signup = () => {
+    const[fname, setFname] = useState("")
+    const[lname, setLname] = useState("")
     const[email, setEmail] = useState("")
     const[password, setPassword] = useState("")
     const[gender, setGender] = useState("")
@@ -22,6 +27,8 @@ const Signup = () => {
         e.preventDefault();
         
         Axios.post("http://localhost:3000/register", {
+            fname: fname,
+            lname: lname,
             email: email,
             password: password,
             gender: gender,
@@ -36,9 +43,9 @@ const Signup = () => {
             else{
                 setRegisterstatus("Account Created Successfully!")
                 setButtonDisabled(true);
-                setTimeout(() => {
-                    navigate('/drinkOption');
-                }, 1000);
+                // setTimeout(() => {
+                //     navigate('/drinkOption');
+                // }, 1000);
             }
         }).catch((error) => {
             console.error("error during registration", error)
@@ -48,30 +55,24 @@ const Signup = () => {
     return (
         <div className = 'signup-container '>
             <form>
-            <div className="header">
-                <div className="text">Please Enter All Fields</div>
-               
-            </div> 
+            <img src={login_logo} alt="#" className="app-logo" />
+            <h4>Exercise Break App</h4>
+            <h3>Create New Account!</h3>
             <div className="inputs">
-                <input type="email" onChange={(e) => {setEmail(e.target.value)}} placeholder="Enter your email" />
-                <input type="password" onChange={(e) => {setPassword(e.target.value)}} placeholder="Enter your password" />
-                <input type="text"  onChange={(e) => {setGender(e.target.value)}} placeholder="Enter your gender" />
-                <input type="text" onChange={(e) => {setHeight(e.target.value)}} placeholder="Enter your height" />
-                <input type="text" onChange={(e) => {setWeight(e.target.value)}} placeholder="Enter your weight" />
-                <input type="text" onChange={(e) => {setAge(e.target.value)}} placeholder="Enter your age" />
+                <input type="fname" onChange={(e) => {setFname(e.target.value)}} placeholder="Enter your First Name" />
+                <input type="lname" onChange={(e) => {setLname(e.target.value)}} placeholder="Enter your Last Name" />
+                <input type="email" onChange={(e) => {setEmail(e.target.value)}} placeholder="Enter your Email" />
+                <input type="password" onChange={(e) => {setPassword(e.target.value)}} placeholder="Enter your Password" />
+                <input type="text"  onChange={(e) => {setGender(e.target.value)}} placeholder="Enter your Gender" />
+                <input type="text" onChange={(e) => {setHeight(e.target.value)}} placeholder="Enter your Height" />
+                <input type="text" onChange={(e) => {setWeight(e.target.value)}} placeholder="Enter your Weight" />
+                <input type="text" onChange={(e) => {setAge(e.target.value)}} placeholder="Enter your Age" />
             </div>
-            {/* <div className="submit-container"> */}
             <div className="text-dark">
-                    <button name='submit' className='btn btn-success' disabled={isButtonDisabled} onClick={register}> Sign Up
-                </button>
+                <button name='submit' className='btn' disabled={isButtonDisabled} onClick={register}> Sign Up </button>
             </div>
             </form>
-            {registerStatus && (
-  <div className="status-message">{registerStatus}</div>
-)}
-
-
-
+            {registerStatus && (<div className="status-message">{registerStatus}</div>)}
         </div> // container
     )
 }

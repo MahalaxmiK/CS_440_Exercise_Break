@@ -4,7 +4,7 @@ import '../Home.css'
 import { useNavigate  } from "react-router-dom";
 
 /*
-    Noura Almasri Contribution
+    Release 1: Noura Almasri's Contribution
 */
 const Login = () => {
     const [action, setAction] = useState("Login");

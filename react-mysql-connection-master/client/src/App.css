@@ -5,12 +5,14 @@
 }
 
 /*
-  CSS For Mahalaxmi's Screens
+  Release 1 - Login CSS For Mahalaxmi's Screen
+  Release 2 - Login CSS for Mahin's Screen
 */
 
 /*
-  Login Page CSS
+  Sign In Page CSS
 */
+
 body {
   font-family: sans-serif;
 }
@@ -37,71 +39,120 @@ body {
 }
 
 .container .loginForm form {
-  background-color: transparent;
+  background-color: #fffaf0;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 600px;
-  width: 400px;
+  height: 680px;
+  /* final height */
+  width: 375px;
+  /* final weight */
   padding: 0 20px;
-  border: 1px solid rgb(219, 219, 219)
+  border: 10px solid #000000;
+  /* Set border thickness and color */
+  border-radius: 40px;
 }
 
+/* h4 CSS Start */
 .container .loginForm form h4 {
-  font-size: 48px;
-  font-family: 'Trebuchet MS';
+  font-size: 30px;
+  font-family: 'Georgia';
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 9px;
   width: 100%;
+  padding-bottom: 10px;
+}
+
+/* h4 CSS End */
+
+/* h5 CSS Start */
+.container .loginForm form h5 {
+  font-size: 15px;
+  font-family: 'Georgia';
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 9px;
+  width: 100%;
+  padding-bottom: 10px;
+}
+
+.signup-link {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.signup-link:hover {
+  text-decoration: underline;
+  /* Underline on hover */
+}
+
+/* h5 CSS End */
+
+/* h3 CSS Start */
+.container .loginForm form h3 {
+  font-size: 20px;
+  font-family: 'Georgia';
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding-bottom: 30px;
 }
 
+/* h3 CSS End */
+
+/* Image CSS Start */
 .container .loginForm form .app-logo {
-  width: 140px;
+  width: 170px;
   height: 170px;
-  padding-top: 30px;
-  margin-left: 115px;
-  margin-right: 115px;
-  margin-bottom: 30px;
-  align-items: center;
+  margin: 0 auto 20px;
+  /* 20px from the top */
+  display: block;
 }
 
+/* Image CSS End */
+
+/* Input Boxes CSS Start */
 .container .loginForm form label {
   margin-bottom: 12px;
   font-family: Georgia;
-  font-size: 20px;
+  font-size: 15px;
 }
 
 .container .loginForm form .textInput {
   width: 100%;
   height: 40px;
-  margin-bottom: 20px;
   outline: none;
+  margin-bottom: 20px;
   padding: 0px 10px;
   border: 2px solid rgb(32, 30, 30)
 }
 
+/* Input Boxes CSS End */
+
+/* Submit Button CSS Start */
 .container .loginForm form .button {
-  width: 350px;
+  width: 320px;
+  height: 50px;
   padding: 8px 30px;
+  margin-bottom: 20px;
   text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   cursor: pointer;
   border: 2px solid black;
-  outline: none;
   border-radius: 5px;
-  font-family: Cambria;
-  font-size: 25px;
-  background-color:rgb(222, 173, 173)
+  font-family: Georgia;
+  font-size: 20px;
+  background-color: #d3d3d3;
+  color: black;
 }
 
 .container .loginForm form .button:hover {
-  background-color: aliceblue;
+  background-color: #dcdcdc;
 }
+
+/* Submit Button CSS End */
 
 .container .loginForm h1 {
   font-size: 36px;

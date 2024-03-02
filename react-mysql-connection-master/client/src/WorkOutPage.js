@@ -4,7 +4,7 @@ import exercise_logo from './assets/start_workout.png';
 import { useNavigate  } from "react-router-dom";
 
 /*
-  Mahalaxmi Kalappareddigari Contribution
+  Release 1: Mahalaxmi Kalappareddigari's Contribution
 */
 function WorkOutPage() {
   const navigate = useNavigate();
