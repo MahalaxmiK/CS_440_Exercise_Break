@@ -293,5 +293,5 @@ const Maps = ({ google }) => {
 };
 
 export default GoogleApiWrapper({
-  apiKey: 'AIzaSyBbC24ktucWWxLeiVgwQ4LhnoT9NC3ebq0'
+  apiKey: 'AIzaSyDrPOMZc3FWMUq9VA2TOCUEWhH0glqhRH4'
 })(Maps);
