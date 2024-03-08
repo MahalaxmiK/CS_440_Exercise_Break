@@ -266,7 +266,7 @@ const Maps = ({ google }) => {
           </InfoWindow>
         )}
         <div
-          className="bottom-navbar"
+          className="bottom-navbar-maps"
           style={{
             position: 'absolute',
             bottom: '0',

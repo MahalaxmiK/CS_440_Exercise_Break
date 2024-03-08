@@ -3,6 +3,7 @@ import '../Relax.css'
 import { useNavigate  } from "react-router-dom";
 import meditationImg from '../assets/meditation.jpg'
 import musicImg from '../assets/music.jpeg'
+import { FaHome, FaUser, FaSignOutAlt, FaBars } from 'react-icons/fa'
 
 /*
     Sakinah Chadrawala Contribution
@@ -69,6 +70,22 @@ const Relax = () =>{
         }, 20000);
     }
 
+    const homeClick = () => {
+        window.confirm("Would you like to return to the home screen?");
+    };
+
+    const profileClick = () => {
+        window.confirm("Would you like to see your profile?");
+    };
+
+    const logoutClick = () => {
+        window.confirm("Would you like to exit the Exercise Break App?");
+    };
+
+    const menuOptionClick = () => {
+        navigate('/menu');
+    };
+
     return(
         <div className="relax-container">
             <h4>Relaxation Techniques</h4>
@@ -87,6 +104,14 @@ const Relax = () =>{
                 </div>
                 <button onClick={() => handleButtonClick(musicVideos)} className="relax-btn"> Music</button>
 
+            </div>
+            <div
+                className="bottom-navbar-relax"
+            >
+                <div onClick={homeClick}><FaHome /></div>  
+                <div onClick={profileClick}><FaUser /></div>
+                <div onClick={logoutClick}><FaSignOutAlt /></div>
+                <div onClick={menuOptionClick}><FaBars /></div>
             </div>
         </div>
     )
