@@ -1,4 +1,4 @@
-.container{
+.menu-container{
     display: flex;
     flex-direction: column;
     margin: auto;
@@ -9,13 +9,14 @@
     padding-bottom: 30px;
     border: 1px solid rgb(219,219,219);
     max-width: 400px; 
+    height: 800px;
     box-sizing: border-box; 
     border: 12px solid #333;
     box-shadow: 0 0 20px rgba(0,0,0,0.5);
     border-radius: 40px
 }
 
-.w-btn {
+.m-btn {
     position: relative;
     width: 180px; 
     height: 40px;
@@ -25,64 +26,43 @@
     margin-block: 30;
     font-weight: 1000;
     cursor: pointer;
-    left: -3%;
-    margin-top: 10px;
- 
-}
-.technique-btn{
-    position: relative;
-    width: 180px;
-    height: 40px;
-    color: #fff;
-    background: #2b8ce8;
-    padding: 10px;
-    margin-block: 30;
-    font-weight: 700;
-    cursor: pointer;
-    left: -3%;
+    left: -1.5%;
     margin-top: 10px;
 }
-.g-btn{
-    position: relative;
-    width: 180px; 
-    height: 40px;
-    color: #fff;
-    background: #2b8ce8;
-    padding: 10px;
-    margin-block: 30;
-    font-weight: 700;
-    cursor: pointer;
-    left: -3%;
-    margin-top: 10px;
-}
-.button-container{
+
+.m-button-container{
     display: felx;
     position: relative;
     align-items: center;
     margin-bottom: 10px;
     margin-top: 30px;
     cursor: pointer;
+    left: 27%;
 }
-
-
 
 /*".img" will change image of the class if you declared "class = img"
 that will only apply affect to the img class */
-img {  
+.m-img {  
     width:  170px;
     height: 120px;
     object-fit: cover;
+ 
 }
 
-.msg{
+.title-msg{
     font-size: 20px;
     font-weight: bold;
     color: black;
+    text-align: center;
+
 }
 .exit-icon{
     position:relative;
     top: -7px;
-    right: -150px;
+    right: -325px;
     background-color: transparent;
     padding: 2px;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
 }
