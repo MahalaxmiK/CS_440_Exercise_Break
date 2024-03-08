@@ -446,6 +446,7 @@
     padding: 1em;
     cursor: pointer;
     transition: backgroun 0.3s;
+    margin-bottom: 135px;
 }
 
 .select-clicked {
@@ -532,19 +533,18 @@
     margin: 0 auto;
     position: relative;
     background-color: rgb(213, 210, 204);
-
-
 }
 
 .workout-title {
     text-align: center;
     color: rgb(14, 14, 13);
     font-size: 25px;
+    font-family: 'Georgia';
 }
 
 .start-workout {
     position: absolute;
-    bottom: 20px;
+    bottom: 80px;
     right: 20px;
     padding: 10px 20px;
     background-color: #2a2f3b;
@@ -552,6 +552,14 @@
     cursor: pointer;
     color: white;
     border: none;
+    font-family: 'Georgia';
+}
+
+.menu-intensity {
+    position: absolute;
+    text-align: center;
+    margin-right: 320px;
+    margin-bottom: 610px;
 }
 
 .start-workout:hover {

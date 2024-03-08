@@ -154,17 +154,17 @@ const Maps = ({ google }) => {
     navigate('/menu');
   };
 
-  const homeClick = () => {
-    window.confirm("Would you like to return to the home screen?");
-  };
+  // const profileClick = () => {
+    //     navigate('/profile');
+    // };
 
-  const profileClick = () => {
-    window.confirm("Would you like to see your profile?");
-  };
+    // const homeClick = () => {
+    //     navigate('/home');
+    // };
 
-  const logoutClick = () => {
-    window.confirm("Would you like to exit the Exercise Break App?");
-  };
+    const logoutClick = () => {
+        navigate('/login');
+    };
 
   const menuOptionClick = () => {
     // Release 2 Sprint 2 -> Menu Bars Icon OnClick, Redirect To Menu Option Page
@@ -282,8 +282,8 @@ const Maps = ({ google }) => {
             borderBottom: '7px solid #333', 
         }}
       >
-        <div onClick={homeClick}><FaHome /></div>  
-        <div onClick={profileClick}><FaUser /></div>
+        <div><FaHome /></div>  
+        <div><FaUser /></div>
         <div onClick={logoutClick}><FaSignOutAlt /></div>
         <div onClick={menuOptionClick}><FaBars /></div>
         </div>

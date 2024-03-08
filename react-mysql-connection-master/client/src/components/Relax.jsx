@@ -70,21 +70,23 @@ const Relax = () =>{
         }, 20000);
     }
 
-    const homeClick = () => {
-        window.confirm("Would you like to return to the home screen?");
-    };
+    // const profileClick = () => {
+    //     navigate('/profile');
+    // };
 
-    const profileClick = () => {
-        window.confirm("Would you like to see your profile?");
-    };
+    // const homeClick = () => {
+    //     navigate('/home');
+    // };
 
     const logoutClick = () => {
-        window.confirm("Would you like to exit the Exercise Break App?");
+        navigate('/login');
     };
 
     const menuOptionClick = () => {
         navigate('/menu');
     };
+
+
 
     return(
         <div className="relax-container">
@@ -108,8 +110,8 @@ const Relax = () =>{
             <div
                 className="bottom-navbar-relax"
             >
-                <div onClick={homeClick}><FaHome /></div>  
-                <div onClick={profileClick}><FaUser /></div>
+                <div><FaHome /></div>  
+                <div><FaUser /></div>
                 <div onClick={logoutClick}><FaSignOutAlt /></div>
                 <div onClick={menuOptionClick}><FaBars /></div>
             </div>

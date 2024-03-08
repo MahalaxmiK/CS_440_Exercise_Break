@@ -60,44 +60,59 @@ export default function CountDown({initialDuration, intensity}){
         window.alert("Your heart rate exceeded the threshold! Please take a break!");
     };
 
+    const menuOptionClick = () => {
+        navigate('/menu');
+    };
+
+    const logoutClick = () => {
+        navigate('/login');
+    };
+
+    // const profileClick = () => {
+    //     navigate('/profile');
+    // };
+
+    // const homeClick = () => {
+    //     navigate('/home');
+    // };
+
+
 
     return (
         <div class="wrapper">
             <div className="phone-container">
             <div className="phone-screen">
             <div className="menu_button">
-        <IoMenu size={35}/>
+        <IoMenu size={35} onClick={menuOptionClick}/>
             </div> 
         <div className={'timer-container ${intensity.toLowerCase()}-background'}>
        {/* Apply background color */}
         <h2 className= "timer">  {formatTime(countdown)}</h2>
         </div>
-         <div class= "timer_buttons">
-         <button onClick={pauseTimer}>Pause</button>
-         <button onClick={resumeTimer} disabled={!paused}>Resume</button>
-         </div>
-         <div class= "timer_endWorkout">
-         <button onClick={alertHeartRate}>End Workout</button>
-         </div>
+        <div class= "timer_buttons">
+            <button onClick={pauseTimer}>Pause</button>
+            <button onClick={resumeTimer} disabled={!paused}>Resume</button>
+            </div>
+            <div class= "timer_endWorkout">
+            <button onClick={alertHeartRate}>End Workout</button>
+            </div>
           {/* Bottom navigation bar */}
-          <div className="bottom-nav">
-            <button className="icon-with-text">
-            <FaHome />
-            <span>Home</span>{/* Text below the icon */}
-            </button>
-            <button className="icon-with-text">
-            <FaUser />
-            <span>User</span>{/* Text below the icon */}
-            </button>
-            <button className="icon-with-text">
-            <HiOutlineLogout />
-            <span>Logout</span>{/* Text below the icon */}
-            </button>
-         
-         
-                </div>
-         </div>
-         </div>
-     </div>
+            <div className="bottom-nav">
+                <button className="icon-with-text">
+                <FaHome />
+                <span>Home</span>{/* Text below the icon */}
+                </button>
+                <button className="icon-with-text">
+                <FaUser />
+                <span>User</span>{/* Text below the icon */}
+                </button>
+                <button className="icon-with-text" onClick={logoutClick}>
+                <HiOutlineLogout />
+                <span>Logout</span>{/* Text below the icon */}
+                </button>
+            </div>
+        </div>
+        </div>
+    </div>
     )
 }

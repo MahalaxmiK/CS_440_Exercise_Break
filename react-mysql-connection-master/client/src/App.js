@@ -3,7 +3,6 @@ import LoginPage from "./LoginPage";
 import WorkOutPage from "./WorkOutPage";
 import Maps from "./Maps";
 import React from 'react';
-import Login from "./components/Login";
 import Signup from "./components/Signup";
 import HasDrink from "./HasDrink";
 import Timer from "./Timer";
@@ -21,7 +20,6 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Login />} exact />
         <Route path="/signup" element={<Signup />} exact />
         <Route path="/login" element={<LoginPage />} exact />
         <Route path="/drinkOption" element={<HasDrink />} exact />
