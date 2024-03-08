@@ -38,7 +38,7 @@ const Signup = () => {
     }
 
     return (
-        <div className = 'container'>
+        <div className = 's-container'>
             <form>
             <div className="header">
                 <div className="text">Please Enter All Fields</div>

@@ -2,8 +2,8 @@ import React, { useEffect, useState} from 'react'
 import './Relax.css'
 import Axios from "axios";
 
-import meditationImg from './meditation.jpg'
-import musicImg from './music.jpeg'
+import meditationImg from "../Assets/music.jpeg"; 
+import musicImg from "../Assets/meditation.jpg"; 
 
 
 const API  =  "AIzaSyDQjZ79ul59xynIC9vdJ7IM5XQYLi_mKt8"
@@ -65,17 +65,17 @@ const Relax = () =>{
     }
 
     return(
-        <div className = "container">
-            <div className = "button-container">
-                <div className = "image-container">
-                    <img src = {meditationImg} alt="meditation"/>
+        <div className = "relax-container">
+            <div className = "relax-button-container">
+                <div className = "imagee-container">
+                    <img className='relax-img' src = {meditationImg} alt="meditation"/>
                 </div>
                 <button onClick={() => handleButtonClick(meditationVideos)} className="btn"> Meditation</button>
             </div>
             <div className="divider"></div>
-            <div className="button-container">
+            <div className="relax-button-container">
                 <div className="image-container">
-                <img src = {musicImg} alt="music"/>
+                <img className='relax-img' src = {musicImg} alt="music"/>
                 </div>
                 <button onClick={() => handleButtonClick(musicVideos)} className="btn"> Music</button>
 
