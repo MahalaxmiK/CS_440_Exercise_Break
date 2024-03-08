@@ -10,7 +10,7 @@ import { FaHome, FaUser, FaSignOutAlt, FaBars } from 'react-icons/fa'
 */
 
 const API  =  "AIzaSyCPHLxk3ef5RT8XbvSm3VaGrHgx4Nw2DcY"
-const meditationChannelId = "UChSpME3QaSFAWK8Hpmg-Dyw"
+const meditationChannelId = "UCVSaNtZoJMlx8SxLxsNa1lw"
 const musicChannelID = "UCGDPhXrv1Pwi8GvPrRgK_JA"
 
 
