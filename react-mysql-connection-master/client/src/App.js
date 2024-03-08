@@ -11,6 +11,8 @@ import WantDrink from "./WantDrink";
 import Relax from "./components/Relax";
 import ParentComponent from "./components/clientChoice";
 import Menu from './components/Menu';
+import Workout from "./components/WorkoutIntensity";
+import CountDown from "./components/CountDown";
 
 /*
   Team Contribution
@@ -30,6 +32,8 @@ function App() {
         <Route path="/relax" element={<Relax />} exact />
         <Route path="/resume" element={<ParentComponent />} exact />
         <Route path="/menu" element={<Menu />} exact />
+        <Route path="/countdown" element={<CountDown />} exact />
+        <Route path="/intensity" element={<Workout />} exact />
       </Routes>
     </BrowserRouter>
   );

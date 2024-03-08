@@ -58,9 +58,9 @@
     color: #676767;
 }
 
-.Timer {
+/* .App {
     text-align: center;
-}
+} */
 
 
 .timer-container {
@@ -109,4 +109,463 @@
     width: 400px;
     border: 1px solid rgb(219, 219, 219);
     margin: 50px auto 0;
+}
+
+* {
+    box-sizing: border-box;
+
+}
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 9px;
+    height: 600px;
+    width: 400px;
+    border: 1px solid rgb(219, 219, 219);
+    margin: 50px auto 0;
+
+}
+
+.app-logo {
+    width: 250px;
+    height: 200px;
+    padding-top: 30px;
+    margin: 20px 0;
+}
+
+.box-1,
+.submit-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 9px;
+    height: 600px;
+    width: 400px;
+    margin: auto;
+    padding-bottom: 30px;
+}
+
+
+
+.submit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 220px;
+    height: 59px;
+    color: #fff;
+    background: #d36eac;
+    border-radius: 50px;
+    font-size: 19px;
+    font-weight: 700;
+    cursor: pointer;
+
+}
+
+.gray {
+    background: #eaeaea;
+    color: #676767;
+}
+
+/* .App {
+    text-align: center;
+
+} */
+
+.wrapper {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border: 12px solid #333;
+    border-radius: 40px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    max-width: 400px;
+    margin: 0 auto;
+    position: relative;
+    background-color: rgb(213, 210, 204);
+}
+
+
+.timer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+    width: 300px;
+    border: 1px solid rgb(27, 26, 26);
+    border-radius: 15px;
+    background-color: #7b7679;
+    margin-bottom: 20px;
+
+
+}
+
+
+.timer {
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+    font-size: 5em;
+
+}
+
+.timer_buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    margin-top: 50px;
+    gap: 20px;
+
+}
+
+.timer_buttons button {
+    font-family: 'Nunito sans', sans-serif;
+    height: 50px;
+    width: 130px;
+    font-size: 16px;
+    border-radius: 40px;
+    border: none;
+    outline: none;
+    background-color: #2b8ce8;
+
+    color: lightgreen;
+    box-shadow: -3px -3px 15px rgb(54, 54, 54),
+        3px 3px 15px rgb(0, 0, 0);
+
+
+}
+
+.timer_buttons button:active {
+    box-shadow: inset 3px 3px 10px rgb(13, 13, 13),
+        inset -3px -3px 10px rgb(68, 68, 68);
+}
+
+
+.button_space {
+    margin-bottom: 40px;
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 220px;
+    height: 60px;
+    color: #fff;
+    background: rgb(151, 149, 149);
+    border-radius: 50px;
+    font-size: 19px;
+    font-weight: 700;
+    cursor: pointer;
+
+}
+
+.button:active {
+    background-color: #d36eac;
+}
+
+.timer_endWorkout {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    margin-top: 50px;
+    gap: 20px;
+}
+
+.timer_endWorkout button {
+    font-family: 'Nunito sans', sans-serif;
+    height: 50px;
+    width: 130px;
+    font-size: 16px;
+    border-radius: 40px;
+    border: none;
+    outline: none;
+    background-color: #2b8ce8;
+
+    color: lightgreen;
+    box-shadow: -3px -3px 15px rgb(54, 54, 54),
+        3px 3px 15px rgb(0, 0, 0);
+
+
+}
+
+.timer_endWorkout button:active {
+    box-shadow: inset 3px 3px 10px rgb(13, 13, 13),
+        inset -3px -3px 10px rgb(68, 68, 68);
+}
+
+
+.submit-choice {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 9px;
+    height: 600px;
+    width: 400px;
+    border: 1px solid rgb(219, 219, 219);
+    margin: 50px auto 0;
+}
+
+.bottom-nav {
+    position: absolute;
+    /* Position the navigation bar absolutely */
+    bottom: 20px;
+    /* Adjust bottom spacing */
+    width: 100%;
+    /* Set width to 100% */
+    bottom: 0.2px;
+    /* Position it at the bottom of the wrapper */
+    /* top: 0; */
+    left: 0;
+    /* Align it to the left */
+    display: flex;
+    justify-content: space-around;
+    border-radius: 0px 0px 23px 23px;
+    background-color: rgb(82, 79, 79);
+    padding: 10px;
+}
+
+.circular-button {
+    width: 50px;
+    /* Adjust button size as needed */
+    height: 50px;
+    /* Adjust button size as needed */
+    border-radius: 50%;
+    /* Make it circular */
+    border: none;
+    background-color: rgb(58, 56, 56);
+    /* Button background color */
+    color: #fff;
+    /* Button text color */
+    font-size: 24px;
+    /* Adjust icon size */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    /* Smooth transition on hover */
+}
+
+.circular-button:hover {
+    background-color: #555;
+    /* Change background color on hover */
+}
+
+.circular-button i {
+    font-size: 54px;
+    /* Adjust icon size */
+}
+
+.menu_button {
+    position: absolute;
+    /* Position the button absolutely */
+    top: 10px;
+    /* Adjust top position */
+    left: 10px;
+    /* Adjust right position */
+    cursor: pointer;
+    height: 30px;
+    width: 30px
+}
+
+
+
+.icon-with-text {
+    display: flex;
+    flex-direction: column;
+    height: 40px;
+    width: 50px;
+    align-items: center;
+    border-radius: 60%;
+    /* Make it circular */
+    background-color: rgb(189, 181, 181);
+}
+
+.icon-with-text button {
+    font-family: 'Nunito sans', sans-serif;
+    height: 50px;
+    width: 130px;
+    font-size: 16px;
+    border-radius: 40px;
+    border: none;
+    outline: none;
+    background-color: #2b8ce8;
+
+    color: lightgreen;
+    box-shadow: -3px -3px 15px rgb(99, 94, 94),
+        3px 3px 15px rgb(0, 0, 0);
+}
+
+.icon-with-text button:active {
+    box-shadow: inset 3px 3px 10px rgb(13, 13, 13),
+        inset -3px -3px 10px rgb(68, 68, 68);
+}
+
+.icon-with-text:hover {
+    background-color: rgb(229, 223, 223);
+    /* Change background color on hover */
+}
+
+/* body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #23242a;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+
+} */
+
+.dropdown {
+    min-width: 15em;
+    position: relative;
+    margin: 2em;
+}
+
+.dropdown * {
+    box-sizing: border-box;
+}
+
+.select {
+    background: #2a2f3b;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px #2a2f3b solid;
+    padding: 1em;
+    cursor: pointer;
+    transition: backgroun 0.3s;
+}
+
+.select-clicked {
+    border: 2px #26489a solid;
+    box-shadow: 0 0 0.8em #26489a;
+
+
+}
+
+.select:hover {
+    background: #323741;
+}
+
+.caret {
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 6px solid #fff;
+    transition: 0.3s;
+
+}
+
+.caret-rotate {
+    transform: rotate(180deg);
+}
+
+.menu {
+    list-style: none;
+    padding: 0.2em 0.5em;
+    background: #323741;
+    border: 1px #363a43 solid;
+    box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.2);
+    border-radius: 0.5em;
+    color: #9fa5b5;
+    position: absolute;
+    top: 3em;
+    left: 50%;
+    width: 100%;
+    transform: translateX(-50%);
+    opacity: 0;
+    display: none;
+    transition: 0.2s;
+    z-index: 1;
+}
+
+.menu li {
+    padding: 0.7em 0.5em;
+    margin: 0.3em 0;
+    border-radius: 0.5em;
+    cursor: pointer;
+
+}
+
+.menu li:hover {
+    background: #2a2d35;
+}
+
+.active {
+    background: #23242a;
+
+}
+
+.menu-open {
+    display: block;
+    opacity: 1;
+}
+
+.workout-container {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-bottom: 300px;
+    border: 12px solid #333;
+    border-radius: 40px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    max-width: 400px;
+    margin: 0 auto;
+    position: relative;
+    background-color: rgb(213, 210, 204);
+
+
+}
+
+.workout-title {
+    text-align: center;
+    color: rgb(14, 14, 13);
+    font-size: 25px;
+}
+
+.start-workout {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    background-color: #2a2f3b;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    border: none;
+}
+
+.start-workout:hover {
+    background-color: #26489a;
+}
+
+.low-bcakground {
+    background-color: green;
+}
+
+.moderate-background {
+    background-color: yellow;
+}
+
+.high-background {
+    background-color: red;
 }

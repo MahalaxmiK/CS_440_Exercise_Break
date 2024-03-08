@@ -14,6 +14,10 @@ const Relax = () =>{
     //  const [icon, setIcon] = useState(true);
     const navigate = useNavigate();
 
+    const handleWorkoutButton =()=>{
+        navigate('/intensity')
+    }
+
     const handleRelaxButton =()=>{
         navigate('/relax')
     }
@@ -32,7 +36,7 @@ const Relax = () =>{
                 <div className="image-container">
                 <img src = {musicImg} alt="music"/>
                 </div>
-                <button className="w-btn">Start Workout</button>
+                <button className="w-btn" onClick={handleWorkoutButton}>Start Workout</button>
             </div>
             <div className = "button-container" onClick={handleRelaxButton}>
                 <div className = "image-container">
