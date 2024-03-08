@@ -1,6 +1,7 @@
 import React from 'react'
 import '../Menu.css'
 import { ImCross } from 'react-icons/im'; 
+import { useNavigate  } from "react-router-dom";
 import meditationImg from "../assets/music.jpeg"; 
 import musicImg from "../assets/meditation.jpg"; 
 import googelImg from "../assets/maps.avif"; 
@@ -11,6 +12,14 @@ import googelImg from "../assets/maps.avif";
 
 const Relax = () =>{
     //  const [icon, setIcon] = useState(true);
+    const navigate = useNavigate();
+
+    const handleRelaxButton =()=>{
+        navigate('/relax')
+    }
+    const handleMapButton =()=>{
+        navigate('/maps')
+    }
 
     return(
         <div className = "container">
@@ -25,7 +34,7 @@ const Relax = () =>{
                 </div>
                 <button className="w-btn">Start Workout</button>
             </div>
-            <div className = "button-container">
+            <div className = "button-container" onClick={handleRelaxButton}>
                 <div className = "image-container">
                     <img src = {meditationImg} alt="meditation"/>
                 </div>
@@ -36,7 +45,7 @@ const Relax = () =>{
                 <div className="image-container">
                 <img src = {googelImg} alt="google"/>
                 </div>
-                <button className="g-btn"> Find Nearby Store</button>
+                <button className="g-btn" onClick={handleMapButton}> Find Nearby Store</button>
             </div>
         </div>
     )

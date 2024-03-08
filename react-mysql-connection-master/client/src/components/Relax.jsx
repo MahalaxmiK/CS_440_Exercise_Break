@@ -8,7 +8,7 @@ import musicImg from '../assets/music.jpeg'
     Sakinah Chadrawala Contribution
 */
 
-const API  =  "AIzaSyDQjZ79ul59xynIC9vdJ7IM5XQYLi_mKt8"
+const API  =  "AIzaSyCPHLxk3ef5RT8XbvSm3VaGrHgx4Nw2DcY"
 const meditationChannelId = "UChSpME3QaSFAWK8Hpmg-Dyw"
 const musicChannelID = "UCGDPhXrv1Pwi8GvPrRgK_JA"
 
