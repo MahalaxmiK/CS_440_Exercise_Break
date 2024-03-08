@@ -6,8 +6,9 @@ import meditationImg from "../Assets/music.jpeg";
 import musicImg from "../Assets/meditation.jpg"; 
 
 
-const API  =  "AIzaSyDQjZ79ul59xynIC9vdJ7IM5XQYLi_mKt8"
-const meditationChannelId = "UChSpME3QaSFAWK8Hpmg-Dyw"
+const API  =  "AIzaSyCPHLxk3ef5RT8XbvSm3VaGrHgx4Nw2DcY"
+
+const meditationChannelId = "UCVSaNtZoJMlx8SxLxsNa1lw"
 const musicChannelID = "UCGDPhXrv1Pwi8GvPrRgK_JA"
 
 const fetchURL = `https://www.googleapis.com/youtube/v3/search?key=${API}&channelId=${meditationChannelId}&part=snippet,id&order=date&maxResult=10`;
