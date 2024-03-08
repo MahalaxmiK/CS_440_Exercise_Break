@@ -48,7 +48,6 @@ body {
   width: 375px;
   /* final weight */
   padding: 0 20px;
-  border: 10px solid #000000;
   /* Set border thickness and color */
   border-radius: 40px;
 }
