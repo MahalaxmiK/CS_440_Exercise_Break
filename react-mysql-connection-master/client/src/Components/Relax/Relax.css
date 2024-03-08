@@ -1,55 +1,105 @@
-.relax-container{
+.relax-container {
+    display: flex;
     flex-direction: column;
     margin: auto;
-    margin-top: 200px;
-    margin-bottom: 200px;
-    background: #fff5ee;
-    padding-top: 70px;
-    padding-bottom: 50px;
-    border: 1px solid rgb(219,219,219);
-    max-width: 400px; 
-    box-sizing: border-box; 
-    border: 12px solid #333;
-    box-shadow: 0 0 20px rgba(0,0,0,0.5);
-    border-radius: 40px;
+    /* margin-top: 250px; */
+    margin-bottom: 50px;
+    /* Adjusted margin-bottom */
+    background: rgb(210, 213, 237);
+    padding-bottom: 30px;
+    border: 10px solid #000000;
     height: 800px;
-   
+    width: 400px;
+    box-sizing: border-box;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    border-radius: 40px;
+    max-width: 400px;
+    position: relative;
+    /* Added position relative */
 }
 
-.btn {
+.relax-container h4 {
+    font-size: 25px;
+    font-family: 'Georgia';
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 9px;
+    width: 100%;
+    padding-bottom: 10px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.relax-container h5 {
+    font-size: 19px;
+    font-family: 'Georgia';
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 9px;
+    width: 100%;
+    padding-bottom: 10px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.relax-btn {
     position: relative;
     width: 100px;
     height: 40px;
-    color: #fff;
-    background: blue;
+    color: #0e0d0d;
+    background: lightblue;
     padding: 10px;
     margin-block: 30;
     font-weight: 700;
     cursor: pointer;
     left: 37%;
     margin-top: 10px;
- 
 }
-.relax-button-container{
+
+.relax-button-container {
     position: relative;
     align-items: center;
     margin-bottom: 10px;
-    margin-top: 30px;
+    margin-top: 10px;
 }
 
-.divider{
+.relax-divider {
     height: 20px;
 }
 
-.relax-img {
-  
-    width:  300px;
+img {
+    width: 300px;
     height: 200px;
     object-fit: cover;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-
 }
 
+.relax-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    padding: 5px;
+}
 
+.bottom-navbar-relax div {
+    margin: 0 15px;
+    /* Adjusted margin to add space between icons */
+    width: 48px;
+} 
+
+.bottom-navbar-relax {
+    position: absolute;
+    bottom: -40px;
+    /* Adjusted bottom position */
+    transform: translateX(-1%);
+    align-items: center;
+    background-color: #f3f3f3;
+    display: flex;
+    justify-content: space-around;
+    padding: 15px 12px;
+    margin: 27px 15px;
+    border-radius: 70px;
+    border-bottom: 15px solid #333;
+}

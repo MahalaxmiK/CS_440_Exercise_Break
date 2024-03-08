@@ -8,14 +8,18 @@ import musicImg from "../Assets/meditation.jpg";
 import googelImg from "../Assets/maps.avif"; 
 
 
-const Relax = () =>{
+const Menu = () =>{
     const navigate = useNavigate();
 
+    const handleWorkoutButton =()=>{
+        navigate('/intensity')
+    }
+
     const handleRelaxButton =()=>{
-        navigate('/Relax')
+        navigate('/relax')
     }
     const handleMapButton =()=>{
-        navigate('/Maps')
+        navigate('/maps')
     }
     return(
         <div className = "menu-container">
@@ -28,7 +32,7 @@ const Relax = () =>{
                 <div className="image-container">
                 <img className='m-img' src = {musicImg} alt="music"/>
                 </div>
-                <button className="m-btn">Start Workout</button>
+                <button className="m-btn" onClick={handleWorkoutButton}>Start Workout</button>
             </div>
             <div className = "m-button-container">
                 <div className = "image-container">
@@ -47,4 +51,4 @@ const Relax = () =>{
     )
 }
 
-export default Relax
+export default Menu

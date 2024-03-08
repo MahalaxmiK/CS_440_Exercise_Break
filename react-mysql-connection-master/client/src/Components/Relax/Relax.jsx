@@ -1,10 +1,12 @@
 import React, { useEffect, useState} from 'react'
 import './Relax.css'
 import Axios from "axios";
+import { FaHome, FaUser, FaSignOutAlt, FaBars } from 'react-icons/fa'
+import { useNavigate  } from "react-router-dom";
+
 
 import meditationImg from "../Assets/music.jpeg"; 
 import musicImg from "../Assets/meditation.jpg"; 
-
 
 const API  =  "AIzaSyCPHLxk3ef5RT8XbvSm3VaGrHgx4Nw2DcY"
 
@@ -15,11 +17,12 @@ const fetchURL = `https://www.googleapis.com/youtube/v3/search?key=${API}&channe
 
 const Relax = () =>{
     const[meditationVideos, setMeditationVideos] = useState([]);
-    const[musicVideos, setMusicnVideos] = useState([]);
+    const [musicVideos, setMusicnVideos] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetchVideos(meditationChannelId)
-    }, [])
+    }, []) 
 
     const fetchVideos = async(meditationChannelId) =>{
         const meditationUrl = `https://www.googleapis.com/youtube/v3/search?key=${API}&channelId=${meditationChannelId}&part=snippet,id&order=date&maxResults=10`;
@@ -63,26 +66,47 @@ const Relax = () =>{
         const randomIndex = Math.floor(Math.random() * videos.length)
         const videoUrl = `https://www.youtube.com/embed/${videos[randomIndex].id.videoId}`;
         window.open(videoUrl, '_blank')
+        setTimeout(() => {
+          navigate('/resume');
+        }, 20000);
     }
 
+    const logoutClick = () => {
+        navigate('/login');
+    };
+
+    const menuOptionClick = () => {
+        navigate('/menu');
+    };
+
     return(
-        <div className = "relax-container">
+        <div className="relax-container">
+            <h4>Relaxation Techniques</h4>
+            <h5>Meditate & Enhance Inner Peace</h5>
             <div className = "relax-button-container">
-                <div className = "imagee-container">
-                    <img className='relax-img' src = {meditationImg} alt="meditation"/>
+                <div className = "relax-image-container">
+                    <img src = {meditationImg} alt="meditation"/>
                 </div>
-                <button onClick={() => handleButtonClick(meditationVideos)} className="btn"> Meditation</button>
+                <button onClick={() => handleButtonClick(meditationVideos)} className="relax-btn"> Meditation</button>
             </div>
             <div className="divider"></div>
+            <h5>Listen To Good Music</h5>
             <div className="relax-button-container">
-                <div className="image-container">
-                <img className='relax-img' src = {musicImg} alt="music"/>
+                <div className="relax-image-container">
+                <img src = {musicImg} alt="music"/>
                 </div>
-                <button onClick={() => handleButtonClick(musicVideos)} className="btn"> Music</button>
+                <button onClick={() => handleButtonClick(musicVideos)} className="relax-btn"> Music</button>
 
+            </div>
+            <div
+                className="bottom-navbar-relax"
+            >
+                <div><FaHome /></div>  
+                <div><FaUser /></div>
+                <div onClick={logoutClick}><FaSignOutAlt /></div>
+                <div onClick={menuOptionClick}><FaBars /></div>
             </div>
         </div>
     )
 }
-
 export default Relax
