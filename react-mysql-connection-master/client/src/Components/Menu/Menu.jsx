@@ -14,6 +14,9 @@ const Relax = () =>{
     const handleRelaxButton =()=>{
         navigate('/Relax')
     }
+    const handleMapButton =()=>{
+        navigate('/Maps')
+    }
     return(
         <div className = "menu-container">
             <button className='exit-icon'>
@@ -38,7 +41,7 @@ const Relax = () =>{
                 <div className="image-container">
                 <img className='m-img' src = {googelImg} alt="google"/>
                 </div>
-                <button className="m-btn"> Find Nearby Store</button>
+                <button className="m-btn" onClick={handleMapButton}> Find Nearby Store</button>
             </div>
         </div>
     )
