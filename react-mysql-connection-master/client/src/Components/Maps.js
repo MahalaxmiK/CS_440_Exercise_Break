@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react';
 import { useNavigate } from "react-router-dom";
 import { FaHome, FaUser, FaSignOutAlt, FaBars } from 'react-icons/fa'; // Import bottom navigation bar & menu option icons
+import './Maps.css'
 
 /*
   Mahalaxmi Kalappareddigari Contribution
@@ -184,7 +185,7 @@ const Maps = ({ google }) => {
       <Map
         google={google}
         style={{
-          width: '22%',
+          width: '25%',
           height: '90%',
           borderTop: '8px solid #333', // Define top, left, & right borders to add bottom navigation bar better
           borderLeft: '8px solid #333', 
@@ -272,12 +273,12 @@ const Maps = ({ google }) => {
             bottom: '0',
             transform: 'translateX(-1%)',
             alignItems: 'center',
-            width: '20%',
+            width: '22%',
             backgroundColor: '#f3f3f3',
             display: 'flex',
             justifyContent: 'space-around',
             padding: '4px 2px',
-            margin: '45px 617px',
+            margin: '50px 550px',
             borderRadius: '40px',
             borderBottom: '7px solid #333', 
         }}
@@ -293,5 +294,5 @@ const Maps = ({ google }) => {
 };
 
 export default GoogleApiWrapper({
-  apiKey: 'AIzaSyBbC24ktucWWxLeiVgwQ4LhnoT9NC3ebq0'
+  apiKey: 'AIzaSyDrPOMZc3FWMUq9VA2TOCUEWhH0glqhRH4'
 })(Maps);

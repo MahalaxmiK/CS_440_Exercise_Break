@@ -1,0 +1,41 @@
+.maps-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    width: 140px;
+    height: 170px;
+  
+  }
+  
+  .exit-maps-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    color: black;
+    margin-top: 100px;
+    margin-left: 540px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  
+  .exit-maps-btn button {
+    font-family: 'Nunito sans', sans-serif;
+    height: 30px;
+    width: 70px;
+    font-size: 12px;
+    border-radius: 40px;
+    border: none;
+    outline: none;
+    background-color: lightblue;
+  
+    color: darkgreen;
+    box-shadow: -3px -3px 15px rgb(54, 54, 54),
+      3px 3px 15px rgb(0, 0, 0);
+  }
+  
+  .exit-maps-btn button:active {
+    box-shadow: inset 3px 3px 10px rgb(13, 13, 13),
+      inset -3px -3px 10px rgb(68, 68, 68);
+  }
