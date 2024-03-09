@@ -52,12 +52,12 @@ const Workout = () => {
     // const homeClick = () => {
     //     navigate('/home');
     // };
-    
+    // () => setTimeChoosen(prev => !prev)
    
 return (
     <div className="workout-container">
         <div className="menu-intensity">
-            <IoMenu size={35} onClick={() => setTimeChoosen(prev => !prev)}/>
+            <IoMenu size={35} onClick={menuOptionClick}/>
         </div>
         <h1 className="workout-title">Choose your workout...</h1>{/* Title */}
         <div className="dropdown">

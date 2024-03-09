@@ -65,9 +65,9 @@ const Relax = () =>{
         const randomIndex = Math.floor(Math.random() * videos.length)
         const videoUrl = `https://www.youtube.com/embed/${videos[randomIndex].id.videoId}`;
         window.open(videoUrl, '_blank')
-        setTimeout(() => {
-          navigate('/resume');
-        }, 20000);
+        // setTimeout(() => {
+        //   navigate('/resume');
+        // }, 20000);
     }
 
     // const profileClick = () => {
