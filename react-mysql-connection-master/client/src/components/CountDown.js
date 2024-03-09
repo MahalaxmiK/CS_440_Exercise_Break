@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 //import '../Home.css';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation} from "react-router-dom";
 import { FaHome } from "react-icons/fa";
 import { FaUser } from "react-icons/fa";
 import { HiOutlineLogout } from "react-icons/hi";
@@ -18,11 +18,19 @@ const formatTime = (time) => {
     return minutes + ':' + seconds
 }
 
-export default function CountDown({initialDuration, intensity}){
+const CountDown = () => {
+    const location = useLocation();
+    const initialDuration = location.state.initialDuration;
+    const intensity = location.state.intensity;
     const navigate = useNavigate();
     const[countdown, setCountdown] = useState(initialDuration)
     const[paused, setPaused] = useState(false);
     const timerId = useRef()
+
+    useEffect(() => {
+        console.log("Initial Duration:", initialDuration);
+        console.log("Intensity:", intensity);
+    }, [initialDuration, intensity]);
 
     useEffect(() => {
         timerId.current = setInterval(() => {
@@ -75,17 +83,26 @@ export default function CountDown({initialDuration, intensity}){
     // const homeClick = () => {
     //     navigate('/home');
     // };
-
+    const intensityColor = () => {
+        switch (intensity){
+            case 'Low':
+                return 'low-background';
+            case 'Moderate':
+                return 'moderate-background';
+            case 'High':
+                return 'high-background';
+        }
+    }
 
 
     return (
-        <div class="wrapper">
+        <div className="wrapper">
             <div className="phone-container">
             <div className="phone-screen">
             <div className="menu_button">
         <IoMenu size={35} onClick={menuOptionClick}/>
             </div> 
-        <div className={'timer-container ${intensity.toLowerCase()}-background'}>
+        <div className={`timer-container ${intensityColor()}`}>
        {/* Apply background color */}
         <h2 className= "timer">  {formatTime(countdown)}</h2>
         </div>
@@ -116,3 +133,4 @@ export default function CountDown({initialDuration, intensity}){
     </div>
     )
 }
+export default CountDown
