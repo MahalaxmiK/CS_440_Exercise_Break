@@ -18,6 +18,8 @@ const formatTime = (time) => {
     return minutes + ':' + seconds
 }
 
+
+
 const CountDown = () => {
     const location = useLocation();
     const initialDuration = location.state.initialDuration;
