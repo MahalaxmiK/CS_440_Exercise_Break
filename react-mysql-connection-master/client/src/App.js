@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route} from "react-router-dom";
 import React, {useState} from "react";
 import "./App.css";
 import Maps from "./Components/Maps";
-import Spotify from "./Spotify";
+
 
 import Relax from "./Components/Relax/Relax"; 
 import Menu from "./Components/Menu/Menu"; 

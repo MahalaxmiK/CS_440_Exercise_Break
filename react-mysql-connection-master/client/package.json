@@ -10,6 +10,7 @@
     "axios": "^1.2.0",
     "google-map-react": "^2.2.1",
     "google-maps-react": "^2.0.6",
+    "google-react-maps": "^1.5.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^5.0.1",
