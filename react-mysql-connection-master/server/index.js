@@ -39,7 +39,7 @@ app.post('/register', (req, res) => {
     con.query("INSERT INTO users (fname, lname, email, password, gender, height, weight, age) VALUES (?, ?, ?, ?, ?, ?, ?,?)", [fname, lname, email, password, gender, height, weight, age],
         (err, result) => {
             if(result){
-                res.send(result);
+              res.send(result);
             }else{
               res.send({message: "ENTER CORRECT ASKED DETAILS!"})
             }
@@ -51,15 +51,15 @@ app.post("/login", (req, res) => {
     const email = req.body.email;
     const password = req.body.password;
     con.query("SELECT * FROM users WHERE email = ? AND password = ?", [email, password], 
-        (err, result) => {
+      (err, result) => {
             if (err) {
                 console.error("Error querying the database:", err);
                 res.status(500).send({ message: "Internal server error" });
             } else {
-                console.log(result);
                 if (result.length > 0) {
-                    // Send HTTP status code 200 for successful login
-                    res.status(200).send({ message: "Successfully logged in!" });
+                  //const { fname, lname } = result[0]; // Extract first and last name from the result
+                  console.log(result);
+                  res.status(200).send({ message: "Successfully logged in!" });
                 } else {
                     // Send HTTP status code 401 for unauthorized access
                     res.status(401).send({ message: "Wrong email or password or both!" });
@@ -67,8 +67,44 @@ app.post("/login", (req, res) => {
             }
         }
     )
-})
+});
 
+app.post('/updateUserDetails', (req, res) => {
+    const fname = req.body.fname;
+    const lname = req.body.lname;
+    const email = req.body.email;
+    const password = req.body.password;
+    const gender = req.body.gender;
+    const height = req.body.height;
+    const weight = req.body.weight;
+    const age = req.body.age;
+
+    // Check if a user with the provided fname and lname exists
+    con.query("SELECT * FROM users WHERE fname = ? AND lname = ?", [fname, lname], (err, result) => {
+        if (err) {
+            console.error("Database error:", err);
+            res.status(500).send({ message: "Internal server error" });
+            return;
+        }
+
+        if (result.length > 0) {
+            // If user exists, update their information
+            con.query("UPDATE users SET email = ?, password = ?, gender = ?, height = ?, weight = ?, age = ? WHERE fname = ? AND lname = ?", 
+                [email, password, gender, height, weight, age, fname, lname], (updateErr, updateResult) => {
+                    if (updateErr) {
+                        console.error("Error updating user details:", updateErr);
+                        res.status(500).send({ message: "Error updating user details" });
+                    } else {
+                        res.send({ message: "User details updated successfully" });
+                    }
+                });
+        } else {
+            res.status(404).send({ message: "User not found" });
+        }
+    });
+});
+
+ 
 app.post('/handleSubmit', (req, res) => {
     const email = req.body.email;
     const hasDrink = req.body.hasDrink;

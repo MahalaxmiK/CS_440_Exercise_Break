@@ -12,6 +12,7 @@ import ParentComponent from "./components/clientChoice";
 import Menu from './components/Menu';
 import Workout from "./components/WorkoutIntensity";
 import CountDown from "./components/CountDown";
+import UpdateProfile from "./UpdateProfile";
 
 /*
   Team Contribution
@@ -32,6 +33,7 @@ function App() {
         <Route path="/menu" element={<Menu />} exact />
         <Route path="/countdown" element={<CountDown />} exact />
         <Route path="/intensity" element={<Workout />} exact />
+        <Route path="/updateProfile" element={<UpdateProfile />} exact />
       </Routes>
     </BrowserRouter>
   );

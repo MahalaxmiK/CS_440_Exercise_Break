@@ -13,7 +13,7 @@ const Workout = () => {
     const[intensityDropDown, setIntensityChoosen] = useState(false);
     const [selectedTime, setTime] = useState('TIME');
     const[SelectedTimeVal, setSelectedTimeVal] = useState(null);
-    const [selectedIntensity ,setIntensity] = useState('INTENSITY');
+    const [selectedIntensity, setIntensity] = useState('INTENSITY');
 
     const handleTimeChange = (label, value) => {
         const minutes = value / 60;
@@ -46,7 +46,7 @@ const Workout = () => {
     };
 
     // const profileClick = () => {
-    //     navigate('/profile');
+    //     navigate("/profile");
     // };
 
     // const homeClick = () => {
