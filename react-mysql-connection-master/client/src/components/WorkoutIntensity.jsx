@@ -1,11 +1,12 @@
-import React, {useEffect, useState} from "react";
+import React, { useState } from "react";
 import '../Home.css';
 import CountDown from "./CountDown";
-import { useNavigate } from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 import { FaHome } from "react-icons/fa";
 import { FaUser } from "react-icons/fa";
 import { HiOutlineLogout } from "react-icons/hi";
 import { IoMenu } from "react-icons/io5";
+
 
 const Workout = () => {
     const navigate = useNavigate();

@@ -9,6 +9,7 @@ import axios from "axios";
 
 const UpdateProfile = () => {
     const navigate = useNavigate();
+    const location = useLocation();
     const [new_email, updateEmail] = useState("");
     const [new_password, updatePassword] = useState("");
     const [new_gender, updateGender] = useState("");
@@ -24,10 +25,7 @@ const UpdateProfile = () => {
         weight: false,
         age: false,
     });
-
-    const location = useLocation();
     const userEmail = new URLSearchParams(location.search).get('email');
-    console.log(userEmail)
     const [userInfo, setUserInfo] = useState(null);
 
     useEffect(() => {

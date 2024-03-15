@@ -13,6 +13,7 @@ import Menu from './components/Menu';
 import Workout from "./components/WorkoutIntensity";
 import CountDown from "./components/CountDown";
 import UpdateProfile from "./UpdateProfile";
+import HomeScreen from "./components/homeScreen";
 
 /*
   Team Contribution
@@ -34,6 +35,7 @@ function App() {
         <Route path="/countdown" element={<CountDown />} exact />
         <Route path="/intensity" element={<Workout />} exact />
         <Route path="/updateProfile" element={<UpdateProfile />} exact />
+        <Route path="/home" element={<HomeScreen />} exact />
       </Routes>
     </BrowserRouter>
   );

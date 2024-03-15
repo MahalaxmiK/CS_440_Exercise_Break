@@ -14,12 +14,6 @@ function LoginPage() {
     navigate('/signup');
   }
 
-  const navigateToProfileScreen = () => {
-     setTimeout(() => {
-          navigate(`/updateProfile?email=${encodeURIComponent(email)}`);
-        }, 1000);
-  }
-
   const login = (e) => {
     e.preventDefault();
     Axios.post("http://localhost:3000/login", {
@@ -28,6 +22,9 @@ function LoginPage() {
     }).then((response) => {
       if (response.status === 200) {
         setLoginStatus(response.data.message);
+        // setTimeout(() => {
+        //   navigate(`/home?email=${encodeURIComponent(email)}`);
+        // }, 1000);
         setTimeout(() => {
           navigate(`/updateProfile?email=${encodeURIComponent(email)}`);
         }, 1000);
