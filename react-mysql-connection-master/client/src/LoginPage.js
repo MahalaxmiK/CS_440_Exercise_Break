@@ -41,11 +41,15 @@ function LoginPage() {
         // Check if user information is available in localStorage
         if (fname && lname) {
           // If available, navigate to update profile page with stored first and last name
-          navigate("/updateProfile", { state: { fname: fname, lname: lname } });
+          setTimeout(() => {
+            navigate('/updateProfile', { state: { fname: fname, lname: lname } });
+          }, 1000);
         } else {
           // If not available, navigate to update profile page with retrieved first and last name
           const { fname: retrievedFname, lname: retrievedLname } = response.data;
-          navigate("/updateProfile", { state: { fname: retrievedFname, lname: retrievedLname } });
+          setTimeout(() => {
+            navigate("/updateProfile", { state: { fname: retrievedFname, lname: retrievedLname } });
+          }, 1000);
         }
       } else if (response.status === 401) {
         setLoginStatus(response.data.message);
