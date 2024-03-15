@@ -155,7 +155,30 @@ app.post('/submitWantDrink', (req, res) => {
         }
       }
     );
+});
+  
+
+app.get("/userInfo", (req, res) => {
+  const email = req.query.email; // Retrieve email from query parameters
+
+  if (!email) {
+      return res.status(400).json({ error: "Email parameter is required" });
+  }
+
+  con.query("SELECT * FROM users WHERE email = ?", [email], (err, result) => {
+      if (err) {
+          console.error("Error querying the database:", err);
+          return res.status(500).json({ message: "Internal server error" });
+      }
+      if (result.length > 0) {
+          const user = result[0]; // Assuming the query returns only one user for the given email
+          console.log(user)
+          return res.status(200).json(user);
+      } else {
+          return res.status(404).json({ message: "User not found" });
+      }
   });
+});
 
 app.listen(3000, () => {
     console.log("Running Exercise Break App Server!!");

@@ -39,28 +39,13 @@ const Signup = () => {
                 setRegisterstatus('Account Created Successfully!');
                 setButtonDisabled(true);
 
-                // Update user dictionary with the new account information
-                updateUserDictionary(email, fname, lname);
-
                 setTimeout(() => {
-                    navigate('/updateProfile', { state: { fname: fname, lname: lname } });
+                    navigate(`/updateProfile?email=${encodeURIComponent(email)}`);
                 }, 1000);
             }
         } catch (error) {
             console.error('Error during registration', error);
         }
-    };
-
-    // Release 2 Sprint 3 (Store All Account's Email and Corresponding First & Last Name in Dictionary)
-    const updateUserDictionary = (email, fname, lname) => {
-        // Get existing user dictionary from localStorage
-        const userDictionary = JSON.parse(localStorage.getItem('userDictionary')) || {};
-
-        // Add the new user to the dictionary
-        userDictionary[email] = { fname: fname, lname: lname };
-
-        // Store the updated user dictionary in localStorage
-        localStorage.setItem('userDictionary', JSON.stringify(userDictionary));
     };
 
     return (

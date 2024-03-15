@@ -9,25 +9,15 @@ function LoginPage() {
   const [password, setPassword] = useState("");
   const [loginStatus, setLoginStatus] = useState("");
   const navigate = useNavigate();
-  const [fname, setFname] = useState("");
-  const [lname, setLname] = useState("");
-
-  useEffect(() => {
-    // Retrieve user dictionary from localStorage
-    const userDictionary = JSON.parse(localStorage.getItem('userDictionary')) || {};
-    
-    // Check if first and last names are stored in localStorage based on the logged-in user's email
-    const storedNames = userDictionary[email];
-    
-    // If found, set the state variables
-    if (storedNames) {
-        setFname(storedNames.fname);
-        setLname(storedNames.lname);
-    }
-  }, [email]);
 
   const navigateToSignUp = () => {
     navigate('/signup');
+  }
+
+  const navigateToProfileScreen = () => {
+     setTimeout(() => {
+          navigate(`/updateProfile?email=${encodeURIComponent(email)}`);
+        }, 1000);
   }
 
   const login = (e) => {
@@ -38,19 +28,9 @@ function LoginPage() {
     }).then((response) => {
       if (response.status === 200) {
         setLoginStatus(response.data.message);
-        // Check if user information is available in localStorage
-        if (fname && lname) {
-          // If available, navigate to update profile page with stored first and last name
-          setTimeout(() => {
-            navigate('/updateProfile', { state: { fname: fname, lname: lname } });
-          }, 1000);
-        } else {
-          // If not available, navigate to update profile page with retrieved first and last name
-          const { fname: retrievedFname, lname: retrievedLname } = response.data;
-          setTimeout(() => {
-            navigate("/updateProfile", { state: { fname: retrievedFname, lname: retrievedLname } });
-          }, 1000);
-        }
+        setTimeout(() => {
+          navigate(`/updateProfile?email=${encodeURIComponent(email)}`);
+        }, 1000);
       } else if (response.status === 401) {
         setLoginStatus(response.data.message);
         console.error("Login failed:", response.data.message);
