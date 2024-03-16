@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import '../Home.css';
 import CountDown from "./CountDown";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { FaHome } from "react-icons/fa";
 import { FaUser } from "react-icons/fa";
 import { HiOutlineLogout } from "react-icons/hi";
@@ -9,12 +9,15 @@ import { IoMenu } from "react-icons/io5";
 
 
 const Workout = () => {
+    // const location = useLocation();
     const navigate = useNavigate();
     const[timeDropDown, setTimeChoosen] = useState(false);
     const[intensityDropDown, setIntensityChoosen] = useState(false);
     const [selectedTime, setTime] = useState('TIME');
     const[SelectedTimeVal, setSelectedTimeVal] = useState(null);
     const [selectedIntensity ,setIntensity] = useState('INTENSITY');
+
+
 
     const handleTimeChange = (label, value) => {
         const minutes = value / 60;
@@ -30,13 +33,18 @@ const Workout = () => {
         setIntensityChoosen(false);
 
     };
+
+
+
     const handleStart = () => {
         
         console.log("Selected Time:", selectedTime);
     console.log("Selected Intensity:", selectedIntensity);
+    // console.log("Heart Ratessss:", heartRates);
    
         navigate("/countdown", {state:{initialDuration: SelectedTimeVal, intensity: selectedIntensity}});
     };
+ 
 
     const menuOptionClick = () => {
         navigate('/menu');
@@ -46,13 +54,7 @@ const Workout = () => {
         navigate('/login');
     };
 
-    // const profileClick = () => {
-    //     navigate('/profile');
-    // };
 
-    // const homeClick = () => {
-    //     navigate('/home');
-    // };
     
    
 return (

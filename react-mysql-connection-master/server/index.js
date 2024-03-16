@@ -69,6 +69,22 @@ app.post("/login", (req, res) => {
     )
 })
 
+const bodyParser = require('body-parser');
+const PORT = 3001;
+
+app.use(bodyParser.json());
+
+app.post('/api/heart-rate', (req, res) => {
+  const heartRate = req.body.heartRate;
+  // Process the heart rate data as needed
+  console.log(`Received heart rate: ${heartRate}`);
+  res.sendStatus(200);
+});
+
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
+});
+
 app.post('/handleSubmit', (req, res) => {
     const email = req.body.email;
     const hasDrink = req.body.hasDrink;
