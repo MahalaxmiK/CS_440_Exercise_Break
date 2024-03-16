@@ -20,6 +20,7 @@ function LoginPage() {
         }, 1000);
   }
 
+
   const login = (e) => {
     e.preventDefault();
     Axios.post("http://localhost:3000/login", {
@@ -29,7 +30,7 @@ function LoginPage() {
       if (response.status === 200) {
         setLoginStatus(response.data.message);
         setTimeout(() => {
-          navigate(`/updateProfile?email=${encodeURIComponent(email)}`);
+          navigate(`/personalPage?email=${encodeURIComponent(email)}`);
         }, 1000);
       } else if (response.status === 401) {
         setLoginStatus(response.data.message);

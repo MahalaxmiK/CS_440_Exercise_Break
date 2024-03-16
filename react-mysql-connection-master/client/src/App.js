@@ -13,6 +13,7 @@ import Menu from './components/Menu';
 import Workout from "./components/WorkoutIntensity";
 import CountDown from "./components/CountDown";
 import UpdateProfile from "./UpdateProfile";
+import PersonalPage from "./components/PersonalPage";
 
 /*
   Team Contribution
@@ -23,6 +24,7 @@ function App() {
       <Routes>
         <Route path="/signup" element={<Signup />} exact />
         <Route path="/login" element={<LoginPage />} exact />
+        <Route path="/personalPage" element={<PersonalPage />} exact />
         <Route path="/drinkOption" element={<HasDrink />} exact />
         <Route path="/workout" element={<WorkOutPage />} exact />
         <Route path="/timer" element={<Timer />} exact />
