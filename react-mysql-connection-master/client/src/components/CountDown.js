@@ -1,13 +1,14 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useContext } from "react";
 //import '../Home.css';
 import { useNavigate, useLocation} from "react-router-dom";
 import { FaHome } from "react-icons/fa";
 import { FaUser } from "react-icons/fa";
 import { HiOutlineLogout } from "react-icons/hi";
 import { IoMenu } from "react-icons/io5";
+import UserContext from '../UserContext';
 
 /*
-    Release 1: Noura Almasri's Contribution
+    Release 1 & Release 2: Noura Almasri's Contribution
 */
 const formatTime = (time) => {
     let minutes = Math.floor(time / 60)
@@ -25,7 +26,8 @@ const CountDown = () => {
     const navigate = useNavigate();
     const[countdown, setCountdown] = useState(initialDuration)
     const[paused, setPaused] = useState(false);
-    const timerId = useRef()
+    const timerId = useRef();
+    const { userEmail } = useContext(UserContext);
 
     useEffect(() => {
         console.log("Initial Duration:", initialDuration);
@@ -42,7 +44,7 @@ const CountDown = () => {
     }, [])
 
     useEffect(() => {
-        if(countdown <= 0){
+        if (countdown <= 0) {
             clearInterval(timerId.current)
             alert("END Workout")
             setTimeout(() => {
@@ -68,21 +70,26 @@ const CountDown = () => {
         window.alert("Your heart rate exceeded the threshold! Please take a break!");
     };
 
-    const menuOptionClick = () => {
-        navigate('/menu');
-    };
-
     const logoutClick = () => {
         navigate('/login');
     };
 
-    // const profileClick = () => {
-    //     navigate('/profile');
-    // };
+    const menuOptionClick = () => {
+        navigate('/menu');
+    };
 
-    // const homeClick = () => {
-    //     navigate('/home');
-    // };
+    const profileClick = () => {
+        setTimeout(() => {
+          navigate(`/personalPage?email=${encodeURIComponent(userEmail)}`);
+        }, 1000);
+    };
+
+    const homeClick = () => {
+         setTimeout(() => {
+          navigate(`/home?email=${encodeURIComponent(userEmail)}`);
+        }, 1000);
+    };
+
     const intensityColor = () => {
         switch (intensity){
             case 'Low':
@@ -115,11 +122,11 @@ const CountDown = () => {
             </div>
           {/* Bottom navigation bar */}
             <div className="bottom-nav">
-                <button className="icon-with-text">
+                <button className="icon-with-text" onClick={homeClick}>
                 <FaHome />
                 <span>Home</span>{/* Text below the icon */}
                 </button>
-                <button className="icon-with-text">
+                <button className="icon-with-text" onClick={profileClick}>
                 <FaUser />
                 <span>User</span>{/* Text below the icon */}
                 </button>
@@ -133,4 +140,4 @@ const CountDown = () => {
     </div>
     )
 }
-export default CountDown
+export default CountDown;

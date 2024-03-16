@@ -1,3 +1,7 @@
+/*
+    Release 1 & Release 2: Mahin Patel Pages CSS Contribution
+*/
+
 * {
     box-sizing: border-box;
 
@@ -228,7 +232,7 @@
 }
 
 .timer_buttons button {
-    font-family: 'Nunito sans', sans-serif;
+    font-family: 'Georgia';
     height: 50px;
     width: 130px;
     font-size: 16px;
@@ -283,7 +287,7 @@
 }
 
 .timer_endWorkout button {
-    font-family: 'Nunito sans', sans-serif;
+    font-family: 'Georgia';
     height: 50px;
     width: 130px;
     font-size: 16px;
@@ -391,7 +395,7 @@
 }
 
 .icon-with-text button {
-    font-family: 'Nunito sans', sans-serif;
+    font-family: 'Georgia';
     height: 50px;
     width: 130px;
     font-size: 16px;

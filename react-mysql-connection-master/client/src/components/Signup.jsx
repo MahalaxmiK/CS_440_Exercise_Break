@@ -1,9 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import '../Signup.css';
 import Axios from 'axios';
 import login_logo from '../assets/logos.png';
 import { useNavigate } from 'react-router-dom';
+import UserContext from '../UserContext';
 
+/*
+    Release 1: Sakinah Chadrawala's Contribution
+    Release 2: Mahin Patel's Contribution
+*/
 const Signup = () => {
     const [fname, setFname] = useState('');
     const [lname, setLname] = useState('');
@@ -17,6 +22,7 @@ const Signup = () => {
     const [isButtonDisabled, setButtonDisabled] = useState(false);
 
     const navigate = useNavigate();
+    const { setUserEmail } = useContext(UserContext); // Access setUserEmail from UserContext
 
     const register = async (e) => {
         e.preventDefault();
@@ -38,9 +44,10 @@ const Signup = () => {
             } else {
                 setRegisterstatus('Account Created Successfully!');
                 setButtonDisabled(true);
+                setUserEmail(email); // Set user email using setUserEmail from UserContext
 
                 setTimeout(() => {
-                    navigate(`/updateProfile?email=${encodeURIComponent(email)}`);
+                    navigate(`/home?email=${encodeURIComponent(email)}`);
                 }, 1000);
             }
         } catch (error) {

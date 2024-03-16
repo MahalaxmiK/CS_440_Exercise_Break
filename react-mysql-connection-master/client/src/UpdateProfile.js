@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import './App.css';
 import { useNavigate, useLocation } from "react-router-dom";
 import { FaHome, FaUser } from "react-icons/fa";
@@ -6,7 +6,11 @@ import { HiOutlineLogout } from "react-icons/hi";
 import { IoMenu } from "react-icons/io5";
 import profile_logo from './assets/profile.jpg';
 import axios from "axios";
+import UserContext from './UserContext';
 
+/*
+  Release 2: Mahalaxmi Kalappareddigari's Contribution
+*/
 const UpdateProfile = () => {
     const navigate = useNavigate();
     const location = useLocation();
@@ -25,24 +29,25 @@ const UpdateProfile = () => {
         weight: false,
         age: false,
     });
-    const userEmail = new URLSearchParams(location.search).get('email');
+    const currEmail = new URLSearchParams(location.search).get('email');
     const [userInfo, setUserInfo] = useState(null);
+    const { userEmail } = useContext(UserContext);
 
     useEffect(() => {
         const fetchUserInfo = async () => {
             try {
                 const res = await axios.get("http://localhost:3000/userInfo", {
-                    params: { email: userEmail }
+                    params: { email: currEmail }
                 });
                 setUserInfo(res.data);
             } catch (err) {
                 console.log(err);
             }
         };
-        if (userEmail) {
+        if (currEmail) {
             fetchUserInfo();
         }
-    }, [userEmail]);
+    }, [currEmail]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -77,6 +82,18 @@ const UpdateProfile = () => {
         navigate('/login');
     };
 
+    const profileClick = () => {
+        setTimeout(() => {
+          navigate(`/personalPage?email=${encodeURIComponent(userEmail)}`);
+        }, 1000);
+    };
+
+    const homeClick = () => {
+         setTimeout(() => {
+          navigate(`/home?email=${encodeURIComponent(userEmail)}`);
+        }, 1000);
+    };
+
     const userDetailsUpdated = () => {
         window.alert("User Details Successfully Updated!!!");
     };
@@ -94,9 +111,10 @@ const UpdateProfile = () => {
                 <IoMenu size={35} onClick={menuOptionClick} />
             </div>
             <div>
+                
                 <img src={profile_logo} alt="#" className="profile_logo" />
                 {userInfo ? (
-                    <h1 >{userInfo.fname} {userInfo.lname}</h1>
+                    <h1 style={{ fontFamily: 'Georgia' }}>{userInfo.fname.charAt(0).toUpperCase() + userInfo.fname.slice(1)} {userInfo.lname.charAt(0).toUpperCase() + userInfo.lname.slice(1)}</h1>
             ) : (
                 <h1 >Error</h1>
             )}
@@ -153,11 +171,11 @@ const UpdateProfile = () => {
                 <button type="submit" className="update-submit" onClick={userDetailsUpdated}>Update Profile Info</button>
             </form>
             <div className="update-bottom-nav">
-                <button className="icon-with-text">
+                <button className="icon-with-text" onClick={homeClick}>
                     <FaHome />
                     <span>Home</span>
                 </button>
-                <button className="icon-with-text">
+                <button className="icon-with-text" onClick={profileClick}>
                     <FaUser />
                     <span>User</span>
                 </button>

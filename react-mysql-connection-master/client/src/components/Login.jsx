@@ -1,6 +1,6 @@
-import React, {useState} from 'react'
-import appLogoImage from '../assets/logos.png'
-import '../Home.css'
+import React, { useState } from 'react';
+import appLogoImage from '../assets/logos.png';
+import '../Home.css';
 import { useNavigate  } from "react-router-dom";
 
 /*
@@ -26,4 +26,4 @@ const Login = () => {
     )
 }
 
-export default Login
+export default Login;

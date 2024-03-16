@@ -264,7 +264,7 @@ label i {
 }
 
 .exit-maps-btn button {
-  font-family: 'Nunito sans', sans-serif;
+  font-family: 'Georgia';
   height: 30px;
   width: 70px;
   font-size: 12px;
@@ -365,6 +365,7 @@ label i {
   font-weight: bold;
   background-color: #f1c4c4;
   color: black;
+  font-family: 'Georgia';
 }
 
 .update-message {
