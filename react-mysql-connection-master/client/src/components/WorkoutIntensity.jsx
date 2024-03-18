@@ -1,21 +1,25 @@
-import React, {useEffect, useState} from "react";
+import React, { useState, useContext } from "react";
 import '../Home.css';
 import CountDown from "./CountDown";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 import { FaHome } from "react-icons/fa";
 import { FaUser } from "react-icons/fa";
 import { HiOutlineLogout } from "react-icons/hi";
 import { IoMenu } from "react-icons/io5";
-
-
+import UserContext from '../UserContext';
+/*
+    Release 2: Noura Almasri's Contribution
+*/
 const Workout = () => {
     // const location = useLocation();
     const navigate = useNavigate();
     const[timeDropDown, setTimeChoosen] = useState(false);
     const[intensityDropDown, setIntensityChoosen] = useState(false);
     const [selectedTime, setTime] = useState('TIME');
-    const[SelectedTimeVal, setSelectedTimeVal] = useState(null);
-    const [selectedIntensity ,setIntensity] = useState('INTENSITY');
+    const[selectedTimeVal, setSelectedTimeVal] = useState(null);
+    const [selectedIntensity, setIntensity] = useState('INTENSITY');
+    const { userEmail } = useContext(UserContext);
+    console.log(userEmail);
 
 
 
@@ -42,7 +46,7 @@ const Workout = () => {
     console.log("Selected Intensity:", selectedIntensity);
     // console.log("Heart Ratessss:", heartRates);
    
-        navigate("/countdown", {state:{initialDuration: SelectedTimeVal, intensity: selectedIntensity}});
+        navigate("/countdown", {state:{initialDuration: selectedTimeVal, intensity: selectedIntensity}});
     };
  
 
@@ -54,13 +58,23 @@ const Workout = () => {
         navigate('/login');
     };
 
+    const profileClick = () => {
+        setTimeout(() => {
+          navigate(`/personalPage?email=${encodeURIComponent(userEmail)}`);
+        }, 1000);
+    };
 
-    
+    const homeClick = () => {
+         setTimeout(() => {
+          navigate(`/home?email=${encodeURIComponent(userEmail)}`);
+        }, 1000);
+    };
+    // () => setTimeChoosen(prev => !prev)
    
 return (
     <div className="workout-container">
         <div className="menu-intensity">
-            <IoMenu size={35} onClick={() => setTimeChoosen(prev => !prev)}/>
+            <IoMenu size={35} onClick={menuOptionClick}/>
         </div>
         <h1 className="workout-title">Choose your workout...</h1>{/* Title */}
         <div className="dropdown">
@@ -91,11 +105,11 @@ return (
         {/* <CountDown selectedTime={selectedTime } selectedIntensity={selectedIntensity}/> */}
         <button className="start-workout" onClick={handleStart}>Start</button>
         <div className="bottom-nav">
-            <button className="icon-with-text">
+            <button className="icon-with-text" onClick={homeClick}>
                 <FaHome />
                 <span>Home</span>{/* Text below the icon */}
             </button>
-            <button className="icon-with-text">
+            <button className="icon-with-text" onClick={profileClick}>
                 <FaUser />
                 <span>User</span>{/* Text below the icon */}
             </button>
@@ -109,4 +123,4 @@ return (
    );
 }
 
-export default Workout
+export default Workout;
