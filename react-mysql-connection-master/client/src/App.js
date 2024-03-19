@@ -15,6 +15,7 @@ import CountDown from "./components/CountDown";
 import UpdateProfile from "./UpdateProfile";
 import HomeScreen from "./components/homeScreen";
 import PersonalPage from "./components/PersonalPage";
+import AfterWorkout from "./components/AfterWorkout";
 import { UserProvider } from './UserContext';
 
 /*
@@ -40,6 +41,7 @@ function App() {
           <Route path="/updateProfile" element={<UpdateProfile />} exact />
           <Route path="/home" element={<HomeScreen />} exact />
           <Route path="/personalPage" element={<PersonalPage />} exact />
+          <Route path="/afterWorkout" element={<AfterWorkout />} exact />
         </Routes>
       </BrowserRouter>
     </UserProvider>

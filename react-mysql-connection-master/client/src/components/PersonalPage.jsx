@@ -38,15 +38,11 @@ const PersonalPage = () => {
         }
     }, [currEmail]);
     
-    function convertTime(totalHours) {
-        const hours = Math.floor(totalHours);
-        const minutes = Math.round((totalHours - hours) * 60);
-        if (minutes >= 60) {
-            hours++;
-            minutes -= 60;
-        }
+    function convertTime(totalSeconds) {
+        const minutes = totalSeconds / 60;
+        const hours = minutes / 60;
 
-        return `${hours}h ${minutes}m`;
+        return `${Math.floor(hours)}h ${minutes % 60}m ${totalSeconds % 60}s`;
     }
 
     const handlePersonal = () => {
@@ -63,16 +59,16 @@ const PersonalPage = () => {
     };
 
     const profileClick = () => {
-        setTimeout(() => {
-          navigate(`/personalPage?email=${encodeURIComponent(userEmail)}`);
-        }, 1000);
+        navigate(`/personalPage?email=${encodeURIComponent(userEmail)}`);
     };
 
     const homeClick = () => {
-         setTimeout(() => {
-          navigate(`/home?email=${encodeURIComponent(userEmail)}`);
-        }, 1000);
+        navigate(`/home?email=${encodeURIComponent(userEmail)}`);
     };
+
+    function convertTime(totalTime) {
+        return `${totalTime.hours}h ${totalTime.minutes}m ${totalTime.seconds}s`;
+    }
 
     
     return (
@@ -89,10 +85,10 @@ const PersonalPage = () => {
                     <span className="email">{userInfo.email}</span>
                     <div className='timeicon-hourtext' >
                         <BiSolidTimeFive className='time-icon' /><br />
-                        <span className="total-hours">{convertTime(23)}</span>
+                        <span className="total-hours">{convertTime((userInfo))}</span>
                         <span className='total-hours-text'>total hours</span>
                         <FaFireAlt className='burn-icon' /><br />
-                        <span className="calorie-count">{userInfo.totalCalories} Cal</span><br />
+                        <span className="calorie-count">{userInfo.calories.toFixed(2)} Cal</span><br />
                         <span className='burned-text'>burned</span>
 
                     </div>

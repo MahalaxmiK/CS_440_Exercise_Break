@@ -28,9 +28,7 @@ const Relax = () =>{
     };
 
     const homeClick = () => {
-        setTimeout(() => {
-          navigate(`/home?email=${encodeURIComponent(userEmail)}`);
-        }, 1000);
+        navigate(`/home?email=${encodeURIComponent(userEmail)}`);
     };
 
     return(

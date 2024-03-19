@@ -3,9 +3,13 @@ const mysql = require("mysql");
 const cors = require("cors");
 
 const app = express();
+const bodyParser = require('body-parser');
+const PORT = 3001;
 
 app.use(express.json());
 app.use(cors());
+
+app.use(bodyParser.json());
 
 /*
   Team Contribution
@@ -67,6 +71,17 @@ app.post("/login", (req, res) => {
             }
         }
     )
+});
+
+app.post('/api/heart-rate', (req, res) => {
+  const heartRate = req.body.heartRate;
+  // Process the heart rate data as needed
+  console.log(`Received heart rate: ${heartRate}`);
+  res.sendStatus(200);
+});
+
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
 });
 
 app.post('/updateUserDetails', (req, res) => {
@@ -155,6 +170,41 @@ app.post('/submitWantDrink', (req, res) => {
         }
       }
     );
+});
+
+app.post('/submitworkoutSummary', (req, res) => {
+  const email = req.body.email;
+  const calories = req.body.calories;
+  const totalTime = req.body.totalTime;
+  const avgHeartRate = req.body.avgHeartRate;
+  const hours = req.body.hours;
+  const minutes = req.body.minutes;
+  const seconds = req.body.seconds;
+
+
+  console.log("Received email:", email);
+  console.log("Received calories:", calories);
+  console.log("Received totalTime:",totalTime);
+  console.log("Received avgHeartRate:", avgHeartRate);
+
+
+  con.query(
+    "UPDATE users SET calories = ?, totalTime = ?,  avgHeartRate = ?, hours = ?, minutes = ?, seconds = ?  WHERE email = ?",
+    [calories, totalTime, avgHeartRate, hours, minutes, seconds, email],
+    (err, result) => {
+      if (err) {
+        console.error('Error updating user workout status', err);
+        res.status(500).json({ message: "Internal Server Error" });
+      } else {
+        console.log(result);
+        if (result.affectedRows > 0) {
+          res.status(200).json({ message: "Successfully added workout summary!" });
+        } else {
+          res.status(404).json({ message: "User not found!" });
+        }
+      }
+    }
+  );
 });
   
 

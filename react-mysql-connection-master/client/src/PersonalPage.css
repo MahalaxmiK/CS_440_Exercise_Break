@@ -63,7 +63,7 @@
 
 .total-hours {
   position: absolute;
-  left: 50px;
+  left: 40px;
   margin-top: 120px;
   font-family: 'Georgia';
 }
@@ -98,7 +98,7 @@
 
 .calorie-count {
   position: absolute;
-  right: 60px;
+  right: 45px;
   margin-top: 105px;
   font-family: 'Georgia';
 }

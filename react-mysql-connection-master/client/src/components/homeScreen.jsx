@@ -28,7 +28,7 @@ const HomeScreen = () => {
                     params: { email: currEmail }
                 });
                 setUserInfo(res.data);
-                setWorkout(20);
+                setWorkout(res.data.minutes);
                 setMusic(12);
                 setVideo(17);
             } catch (err) {
@@ -55,15 +55,11 @@ const HomeScreen = () => {
     };
 
     const profileClick = () => {
-        setTimeout(() => {
-          navigate(`/personalPage?email=${encodeURIComponent(userEmail)}`);
-        }, 1000);
+        navigate(`/personalPage?email=${encodeURIComponent(userEmail)}`);
     };
 
     const homeClick = () => {
-         setTimeout(() => {
-          navigate(`/home?email=${encodeURIComponent(userEmail)}`);
-        }, 1000);
+        navigate(`/home?email=${encodeURIComponent(userEmail)}`);
     };
 
     return (
@@ -88,7 +84,7 @@ const HomeScreen = () => {
 
             {userInfo ? (
                 <>
-                    <h3 className="home-h3">Workout Progress: {workout} Hours</h3>
+                    {workout == 1 ? (<h3 className="home-h3">Workout Progress: {workout} Minute</h3>) : (<h3 className="home-h3">Workout Progress: {workout} Minutes</h3>)}
                     <h3 className="home-h3">Mindful Moments: {music} Hours</h3>
                     <h3 className="home-h3">Musical Bliss: {video} Hours</h3>
                 </>

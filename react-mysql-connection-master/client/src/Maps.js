@@ -166,15 +166,11 @@ const Maps = ({ google }) => {
   };
 
   const profileClick = () => {
-    setTimeout(() => {
-      navigate(`/personalPage?email=${encodeURIComponent(userEmail)}`);
-    }, 1000);
+    navigate(`/personalPage?email=${encodeURIComponent(userEmail)}`);
   };
 
   const homeClick = () => {
-    setTimeout(() => {
-      navigate(`/home?email=${encodeURIComponent(userEmail)}`);
-    }, 1000);
+    navigate(`/home?email=${encodeURIComponent(userEmail)}`);
   };
 
   if (loading) {
