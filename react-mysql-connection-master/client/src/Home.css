@@ -1,3 +1,7 @@
+/*
+    Release 1 & Release 2: Mahin Patel Pages CSS Contribution
+*/
+
 * {
     box-sizing: border-box;
 
@@ -228,7 +232,7 @@
 }
 
 .timer_buttons button {
-    font-family: 'Nunito sans', sans-serif;
+    font-family: 'Georgia';
     height: 50px;
     width: 130px;
     font-size: 16px;
@@ -283,7 +287,7 @@
 }
 
 .timer_endWorkout button {
-    font-family: 'Nunito sans', sans-serif;
+    font-family: 'Georgia';
     height: 50px;
     width: 130px;
     font-size: 16px;
@@ -365,17 +369,39 @@
     /* Adjust icon size */
 }
 
-.menu_button {
+menu-ble-container {
+    position: relative;
+    /* Position the container relatively */
+    width: 100%;
+    /* Ensure the container covers the entire width */
+    height: 100%;
+    /* Ensure the container covers the entire height */
+}
+
+.menu_button,
+.ble-button {
     position: absolute;
-    /* Position the button absolutely */
+    /* Position the buttons absolutely */
+    cursor: pointer;
+    height: 30px;
+    width: 30px;
+}
+
+.menu_button {
     top: 10px;
     /* Adjust top position */
     left: 10px;
-    /* Adjust right position */
-    cursor: pointer;
-    height: 30px;
-    width: 30px
+    /* Adjust left position */
 }
+
+.ble-button {
+    top: 12px;
+    left: 306px;
+    color: rgb(25, 228, 191);
+    /* For font-based icons */
+    fill: rgb(17, 149, 225);
+}
+
 
 
 
@@ -391,7 +417,7 @@
 }
 
 .icon-with-text button {
-    font-family: 'Nunito sans', sans-serif;
+    font-family: 'Georgia';
     height: 50px;
     width: 130px;
     font-size: 16px;
@@ -424,7 +450,7 @@
     align-items: center;
     flex-wrap: wrap;
 
-} */
+}  */
 
 .dropdown {
     min-width: 15em;
@@ -566,7 +592,7 @@
     background-color: #26489a;
 }
 
-.low-bcakground {
+.low-background {
     background-color: green;
 }
 
@@ -576,4 +602,129 @@
 
 .high-background {
     background-color: red;
+}
+
+.heart_wrapper {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border: 12px solid #333;
+    border-radius: 40px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    max-width: 400px;
+    margin: 0 auto;
+    position: relative;
+    background-color: rgb(213, 210, 204);
+    gap: 30px
+}
+
+
+
+.button_one,
+.button_two {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    margin-top: 50px;
+    gap: 20px;
+
+}
+
+.button_one button,
+.button_two button {
+    font-family: Georgia;
+    height: 50px;
+    width: 200px;
+    font-size: 16px;
+    border-radius: 40px;
+    border: none;
+    outline: none;
+    background-color: #2b8ce8;
+
+    color: lightgreen;
+    box-shadow: -3px -3px 15px rgb(54, 54, 54),
+        3px 3px 15px rgb(0, 0, 0);
+
+
+}
+
+.button_one button:active,
+.button_two button:active {
+    box-shadow: inset 3px 3px 10px rgb(13, 13, 13),
+        inset -3px -3px 10px rgb(68, 68, 68);
+}
+
+.afterworkout_wrapper {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    padding-top: 2px;
+    padding-bottom: 20px;
+    border: 12px solid #333;
+    border-radius: 40px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    max-width: 400px;
+    margin: 0 auto;
+    position: relative;
+    background-color: rgb(213, 210, 204);
+    gap: 30px
+}
+
+.workout-title {
+    padding-bottom: 40px;
+
+}
+
+.workout-title-other {
+    padding-bottom: 5px;
+    padding-top: 10px;
+    font-family: Georgia;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+/* .menu-ble-container{
+    flex-direction: column;
+} */
+
+
+.start_New_Workout,
+.exit_workout {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    /* margin-top: 10px; */
+
+
+}
+
+.start_New_Workout button,
+.exit_workout button,
+.ble-button button {
+    font-family: Georgia;
+    height: 50px;
+    width: 200px;
+    font-size: 16px;
+    border-radius: 40px;
+    border: none;
+    outline: none;
+    background-color: #2b8ce8;
+
+    color: lightgreen;
+    box-shadow: -3px -3px 15px rgb(54, 54, 54),
+        3px 3px 15px rgb(0, 0, 0);
+
+
 }

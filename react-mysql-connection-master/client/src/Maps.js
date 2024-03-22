@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react';
 import { useNavigate } from "react-router-dom";
 import { FaHome, FaUser, FaSignOutAlt, FaBars } from 'react-icons/fa'; // Import bottom navigation bar & menu option icons
+import UserContext from './UserContext';
 
 /*
-  Mahalaxmi Kalappareddigari Contribution
+  Release 1 & Release 2: Mahalaxmi Kalappareddigari Contribution
+  NOTE: The bottom navigation bar will only look different for this page due to maps
 */
 const Maps = ({ google }) => {
   const [userLocation, setUserLocation] = useState(null);
@@ -22,6 +24,7 @@ const Maps = ({ google }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [userLocationAddress, setUserLocationAddress] = useState(null); // State to store user location address
+  const { userEmail } = useContext(UserContext);
 
   useEffect(() => {
     const getUserLocation = () => {
@@ -154,21 +157,20 @@ const Maps = ({ google }) => {
     navigate('/menu');
   };
 
-  // const profileClick = () => {
-    //     navigate('/profile');
-    // };
-
-    // const homeClick = () => {
-    //     navigate('/home');
-    // };
-
-    const logoutClick = () => {
-        navigate('/login');
-    };
-
   const menuOptionClick = () => {
-    // Release 2 Sprint 2 -> Menu Bars Icon OnClick, Redirect To Menu Option Page
     navigate('/menu');
+  };
+
+  const logoutClick = () => {
+    navigate('/login');
+  };
+
+  const profileClick = () => {
+    navigate(`/personalPage?email=${encodeURIComponent(userEmail)}`);
+  };
+
+  const homeClick = () => {
+    navigate(`/home?email=${encodeURIComponent(userEmail)}`);
   };
 
   if (loading) {
@@ -282,8 +284,8 @@ const Maps = ({ google }) => {
             borderBottom: '7px solid #333', 
         }}
       >
-        <div><FaHome /></div>  
-        <div><FaUser /></div>
+        <div><FaHome onClick={homeClick}/></div>  
+        <div><FaUser onClick={profileClick}/></div>
         <div onClick={logoutClick}><FaSignOutAlt /></div>
         <div onClick={menuOptionClick}><FaBars /></div>
         </div>

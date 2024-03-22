@@ -1,25 +1,24 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import "./App.css";
 import Axios from "axios";
 import login_logo from './assets/logos.png';
+import UserContext from './UserContext'; // Import UserContext
 
+/*
+  Release 1 & Release 2: Mahalaxmi Kalappareddigari's Contribution
+  Release 2: Mahin Patel's Contribution
+*/
 function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loginStatus, setLoginStatus] = useState("");
   const navigate = useNavigate();
+  const { setUserEmail } = useContext(UserContext); // Access setUserEmail from UserContext
 
   const navigateToSignUp = () => {
     navigate('/signup');
   }
-
-  const navigateToProfileScreen = () => {
-     setTimeout(() => {
-          navigate(`/updateProfile?email=${encodeURIComponent(email)}`);
-        }, 1000);
-  }
-
 
   const login = (e) => {
     e.preventDefault();
@@ -29,8 +28,9 @@ function LoginPage() {
     }).then((response) => {
       if (response.status === 200) {
         setLoginStatus(response.data.message);
+        setUserEmail(email); // Set user email using setUserEmail from UserContext
         setTimeout(() => {
-          navigate(`/personalPage?email=${encodeURIComponent(email)}`);
+          navigate(`/home?email=${encodeURIComponent(email)}`);
         }, 1000);
       } else if (response.status === 401) {
         setLoginStatus(response.data.message);

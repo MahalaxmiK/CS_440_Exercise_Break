@@ -1,7 +1,7 @@
-import React, { useEffect, useState} from 'react'
-import '../PersonalPage.css'
+import React, { useEffect, useState, useContext } from 'react';
+import '../PersonalPage.css';
 import axios from "axios";
-import { FaHome, FaUser, FaSignOutAlt, FaBars } from 'react-icons/fa'
+import { FaHome, FaUser } from 'react-icons/fa'
 import { useNavigate, useLocation  } from "react-router-dom";
 import { IoMenu } from "react-icons/io5";
 import { HiOutlineLogout } from "react-icons/hi";
@@ -9,21 +9,23 @@ import person_logo from '../assets/person.jpeg';
 import { BiSolidTimeFive } from "react-icons/bi";
 import { FaFireAlt } from "react-icons/fa";
 import { IoPersonSharp } from "react-icons/io5";
+import UserContext from '../UserContext';
 
+/*
+    Release 2: Sakinah Chadrawala's Contribution
+*/
 const PersonalPage = () => {
     const navigate = useNavigate();
     const location = useLocation();
-    const userEmail = new URLSearchParams(location.search).get('email');
-    console.log(userEmail)
+    const currEmail = new URLSearchParams(location.search).get('email');
     const [userInfo, setUserInfo] = useState(null);
-    const [email, setEmail] = useState("");
-    const [loginStatus, setLoginStatus] = useState("");
+    const { userEmail } = useContext(UserContext);
 
     useEffect(() => {
         const fetchUserInfo = async () => {
             try {
                 const res = await axios.get("http://localhost:3000/userInfo", {
-                    params: { email: userEmail }
+                    params: { email: currEmail }
                    
                 });
                 setUserInfo(res.data);
@@ -31,35 +33,42 @@ const PersonalPage = () => {
                 console.log(err);
             }
         };
-        if (userEmail) {
+        if (currEmail) {
             fetchUserInfo();
         }
-    }, [userEmail]);
+    }, [currEmail]);
     
-    const menuOptionClick = () => {
-       console.log('menu is clicked')
-        navigate('/menu');
-    };
-    function convertTime(totalHours) {
-        const hours = Math.floor(totalHours);
-        const minutes = Math.round((totalHours - hours) * 60);
-        if (minutes >= 60) {
-            hours++;
-            minutes -= 60;
-        }
+    function convertTime(totalSeconds) {
+        const minutes = totalSeconds / 60;
+        const hours = minutes / 60;
 
-        return `${hours}h ${minutes}m`;
+        return `${Math.floor(hours)}h ${minutes % 60}m ${totalSeconds % 60}s`;
     }
-    
-    // console.log(convertTime(20)); // Output: 20 hours and 0 minutes
-    const handlePersonal = () =>{
+
+    const handlePersonal = () => {
         console.log('menu is clicked')
         navigate(`/updateProfile?email=${encodeURIComponent(userInfo.email)}`);
-    }
-
+    };
+    
     const logoutClick = () => {
         navigate('/login');
     };
+
+    const menuOptionClick = () => {
+        navigate('/menu');
+    };
+
+    const profileClick = () => {
+        navigate(`/personalPage?email=${encodeURIComponent(userEmail)}`);
+    };
+
+    const homeClick = () => {
+        navigate(`/home?email=${encodeURIComponent(userEmail)}`);
+    };
+
+    function convertTime(totalTime) {
+        return `${totalTime.hours}h ${totalTime.minutes}m ${totalTime.seconds}s`;
+    }
 
     
     return (
@@ -76,10 +85,10 @@ const PersonalPage = () => {
                     <span className="email">{userInfo.email}</span>
                     <div className='timeicon-hourtext' >
                         <BiSolidTimeFive className='time-icon' /><br />
-                        <span className="total-hours">{convertTime(23)}</span>
+                        <span className="total-hours">{convertTime((userInfo))}</span>
                         <span className='total-hours-text'>total hours</span>
                         <FaFireAlt className='burn-icon' /><br />
-                        <span className="calorie-count">{userInfo.totalCalories} Cal</span><br />
+                        <span className="calorie-count">{userInfo.calories.toFixed(2)} Cal</span><br />
                         <span className='burned-text'>burned</span>
 
                     </div>
@@ -95,30 +104,12 @@ const PersonalPage = () => {
                 <span className='personal-text' >Personal</span>
                 <hr className='b-line'  ></hr>
         </div>
- 
         <div className="update-bottom-nav">
-            <button className="icon-with-text">
+            <button className="icon-with-text" onClick={homeClick}>
                 <FaHome />
                 <span>Home</span>
             </button>
-            <button className="icon-with-text">
-                <FaUser />
-                <span>User</span>
-            </button>
-            <button className="icon-with-text">
-                <HiOutlineLogout />
-                <span>Logout</span>
-            </button>
-        </div>
-
-            
-
-        <div className="update-bottom-nav">
-            <button className="icon-with-text">
-                <FaHome />
-                <span>Home</span>
-            </button>
-            <button className="icon-with-text">
+            <button className="icon-with-text" onClick={profileClick}>
                 <FaUser />
                 <span>User</span>
             </button>

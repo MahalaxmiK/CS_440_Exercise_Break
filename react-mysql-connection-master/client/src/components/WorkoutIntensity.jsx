@@ -1,19 +1,24 @@
-import React, {useEffect, useState} from "react";
+import React, { useState, useContext } from "react";
 import '../Home.css';
 import CountDown from "./CountDown";
-import { useNavigate } from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 import { FaHome } from "react-icons/fa";
 import { FaUser } from "react-icons/fa";
 import { HiOutlineLogout } from "react-icons/hi";
 import { IoMenu } from "react-icons/io5";
-
+import UserContext from '../UserContext';
+/*
+    Release 2: Noura Almasri's Contribution
+*/
 const Workout = () => {
     const navigate = useNavigate();
     const[timeDropDown, setTimeChoosen] = useState(false);
     const[intensityDropDown, setIntensityChoosen] = useState(false);
     const [selectedTime, setTime] = useState('TIME');
-    const[SelectedTimeVal, setSelectedTimeVal] = useState(null);
+    const[selectedTimeVal, setSelectedTimeVal] = useState(null);
     const [selectedIntensity, setIntensity] = useState('INTENSITY');
+    const { userEmail } = useContext(UserContext);
+    console.log(userEmail);
 
     const handleTimeChange = (label, value) => {
         const minutes = value / 60;
@@ -34,7 +39,7 @@ const Workout = () => {
         console.log("Selected Time:", selectedTime);
     console.log("Selected Intensity:", selectedIntensity);
    
-        navigate("/countdown", {state:{initialDuration: SelectedTimeVal, intensity: selectedIntensity}});
+        navigate("/countdown", {state:{initialDuration: selectedTimeVal, intensity: selectedIntensity}});
     };
 
     const menuOptionClick = () => {
@@ -45,13 +50,13 @@ const Workout = () => {
         navigate('/login');
     };
 
-    // const profileClick = () => {
-    //     navigate("/profile");
-    // };
+    const profileClick = () => {
+        navigate(`/personalPage?email=${encodeURIComponent(userEmail)}`);
+    };
 
-    // const homeClick = () => {
-    //     navigate('/home');
-    // };
+    const homeClick = () => {
+        navigate(`/home?email=${encodeURIComponent(userEmail)}`);
+    };
     // () => setTimeChoosen(prev => !prev)
    
 return (
@@ -88,11 +93,11 @@ return (
         {/* <CountDown selectedTime={selectedTime } selectedIntensity={selectedIntensity}/> */}
         <button className="start-workout" onClick={handleStart}>Start</button>
         <div className="bottom-nav">
-            <button className="icon-with-text">
+            <button className="icon-with-text" onClick={homeClick}>
                 <FaHome />
                 <span>Home</span>{/* Text below the icon */}
             </button>
-            <button className="icon-with-text">
+            <button className="icon-with-text" onClick={profileClick}>
                 <FaUser />
                 <span>User</span>{/* Text below the icon */}
             </button>
@@ -106,4 +111,4 @@ return (
    );
 }
 
-export default Workout
+export default Workout;
