@@ -2,8 +2,8 @@ import React, { useContext } from 'react';
 import '../Menu.css';
 import { ImCross } from 'react-icons/im'; 
 import { useNavigate } from "react-router-dom";
-import meditationImg from "../assets/music.jpeg"; 
-import musicImg from "../assets/meditation.jpg"; 
+import exerciseImg from "../assets/start_workout.png"; 
+import meditationImg from "../assets/meditation.jpg"; 
 import googelImg from "../assets/maps.avif"; 
 import UserContext from '../UserContext';
 
@@ -11,7 +11,6 @@ import UserContext from '../UserContext';
     Release 2: Sakinah Chadrawala's Contribution
 */
 const Relax = () =>{
-    //  const [icon, setIcon] = useState(true);
     const navigate = useNavigate();
     const { userEmail } = useContext(UserContext);
 
@@ -40,7 +39,7 @@ const Relax = () =>{
             <div className= "msg">Let's start your journey for the day!!</div>
             <div className="button-container">
                 <div className="image-container">
-                <img src = {musicImg} alt="music"/>
+                <img src = {exerciseImg} alt="music"/>
                 </div>
                 <button className="w-btn" onClick={handleWorkoutButton}>Start Workout</button>
             </div>

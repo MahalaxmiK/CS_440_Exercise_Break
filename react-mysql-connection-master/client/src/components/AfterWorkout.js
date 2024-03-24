@@ -16,7 +16,6 @@ const AfterWorkout = () => {
     const TEE = location.state.TEE;
     const [userInfo, setUserInfo] = useState(null);
     const { userEmail } = useContext(UserContext);
-    console.log("EMAIL HERE: ", userEmail);
 
     useEffect(() => {
         const fetchUserInfo = async () => {
@@ -25,7 +24,6 @@ const AfterWorkout = () => {
                     params: { email: userEmail }
                 });
                 setUserInfo(res.data);
-                //submitworkoutSummary(); 
             } catch (err) {
                 console.log(err);
             }
@@ -40,7 +38,7 @@ const AfterWorkout = () => {
     };
 
     const exitWorkout = () => {
-        navigate('/menu');
+        navigate(`/home?email=${encodeURIComponent(userEmail)}`);
     };
   
            
