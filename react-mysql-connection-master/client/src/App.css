@@ -133,7 +133,7 @@
 
 /* Submit Button CSS Start */
 .container .loginForm form .button {
-  width: 320px;
+  width: 340px;
   height: 50px;
   padding: 8px 30px;
   margin-bottom: 20px;
@@ -264,7 +264,7 @@ label i {
 }
 
 .exit-maps-btn button {
-  font-family: 'Nunito sans', sans-serif;
+  font-family: 'Georgia';
   height: 30px;
   width: 70px;
   font-size: 12px;
@@ -281,4 +281,98 @@ label i {
 .exit-maps-btn button:active {
   box-shadow: inset 3px 3px 10px rgb(13, 13, 13),
     inset -3px -3px 10px rgb(68, 68, 68);
+}
+
+
+/*
+  Update Profile Page CSS
+*/
+
+.update-container {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-bottom: 300px;
+  border: 12px solid #333;
+  border-radius: 40px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  max-width: 400px;
+  margin: 0 auto;
+  position: relative;
+  background-color: rgb(213, 210, 204);
+}
+
+.update-menu {
+  position: absolute;
+  text-align: center;
+  margin-right: 320px;
+  margin-bottom: 610px;
+}
+
+.update-bottom-nav {
+  position: absolute;
+  /* Position the navigation bar absolutely */
+  bottom: 20px;
+  /* Adjust bottom spacing */
+  width: 100%;
+  /* Set width to 100% */
+  bottom: 0.2px;
+  /* Position it at the bottom of the wrapper */
+  /* top: 0; */
+  left: 0;
+  /* Align it to the left */
+  display: flex;
+  justify-content: space-around;
+  border-radius: 0px 0px 23px 23px;
+  background-color: rgb(82, 79, 79);
+  padding: 10px;
+}
+
+.update-container .profile_logo {
+  width: 150px;
+  height: 150px;
+  margin: 45px auto 10px;
+  /* 20px from the top */
+  display: block;
+}
+
+.update-inputs {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 40px;
+  margin-bottom: 50px;
+}
+
+.update-submit {
+  width: 300px;
+  height: 50px;
+  padding: 8px 30px;
+  margin-bottom: 60px;
+  text-align: center;
+  cursor: pointer;
+  border: 2px solid black;
+  border-radius: 5px;
+  font-family: Georgia;
+  font-size: 20px;
+  font-weight: bold;
+  background-color: #f1c4c4;
+  color: black;
+  font-family: 'Georgia';
+}
+
+.update-message {
+  color: black;
+  font-size: 14px;
+  text-align: center;
+  font-family: Georgia;
+  font-weight: bold;
+  margin: 0 auto;
 }

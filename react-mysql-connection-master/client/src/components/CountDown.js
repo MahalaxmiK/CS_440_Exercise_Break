@@ -9,6 +9,8 @@ import { IoMenu } from "react-icons/io5";
 import UserContext from '../UserContext';
 import axios from 'axios';
 
+
+
 const formatTime = (time) => {
     let minutes = Math.floor(time / 60)
     let seconds = Math.floor(time - minutes * 60)
@@ -19,6 +21,7 @@ const formatTime = (time) => {
 }
 
 const CountDown = () => {
+    var hasAlerted = false;
     const location = useLocation();
     const initialDuration = location.state.initialDuration;
     const intensity = location.state.intensity;
@@ -32,6 +35,8 @@ const CountDown = () => {
     const timerId = useRef();
     const [updateStatus, setUpdateStatus] = useState("");
     const [userInfo, setUserInfo] = useState(null);
+    const [lastAlertTime, setLastAlertTime] = useState(0); // State to keep track of the last time the alert was shown
+    const [showAlert, setShowAlert] = useState(false); 
     const { userEmail } = useContext(UserContext);
     console.log("EMAIL HERE: ", userEmail);
     console.log("BEFORE initialDuration: ", initialDuration);
@@ -59,6 +64,8 @@ const CountDown = () => {
         return () => clearInterval(timerId.current);
     }, []);
 
+    
+
     const endWorkout = () => {
         clearInterval(timerId.current);
         alert("END Workout");
@@ -85,14 +92,6 @@ const CountDown = () => {
 
         var divisor_for_seconds = divisor_for_minutes % 60;
         var seconds = Math.ceil(divisor_for_seconds);
-
-        
-        // function convertTime(totalTime) {
-        //     const minutes = totalSeconds / 60;
-        //     const hours = minutes / 60;
-
-        //     return `${Math.floor(hours)}h ${minutes % 60}m ${totalSeconds % 60}s`;
-        // }
     
         const getMET = (intensity) => {
             switch (intensity) {
@@ -162,12 +161,32 @@ const CountDown = () => {
         navigate(`/home?email=${encodeURIComponent(userEmail)}`);
     };
 
+    const maxReached = (heartRateRN) =>{
+     
+        const maxThres = 100 - (userInfo ? userInfo.age : 0); // Calculate max heart rate threshold based on user's age
+       
+    
+        if (heartRateRN >= maxThres && hasAlerted == false) {
+            // Show the alert if it's not already shown
+            window.alert(`Your heart rate  has reached the maximum threshold. Please take a break!`);
+            setShowAlert(true);
+            hasAlerted = true;
+        } else if (heartRateRN < maxThres && showAlert) {
+            // Dismiss the alert if it's currently shown
+            setShowAlert(false);
+        }
+    }
+
     const handleHeartRateChange = (event) => {
-        const heartRateValue = event.target.value.getUint8(1);
+        let heartRateValue = event.target.value.getUint8(1);
         setHeartRate(heartRateValue);
         setHeartRates(prevHeartRates => [...prevHeartRates, heartRateValue]); // Add the new heart rate to the heartRates array
         console.log('Heart Rate from this file heart:', heartRateValue);
+        maxReached(heartRateValue);
+        
+       
     };
+
 
     const connectBLEDevice = async () => {
         try {
