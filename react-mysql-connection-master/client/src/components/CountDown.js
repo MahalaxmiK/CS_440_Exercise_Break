@@ -33,9 +33,6 @@ const CountDown = () => {
     const [updateStatus, setUpdateStatus] = useState("");
     const [userInfo, setUserInfo] = useState(null);
     const { userEmail } = useContext(UserContext);
-    console.log("EMAIL HERE: ", userEmail);
-    console.log("BEFORE initialDuration: ", initialDuration);
-    console.log("BEFORE countdown: ", countdown);
     useEffect(() => {
         const fetchUserInfo = async () => {
             try {
@@ -65,35 +62,19 @@ const CountDown = () => {
         const sumHeartRate = heartRates.reduce((acc, cur) => acc + cur, 0);
         const avgRate = heartRates.length > 0 ? sumHeartRate / heartRates.length : 0;
         const workoutDurationInMinutes = (initialDuration - countdown) / 60; 
-        console.log("AFTER initialDuration: ", initialDuration);
-        console.log("AFTER countdown: ", countdown);
         let userTotalTime = userInfo ? userInfo.totalTime : 0.0;
         let userWeight = userInfo ? userInfo.weight : 0.0;
         const weightKg = userWeight * 0.453592; 
         const totalTimeSeconds = (workoutDurationInMinutes * 60) + userTotalTime;
-        console.log("userTotalTime: ", userTotalTime);
-        console.log("workoutDurationInMinutes: ", workoutDurationInMinutes);
-        console.log("Total Time In Sec: ", totalTimeSeconds);
         
-
         // MODIFIED Calculations
         var hours = Math.floor(totalTimeSeconds / (60 * 60));
-        console.log("hours: ", hours);
         var divisor_for_minutes = totalTimeSeconds % (60 * 60);
         var minutes = Math.floor(divisor_for_minutes / 60);
-        console.log("Mins: ", minutes);
 
         var divisor_for_seconds = divisor_for_minutes % 60;
         var seconds = Math.ceil(divisor_for_seconds);
 
-        
-        // function convertTime(totalTime) {
-        //     const minutes = totalSeconds / 60;
-        //     const hours = minutes / 60;
-
-        //     return `${Math.floor(hours)}h ${minutes % 60}m ${totalSeconds % 60}s`;
-        // }
-    
         const getMET = (intensity) => {
             switch (intensity) {
                 case 'Low':
@@ -106,11 +87,11 @@ const CountDown = () => {
                     return { value: 2.5 };
             }
         };
+
         const MET = getMET(intensity);
         const TEE = (MET.value * weightKg * workoutDurationInMinutes.toFixed(2))/200;
         let userCalories = userInfo ? userInfo.calories : 0.0;
 
-        
         axios.post("http://localhost:3000/submitworkoutSummary", {
             email: userEmail,
             calories: TEE + userCalories,

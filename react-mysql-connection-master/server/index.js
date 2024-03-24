@@ -110,7 +110,7 @@ app.post('/updateUserDetails', (req, res) => {
                         console.error("Error updating user details:", updateErr);
                         res.status(500).send({ message: "Error updating user details" });
                     } else {
-                        res.send({ message: "User details updated successfully" });
+                        res.send({ message: "User Details Updated Successfully!!!" });
                     }
                 });
         } else {

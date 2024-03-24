@@ -8,8 +8,6 @@ import axios from "axios";
 import '../Home.css';
 import UserContext from '../UserContext';
 
-
-
 const AfterWorkout = () => {
     const navigate = useNavigate();
     const location = useLocation();
@@ -37,17 +35,12 @@ const AfterWorkout = () => {
         }
     }, [userEmail]);
 
-
-
-
     const startNewWorkout = () => {
         navigate('/intensity');
     };
 
     const exitWorkout = () => {
-
         navigate('/menu');
-      
     };
   
            
