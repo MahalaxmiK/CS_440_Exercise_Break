@@ -368,30 +368,38 @@
     font-size: 54px;
     /* Adjust icon size */
 }
+
 menu-ble-container {
-    position: relative; /* Position the container relatively */
-    width: 100%; /* Ensure the container covers the entire width */
-    height: 100%; /* Ensure the container covers the entire height */
+    position: relative;
+    /* Position the container relatively */
+    width: 100%;
+    /* Ensure the container covers the entire width */
+    height: 100%;
+    /* Ensure the container covers the entire height */
 }
 
 .menu_button,
 .ble-button {
-    position: absolute; /* Position the buttons absolutely */
+    position: absolute;
+    /* Position the buttons absolutely */
     cursor: pointer;
     height: 30px;
     width: 30px;
 }
 
 .menu_button {
-    top: 10px; /* Adjust top position */
-    left: 10px; /* Adjust left position */
+    top: 10px;
+    /* Adjust top position */
+    left: 10px;
+    /* Adjust left position */
 }
 
 .ble-button {
-    top: 12px; 
-    left: 306px; 
-    color: rgb(25, 228, 191); /* For font-based icons */
-    fill: rgb(17, 149, 225); 
+    top: 12px;
+    left: 306px;
+    color: rgb(25, 228, 191);
+    /* For font-based icons */
+    fill: rgb(17, 149, 225);
 }
 
 
@@ -596,7 +604,7 @@ menu-ble-container {
     background-color: red;
 }
 
-.heart_wrapper{
+.heart_wrapper {
     position: absolute;
     display: flex;
     justify-content: center;
@@ -614,13 +622,12 @@ menu-ble-container {
     position: relative;
     background-color: rgb(213, 210, 204);
     gap: 30px
-
 }
 
 
 
 .button_one,
-.button_two{
+.button_two {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -631,8 +638,8 @@ menu-ble-container {
 }
 
 .button_one button,
-.button_two button{
-    font-family: 'Nunito sans', sans-serif;
+.button_two button {
+    font-family: Georgia;
     height: 50px;
     width: 200px;
     font-size: 16px;
@@ -647,13 +654,14 @@ menu-ble-container {
 
 
 }
-.button_one button:active, 
+
+.button_one button:active,
 .button_two button:active {
     box-shadow: inset 3px 3px 10px rgb(13, 13, 13),
         inset -3px -3px 10px rgb(68, 68, 68);
 }
 
-.afterworkout_wrapper{
+.afterworkout_wrapper {
     position: absolute;
     display: flex;
     justify-content: center;
@@ -671,27 +679,28 @@ menu-ble-container {
     position: relative;
     background-color: rgb(213, 210, 204);
     gap: 30px
-
 }
 
-.workout-title{
+.workout-title {
     padding-bottom: 40px;
-    
+
 }
-.workout-title-other{
-    padding-bottom: 12px; 
-    padding-top: 20px;
-    font-family: 'Nunito sans', sans-serif;
+
+.workout-title-other {
+    padding-bottom: 5px;
+    padding-top: 10px;
+    font-family: Georgia;
     font-size: 20px;
-    
+    margin-bottom: 10px;
 }
+
 /* .menu-ble-container{
     flex-direction: column;
 } */
 
 
 .start_New_Workout,
-.exit_workout{
+.exit_workout {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -700,10 +709,11 @@ menu-ble-container {
 
 
 }
+
 .start_New_Workout button,
 .exit_workout button,
-.ble-button button{
-    font-family: 'Nunito sans', sans-serif;
+.ble-button button {
+    font-family: Georgia;
     height: 50px;
     width: 200px;
     font-size: 16px;

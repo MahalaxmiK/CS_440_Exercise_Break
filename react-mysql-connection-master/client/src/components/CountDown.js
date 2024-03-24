@@ -34,6 +34,8 @@ const CountDown = () => {
     const [userInfo, setUserInfo] = useState(null);
     const { userEmail } = useContext(UserContext);
     console.log("EMAIL HERE: ", userEmail);
+    console.log("BEFORE initialDuration: ", initialDuration);
+    console.log("BEFORE countdown: ", countdown);
     useEffect(() => {
         const fetchUserInfo = async () => {
             try {
@@ -63,9 +65,34 @@ const CountDown = () => {
         const sumHeartRate = heartRates.reduce((acc, cur) => acc + cur, 0);
         const avgRate = heartRates.length > 0 ? sumHeartRate / heartRates.length : 0;
         const workoutDurationInMinutes = (initialDuration - countdown) / 60; 
-        let userTotalTime = userInfo ? userInfo.totalTime: 0.0;
+        console.log("AFTER initialDuration: ", initialDuration);
+        console.log("AFTER countdown: ", countdown);
+        let userTotalTime = userInfo ? userInfo.totalTime : 0.0;
         let userWeight = userInfo ? userInfo.weight : 0.0;
-        const weightKg =  userWeight * 0.453592; 
+        const weightKg = userWeight * 0.453592; 
+        const totalTimeSeconds = (workoutDurationInMinutes * 60) + userTotalTime;
+        console.log("userTotalTime: ", userTotalTime);
+        console.log("workoutDurationInMinutes: ", workoutDurationInMinutes);
+        console.log("Total Time In Sec: ", totalTimeSeconds);
+        
+
+        // MODIFIED Calculations
+        var hours = Math.floor(totalTimeSeconds / (60 * 60));
+        console.log("hours: ", hours);
+        var divisor_for_minutes = totalTimeSeconds % (60 * 60);
+        var minutes = Math.floor(divisor_for_minutes / 60);
+        console.log("Mins: ", minutes);
+
+        var divisor_for_seconds = divisor_for_minutes % 60;
+        var seconds = Math.ceil(divisor_for_seconds);
+
+        
+        // function convertTime(totalTime) {
+        //     const minutes = totalSeconds / 60;
+        //     const hours = minutes / 60;
+
+        //     return `${Math.floor(hours)}h ${minutes % 60}m ${totalSeconds % 60}s`;
+        // }
     
         const getMET = (intensity) => {
             switch (intensity) {
@@ -87,8 +114,11 @@ const CountDown = () => {
         axios.post("http://localhost:3000/submitworkoutSummary", {
             email: userEmail,
             calories: TEE + userCalories,
-            totalTime: workoutDurationInMinutes + userTotalTime,
-            avgHeartRate: avgRate
+            totalTime: totalTimeSeconds,
+            avgHeartRate: avgRate,
+            hours: hours,
+            minutes: minutes,
+            seconds: seconds,
         }).then((response) => {
             console.log(response.data);
             if (response.data.message) {
@@ -101,7 +131,7 @@ const CountDown = () => {
             setUpdateStatus("Error saving workout data. Please try again later.");
         });
 
-        navigate('/afterWorkout', { state: { endAverageHeartRate: avgRate,  workoutDuration: workoutDurationInMinutes, intensity: intensity  }});
+        navigate('/afterWorkout', { state: { endAverageHeartRate: avgRate,  workoutDuration: workoutDurationInMinutes, TEE: TEE  }});
     };
 
     const pauseTimer = () => {
@@ -125,15 +155,11 @@ const CountDown = () => {
     };
 
     const profileClick = () => {
-        setTimeout(() => {
-            navigate(`/personalPage?email=${encodeURIComponent(userEmail)}`);
-        }, 1000);
+        navigate(`/personalPage?email=${encodeURIComponent(userEmail)}`);
     };
 
     const homeClick = () => {
-        setTimeout(() => {
-            navigate(`/home?email=${encodeURIComponent(userEmail)}`);
-        }, 1000);
+        navigate(`/home?email=${encodeURIComponent(userEmail)}`);
     };
 
     const handleHeartRateChange = (event) => {

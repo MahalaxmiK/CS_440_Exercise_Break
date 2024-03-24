@@ -4,23 +4,23 @@
 */
 
 .relax-container {
+    position: absolute;
     display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
     flex-direction: column;
-    margin: auto;
-    /* margin-top: 250px; */
-    margin-bottom: 50px;
-    /* Adjusted margin-bottom */
-    background: rgb(210, 213, 237);
-    padding-bottom: 30px;
-    border: 10px solid #000000;
-    height: 680px;
-    width: 375px;
-    box-sizing: border-box;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-bottom: 300px;
+    border: 12px solid #333;
     border-radius: 40px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    padding: 20px;
     max-width: 400px;
+    margin: 0 auto;
     position: relative;
-    /* Added position relative */
+    background-color: rgb(213, 210, 204);
 }
 
 .relax-container h4 {
@@ -31,9 +31,9 @@
     align-items: center;
     gap: 9px;
     width: 100%;
-    padding-bottom: 10px;
+    padding-bottom: 5px;
     font-weight: bold;
-    margin-top: 20px;
+    margin-top: 2px;
 }
 
 .relax-container h5 {
@@ -59,8 +59,8 @@
     margin-block: 30;
     font-weight: 700;
     cursor: pointer;
-    left: 37%;
     margin-top: 10px;
+    margin-left: 40px;
 }
 
 .relax-button-container {
@@ -96,15 +96,27 @@ img {
 
 .bottom-navbar-relax {
     position: absolute;
-    bottom: -40px;
-    /* Adjusted bottom position */
-    transform: translateX(-1%);
-    align-items: center;
-    background-color: #f3f3f3;
+    /* Position the navigation bar absolutely */
+    bottom: 20px;
+    /* Adjust bottom spacing */
+    width: 100%;
+    /* Set width to 100% */
+    bottom: 0.2px;
+    /* Position it at the bottom of the wrapper */
+    /* top: 0; */
+    left: 0;
+    /* Align it to the left */
     display: flex;
     justify-content: space-around;
-    padding: 15px 12px;
-    margin: 27px 15px;
-    border-radius: 70px;
-    border-bottom: 15px solid #333;
+    border-radius: 0px 0px 23px 23px;
+    background-color: rgb(82, 79, 79);
+    padding: 10px;
+}
+
+.relax-menu {
+    position: absolute;
+    text-align: center;
+    margin-right: 320px;
+    margin-bottom: 680px;
+    margin-top: 60px;
 }

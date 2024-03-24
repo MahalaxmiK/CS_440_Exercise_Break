@@ -3,9 +3,13 @@ const mysql = require("mysql");
 const cors = require("cors");
 
 const app = express();
+const bodyParser = require('body-parser');
+const PORT = 3001;
 
 app.use(express.json());
 app.use(cors());
+
+app.use(bodyParser.json());
 
 /*
   Team Contribution
@@ -68,11 +72,6 @@ app.post("/login", (req, res) => {
         }
     )
 });
-
-const bodyParser = require('body-parser');
-const PORT = 3001;
-
-app.use(bodyParser.json());
 
 app.post('/api/heart-rate', (req, res) => {
   const heartRate = req.body.heartRate;
@@ -173,52 +172,14 @@ app.post('/submitWantDrink', (req, res) => {
     );
 });
 
-
-
-
-
-
-// app.post('/submitworkoutSummary', (req, res) => {
-//   const fname = req.body.fname;
-//   const lname = req.body.lname;
-//   const email = req.body.email;
-//  const calories = req.body.calories;
-//   const totalTime = req.body.totalTime;
-//   const avgHeartRate= req.body.avgHeartRate;
-
-//   // Check if a user with the provided fname and lname exists
-//   con.query("SELECT * FROM users WHERE fname = ? AND lname = ?", [fname, lname], (err, result) => {
-//       if (err) {
-//           console.error("Database error:", err);
-//           res.status(500).send({ message: "Internal server error" });
-//           return;
-//       }
-
-//       if (result.length > 0) {
-//           // If user exists, update their information
-//           con.query("UPDATE users SET calories = ?, totalTime = ?, avgHeartRate= ? WHERE fname = ? AND lname = ?", 
-//               [email, calories, totalTime, avgHeartRate, fname, lname], (updateErr, updateResult) => {
-//                   if (updateErr) {
-//                       console.error("Error updating user details summary:", updateErr);
-//                       res.status(500).send({ message: "Error updating user details summary" });
-//                   } else {
-//                       res.send({ message: "User details summary updated successfully" });
-//                   }
-//               });
-//       } else {
-//           res.status(404).send({ message: "User not found" });
-//       }
-//   });
-// });
-
-
-
-
 app.post('/submitworkoutSummary', (req, res) => {
   const email = req.body.email;
   const calories = req.body.calories;
   const totalTime = req.body.totalTime;
-  const avgHeartRate= req.body.avgHeartRate;
+  const avgHeartRate = req.body.avgHeartRate;
+  const hours = req.body.hours;
+  const minutes = req.body.minutes;
+  const seconds = req.body.seconds;
 
 
   console.log("Received email:", email);
@@ -228,8 +189,8 @@ app.post('/submitworkoutSummary', (req, res) => {
 
 
   con.query(
-    "UPDATE users SET calories = ?, totalTime = ?,  avgHeartRate = ?  WHERE email = ?",
-    [calories,totalTime,avgHeartRate, email],
+    "UPDATE users SET calories = ?, totalTime = ?,  avgHeartRate = ?, hours = ?, minutes = ?, seconds = ?  WHERE email = ?",
+    [calories, totalTime, avgHeartRate, hours, minutes, seconds, email],
     (err, result) => {
       if (err) {
         console.error('Error updating user workout status', err);
@@ -245,9 +206,7 @@ app.post('/submitworkoutSummary', (req, res) => {
     }
   );
 });
-
-
-
+  
 
 app.get("/userInfo", (req, res) => {
   const email = req.query.email; // Retrieve email from query parameters

@@ -15,7 +15,7 @@ const AfterWorkout = () => {
     const location = useLocation();
     const averageHeartRate = location.state.endAverageHeartRate.toFixed(2);
     const workoutDuration = location.state.workoutDuration;
-    const intensity = location.state.intensity;
+    const TEE = location.state.TEE;
     const [userInfo, setUserInfo] = useState(null);
     const { userEmail } = useContext(UserContext);
     console.log("EMAIL HERE: ", userEmail);
@@ -53,24 +53,24 @@ const AfterWorkout = () => {
            
     // Convert weight from pounds to kilograms
     
-    let userWeight = userInfo ? userInfo.weight : 0.0;
-    const weightKg =  userWeight * 0.453592; 
+    // let userWeight = userInfo ? userInfo.weight : 0.0;
+    // const weightKg =  userWeight * 0.453592; 
 
 
-    const getMET = (intensity) => {
-        switch (intensity) {
-            case 'Low':
-                return { value: 2.0 };
-            case 'Moderate':
-                return { value: 4.3 };
-            case 'High':
-                return { value: 11.5 };
-            default:
-                return { value: 2.5 };
-        }
-    };
-    const MET = getMET(intensity);
-    const TEE = (MET.value * weightKg * workoutDuration.toFixed(2))/200;
+    // const getMET = (intensity) => {
+    //     switch (intensity) {
+    //         case 'Low':
+    //             return { value: 2.0 };
+    //         case 'Moderate':
+    //             return { value: 4.3 };
+    //         case 'High':
+    //             return { value: 11.5 };
+    //         default:
+    //             return { value: 2.5 };
+    //     }
+    // };
+    // const MET = getMET(intensity);
+    // const TEE = (MET.value * weightKg * workoutDuration.toFixed(2))/200;
 
     const menuOptionClick = () => {
         navigate('/menu');
@@ -81,21 +81,20 @@ const AfterWorkout = () => {
     };
 
     const profileClick = () => {
-        setTimeout(() => {
-          navigate(`/personalPage?email=${encodeURIComponent(userEmail)}`);
-        }, 1000);
+        navigate(`/personalPage?email=${encodeURIComponent(userEmail)}`);
     };
 
     const homeClick = () => {
-         setTimeout(() => {
-          navigate(`/home?email=${encodeURIComponent(userEmail)}`);
-        }, 1000);
+        navigate(`/home?email=${encodeURIComponent(userEmail)}`);
     };
 
 return (
     <div className="afterworkout_wrapper">
-         <h1 className="workout-title">Hooray! You finished the workout, lets look at your stats...</h1>{/* Title */}
-          <h1 className="workout-title-other">Workout Progress: {workoutDuration.toFixed(2)}</h1>{/* Title */}
+        <div className="menu_button">
+            <IoMenu size={35} onClick={menuOptionClick}/>
+        </div>
+         <h1 className="workout-title">Hooray! You finished the workout, let's look at your stats...</h1>{/* Title */}
+          <h1 className="workout-title-other">Workout Progress: {workoutDuration.toFixed(1)} Minutes</h1>{/* Title */}
           <h1 className="workout-title-other">Total Calories Burned: {TEE.toFixed(2)}</h1>{/* Title */}
           <h1 className="workout-title-other">Average Heart Rate: {averageHeartRate}</h1>{/* Title */}
     <div class= "start_New_Workout">
@@ -124,8 +123,3 @@ return (
 )
 }
 export default AfterWorkout
-
-
-
-
-

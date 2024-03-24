@@ -1,19 +1,20 @@
-import React, { useState } from "react";
-import { useNavigate  } from "react-router-dom";
+import React, { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import "./App.css";
 import Axios from "axios";
 import login_logo from './assets/logos.png';
+import UserContext from './UserContext'; // Import UserContext
 
 /*
-  Release 1: Mahalaxmi Kalappareddigari's Contribution
+  Release 1 & Release 2: Mahalaxmi Kalappareddigari's Contribution
   Release 2: Mahin Patel's Contribution
 */
-
 function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loginStatus, setLoginStatus] = useState("");
   const navigate = useNavigate();
+  const { setUserEmail } = useContext(UserContext); // Access setUserEmail from UserContext
 
   const navigateToSignUp = () => {
     navigate('/signup');
@@ -27,16 +28,17 @@ function LoginPage() {
     }).then((response) => {
       if (response.status === 200) {
         setLoginStatus(response.data.message);
-        // setTimeout(() => {
-        //   navigate('/drinkOption');
-        // }, 1000);
+        setUserEmail(email); // Set user email using setUserEmail from UserContext
+        setTimeout(() => {
+          navigate(`/home?email=${encodeURIComponent(email)}`);
+        }, 1000);
       } else if (response.status === 401) {
         setLoginStatus(response.data.message);
         console.error("Login failed:", response.data.message);
       }
     }).catch((error) => {
       console.error("Login error:", error);
-      setLoginStatus("Error occurred to login. Please try again or try later!");
+      setLoginStatus("Error occurred while logging in. Please try again later!");
     });
   };
 
@@ -47,13 +49,13 @@ function LoginPage() {
           <img src={login_logo} alt="#" className="app-logo" />
           <h4>Exercise Break App</h4>
           <h3>Sign In</h3>
-          <label htmlFor="username">Email<i className="fas fa-envelope"></i> {/* Font Awesome user icon */}</label>
-          <input className="textInput" type="text" name="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Enter your Email"required/>
-          <label htmlFor="password">Password<i className="fas fa-lock"></i> {/* Font Awesome user icon */}</label>
+          <label htmlFor="username">Email</label>
+          <input className="textInput" type="text" name="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Enter your Email" required/>
+          <label htmlFor="password">Password</label>
           <input className="textInput" type="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Enter your Password" required />
           <input className="button" type="submit" onClick={login} value="Log In"/>
-           <h5>New User? <span className="signup-link" onClick={navigateToSignUp}>Sign Up</span></h5>
-          <h1 style={{ color: "black", fontSize: "15px", textAlign: "center", marginTop: "20px", fontFamily: 'Georgia', }}>{loginStatus}</h1>
+          <h5>New User? <span className="signup-link" onClick={navigateToSignUp}>Sign Up</span></h5>
+          <h1 style={{ color: "black", fontSize: "15px", textAlign: "center", marginTop: "20px", fontFamily: 'Georgia' }}>{loginStatus}</h1>
         </form>
       </div>
     </div>

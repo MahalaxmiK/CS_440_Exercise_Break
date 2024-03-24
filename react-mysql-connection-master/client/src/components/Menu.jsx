@@ -1,35 +1,41 @@
-import React from 'react'
-import '../Menu.css'
+import React, { useContext } from 'react';
+import '../Menu.css';
 import { ImCross } from 'react-icons/im'; 
-import { useNavigate  } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import meditationImg from "../assets/music.jpeg"; 
 import musicImg from "../assets/meditation.jpg"; 
 import googelImg from "../assets/maps.avif"; 
+import UserContext from '../UserContext';
 
 /*
     Release 2: Sakinah Chadrawala's Contribution
 */
-
 const Relax = () =>{
     //  const [icon, setIcon] = useState(true);
     const navigate = useNavigate();
+    const { userEmail } = useContext(UserContext);
 
-    const handleWorkoutButton =()=>{
+    const handleWorkoutButton = () => {
         navigate('/intensity')
-    }
+    };
 
-    const handleRelaxButton =()=>{
+    const handleRelaxButton = () => {
         navigate('/relax')
-    }
-    const handleMapButton =()=>{
+    };
+
+    const handleMapButton = () => {
         navigate('/maps')
-    }
+    };
+
+    const homeClick = () => {
+        navigate(`/home?email=${encodeURIComponent(userEmail)}`);
+    };
 
     return(
         <div className = "container">
             <button className='exit-icon'>
-                 <ImCross />
-                </button>
+                <ImCross onClick={homeClick}/>
+            </button>
 
             <div className= "msg">Let's start your journey for the day!!</div>
             <div className="button-container">
@@ -42,17 +48,17 @@ const Relax = () =>{
                 <div className = "image-container">
                     <img src = {meditationImg} alt="meditation"/>
                 </div>
-                <button className="technique-btn">  Relaxation Techniques  </button>
+                <button className="technique-btn">Relaxation Techniques</button>
             </div>
             
             <div className="button-container">
                 <div className="image-container">
                 <img src = {googelImg} alt="google"/>
                 </div>
-                <button className="g-btn" onClick={handleMapButton}> Find Nearby Store</button>
+                <button className="g-btn" onClick={handleMapButton}>Find Nearby Store</button>
             </div>
         </div>
     )
 }
 
-export default Relax
+export default Relax;

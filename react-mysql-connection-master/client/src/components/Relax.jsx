@@ -1,23 +1,25 @@
-import React, { useEffect, useState} from 'react'
-import '../Relax.css'
+import React, { useEffect, useState, useContext } from 'react';
+import '../Relax.css';
 import { useNavigate  } from "react-router-dom";
-import meditationImg from '../assets/meditation.jpg'
-import musicImg from '../assets/music.jpeg'
-import { FaHome, FaUser, FaSignOutAlt, FaBars } from 'react-icons/fa'
+import meditationImg from '../assets/meditation.jpg';
+import musicImg from '../assets/music.jpeg';
+import { FaHome, FaUser } from 'react-icons/fa';
+import { IoMenu } from "react-icons/io5";
+import { HiOutlineLogout } from "react-icons/hi";
+import UserContext from '../UserContext';
 
 /*
-    Sakinah Chadrawala Contribution
+    Release 1 & Release 2: Sakinah Chadrawala's Contribution
 */
-
 const API  =  "AIzaSyCPHLxk3ef5RT8XbvSm3VaGrHgx4Nw2DcY"
-const meditationChannelId = "UChSpME3QaSFAWK8Hpmg-Dyw "  // UCVSaNtZoJMlx8SxLxsNa1lw
+const meditationChannelId = "UCVSaNtZoJMlx8SxLxsNa1lw"
 const musicChannelID = "UCGDPhXrv1Pwi8GvPrRgK_JA"
-
 
 const Relax = () =>{
     const[meditationVideos, setMeditationVideos] = useState([]);
     const [musicVideos, setMusicnVideos] = useState([]);
     const navigate = useNavigate();
+    const { userEmail } = useContext(UserContext);
 
     useEffect(() => {
         fetchVideos(meditationChannelId)
@@ -65,18 +67,10 @@ const Relax = () =>{
         const randomIndex = Math.floor(Math.random() * videos.length)
         const videoUrl = `https://www.youtube.com/embed/${videos[randomIndex].id.videoId}`;
         window.open(videoUrl, '_blank')
-        setTimeout(() => {
-          navigate('/resume');
-        }, 20000);
+        // setTimeout(() => {
+        //   navigate('/resume');
+        // }, 20000);
     }
-
-    // const profileClick = () => {
-    //     navigate('/profile');
-    // };
-
-    // const homeClick = () => {
-    //     navigate('/home');
-    // };
 
     const logoutClick = () => {
         navigate('/login');
@@ -86,10 +80,21 @@ const Relax = () =>{
         navigate('/menu');
     };
 
+    const profileClick = () => {
+        navigate(`/personalPage?email=${encodeURIComponent(userEmail)}`);
+    };
+
+    const homeClick = () => {
+        navigate(`/home?email=${encodeURIComponent(userEmail)}`);
+    };
+
 
 
     return(
         <div className="relax-container">
+            <div className="relax-menu">
+                <IoMenu size={35} onClick={menuOptionClick} />
+            </div>
             <h4>Relaxation Techniques</h4>
             <h5>Meditate & Enhance Inner Peace</h5>
             <div className = "relax-button-container">
@@ -107,16 +112,22 @@ const Relax = () =>{
                 <button onClick={() => handleButtonClick(musicVideos)} className="relax-btn"> Music</button>
 
             </div>
-            <div
-                className="bottom-navbar-relax"
-            >
-                <div><FaHome /></div>  
-                <div><FaUser /></div>
-                <div onClick={logoutClick}><FaSignOutAlt /></div>
-                <div onClick={menuOptionClick}><FaBars /></div>
+            <div className="bottom-navbar-relax">
+                <button className="icon-with-text" onClick={homeClick}>
+                    <FaHome />
+                    <span>Home</span>
+                </button>
+                <button className="icon-with-text" onClick={profileClick}>
+                    <FaUser />
+                    <span>User</span>
+                </button>
+                <button className="icon-with-text" onClick={logoutClick}>
+                    <HiOutlineLogout />
+                    <span>Logout</span>
+                </button>
             </div>
         </div>
     )
 }
 
-export default Relax
+export default Relax;

@@ -11,7 +11,6 @@ import UserContext from '../UserContext';
     Release 2: Noura Almasri's Contribution
 */
 const Workout = () => {
-    // const location = useLocation();
     const navigate = useNavigate();
     const[timeDropDown, setTimeChoosen] = useState(false);
     const[intensityDropDown, setIntensityChoosen] = useState(false);
@@ -20,8 +19,6 @@ const Workout = () => {
     const [selectedIntensity, setIntensity] = useState('INTENSITY');
     const { userEmail } = useContext(UserContext);
     console.log(userEmail);
-
-
 
     const handleTimeChange = (label, value) => {
         const minutes = value / 60;
@@ -37,18 +34,13 @@ const Workout = () => {
         setIntensityChoosen(false);
 
     };
-
-
-
     const handleStart = () => {
         
         console.log("Selected Time:", selectedTime);
     console.log("Selected Intensity:", selectedIntensity);
-    // console.log("Heart Ratessss:", heartRates);
    
         navigate("/countdown", {state:{initialDuration: selectedTimeVal, intensity: selectedIntensity}});
     };
- 
 
     const menuOptionClick = () => {
         navigate('/menu');
@@ -59,15 +51,11 @@ const Workout = () => {
     };
 
     const profileClick = () => {
-        setTimeout(() => {
-          navigate(`/personalPage?email=${encodeURIComponent(userEmail)}`);
-        }, 1000);
+        navigate(`/personalPage?email=${encodeURIComponent(userEmail)}`);
     };
 
     const homeClick = () => {
-         setTimeout(() => {
-          navigate(`/home?email=${encodeURIComponent(userEmail)}`);
-        }, 1000);
+        navigate(`/home?email=${encodeURIComponent(userEmail)}`);
     };
     // () => setTimeChoosen(prev => !prev)
    
