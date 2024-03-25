@@ -84,9 +84,9 @@ const HomeScreen = () => {
 
             {userInfo ? (
                 <>
-                    {workout == 1 ? (<h3 className="home-h3">Workout Progress: {workout} Minute</h3>) : (<h3 className="home-h3">Workout Progress: {workout} Minutes</h3>)}
-                    <h3 className="home-h3">Mindful Moments: {music} Hours</h3>
-                    <h3 className="home-h3">Musical Bliss: {video} Hours</h3>
+                    {workout === 1 ? (<h3 className="home-h3">Workout Progress: {workout} Minute</h3>) : (<h3 className="home-h3">Workout Progress: {workout} Minutes</h3>)}
+                    <h3 className="home-h3">Mindful Moments: {music} Minutes</h3>
+                    <h3 className="home-h3">Musical Bliss: {video} Minutes</h3>
                 </>
             ) : (
                 <h1 className="home-h1">Error</h1>

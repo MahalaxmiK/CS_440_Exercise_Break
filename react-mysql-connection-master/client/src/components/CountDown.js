@@ -19,6 +19,7 @@ const formatTime = (time) => {
 }
 
 const CountDown = () => {
+    var hasAlerted = false;
     const location = useLocation();
     const initialDuration = location.state.initialDuration;
     const intensity = location.state.intensity;
@@ -32,10 +33,8 @@ const CountDown = () => {
     const timerId = useRef();
     const [updateStatus, setUpdateStatus] = useState("");
     const [userInfo, setUserInfo] = useState(null);
+    const [showAlert, setShowAlert] = useState(false); 
     const { userEmail } = useContext(UserContext);
-    console.log("EMAIL HERE: ", userEmail);
-    console.log("BEFORE initialDuration: ", initialDuration);
-    console.log("BEFORE countdown: ", countdown);
     useEffect(() => {
         const fetchUserInfo = async () => {
             try {
@@ -65,35 +64,19 @@ const CountDown = () => {
         const sumHeartRate = heartRates.reduce((acc, cur) => acc + cur, 0);
         const avgRate = heartRates.length > 0 ? sumHeartRate / heartRates.length : 0;
         const workoutDurationInMinutes = (initialDuration - countdown) / 60; 
-        console.log("AFTER initialDuration: ", initialDuration);
-        console.log("AFTER countdown: ", countdown);
         let userTotalTime = userInfo ? userInfo.totalTime : 0.0;
         let userWeight = userInfo ? userInfo.weight : 0.0;
         const weightKg = userWeight * 0.453592; 
         const totalTimeSeconds = (workoutDurationInMinutes * 60) + userTotalTime;
-        console.log("userTotalTime: ", userTotalTime);
-        console.log("workoutDurationInMinutes: ", workoutDurationInMinutes);
-        console.log("Total Time In Sec: ", totalTimeSeconds);
         
-
         // MODIFIED Calculations
         var hours = Math.floor(totalTimeSeconds / (60 * 60));
-        console.log("hours: ", hours);
         var divisor_for_minutes = totalTimeSeconds % (60 * 60);
         var minutes = Math.floor(divisor_for_minutes / 60);
-        console.log("Mins: ", minutes);
 
         var divisor_for_seconds = divisor_for_minutes % 60;
         var seconds = Math.ceil(divisor_for_seconds);
 
-        
-        // function convertTime(totalTime) {
-        //     const minutes = totalSeconds / 60;
-        //     const hours = minutes / 60;
-
-        //     return `${Math.floor(hours)}h ${minutes % 60}m ${totalSeconds % 60}s`;
-        // }
-    
         const getMET = (intensity) => {
             switch (intensity) {
                 case 'Low':
@@ -106,11 +89,11 @@ const CountDown = () => {
                     return { value: 2.5 };
             }
         };
+
         const MET = getMET(intensity);
         const TEE = (MET.value * weightKg * workoutDurationInMinutes.toFixed(2))/200;
         let userCalories = userInfo ? userInfo.calories : 0.0;
 
-        
         axios.post("http://localhost:3000/submitworkoutSummary", {
             email: userEmail,
             calories: TEE + userCalories,
@@ -162,11 +145,28 @@ const CountDown = () => {
         navigate(`/home?email=${encodeURIComponent(userEmail)}`);
     };
 
+    const maxReached = (heartRateRN) => {
+     
+        const maxThres = 100 - (userInfo ? userInfo.age : 0); // Calculate max heart rate threshold based on user's age
+       
+    
+        if (heartRateRN >= maxThres && hasAlerted == false) {
+            // Show the alert if it's not already shown
+            window.alert(`Your heart rate  has reached the maximum threshold. Please take a break!`);
+            setShowAlert(true);
+            hasAlerted = true;
+        } else if (heartRateRN < maxThres && showAlert) {
+            // Dismiss the alert if it's currently shown
+            setShowAlert(false);
+        }
+    };
+
     const handleHeartRateChange = (event) => {
         const heartRateValue = event.target.value.getUint8(1);
         setHeartRate(heartRateValue);
         setHeartRates(prevHeartRates => [...prevHeartRates, heartRateValue]); // Add the new heart rate to the heartRates array
         console.log('Heart Rate from this file heart:', heartRateValue);
+        maxReached(heartRateValue);
     };
 
     const connectBLEDevice = async () => {

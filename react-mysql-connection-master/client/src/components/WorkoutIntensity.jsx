@@ -37,7 +37,7 @@ const Workout = () => {
     const handleStart = () => {
         
         console.log("Selected Time:", selectedTime);
-    console.log("Selected Intensity:", selectedIntensity);
+        console.log("Selected Intensity:", selectedIntensity);
    
         navigate("/countdown", {state:{initialDuration: selectedTimeVal, intensity: selectedIntensity}});
     };
@@ -57,7 +57,6 @@ const Workout = () => {
     const homeClick = () => {
         navigate(`/home?email=${encodeURIComponent(userEmail)}`);
     };
-    // () => setTimeChoosen(prev => !prev)
    
 return (
     <div className="workout-container">

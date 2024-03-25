@@ -31,46 +31,44 @@ con.connect((err) => {
 });
 
 app.post('/register', (req, res) => {
-    const fname = req.body.fname;
-    const lname = req.body.lname;
-    const email = req.body.email;
-    const password = req.body.password;
-    const gender = req.body.gender;
-    const height = req.body.height;
-    const weight = req.body.weight;
-    const age = req.body.age;
+  const fname = req.body.fname;
+  const lname = req.body.lname;
+  const email = req.body.email;
+  const password = req.body.password;
+  const gender = req.body.gender;
+  const height = req.body.height;
+  const weight = req.body.weight;
+  const age = req.body.age;
 
-    con.query("INSERT INTO users (fname, lname, email, password, gender, height, weight, age) VALUES (?, ?, ?, ?, ?, ?, ?,?)", [fname, lname, email, password, gender, height, weight, age],
-        (err, result) => {
-            if(result){
-              res.send(result);
-            }else{
-              res.send({message: "ENTER CORRECT ASKED DETAILS!"})
-            }
+  con.query("INSERT INTO users (fname, lname, email, password, gender, height, weight, age) VALUES (?, ?, ?, ?, ?, ?, ?,?)", [fname, lname, email, password, gender, height, weight, age],
+    (err, result) => {
+        if(result){
+          res.send(result);
+        }else{
+          res.send({message: "ENTER CORRECT ASKED DETAILS!"})
         }
-    )
+    }
+  )
 })
 
 app.post("/login", (req, res) => {
-    const email = req.body.email;
-    const password = req.body.password;
-    con.query("SELECT * FROM users WHERE email = ? AND password = ?", [email, password], 
-      (err, result) => {
-            if (err) {
-                console.error("Error querying the database:", err);
-                res.status(500).send({ message: "Internal server error" });
+  const email = req.body.email;
+  const password = req.body.password;
+  con.query("SELECT * FROM users WHERE email = ? AND password = ?", [email, password], 
+    (err, result) => {
+        if (err) {
+            console.error("Error querying the database:", err);
+            res.status(500).send({ message: "Internal server error" });
+        } else {
+            if (result.length > 0) {
+              res.status(200).send({ message: "Successfully logged in!" });
             } else {
-                if (result.length > 0) {
-                  //const { fname, lname } = result[0]; // Extract first and last name from the result
-                  console.log(result);
-                  res.status(200).send({ message: "Successfully logged in!" });
-                } else {
-                    // Send HTTP status code 401 for unauthorized access
-                    res.status(401).send({ message: "Wrong email or password or both!" });
-                }
+              // Send HTTP status code 401 for unauthorized access
+              res.status(401).send({ message: "Wrong email or password or both!" });
             }
         }
-    )
+    }
+  )
 });
 
 app.post('/api/heart-rate', (req, res) => {
@@ -85,38 +83,37 @@ app.listen(PORT, () => {
 });
 
 app.post('/updateUserDetails', (req, res) => {
-    const fname = req.body.fname;
-    const lname = req.body.lname;
-    const email = req.body.email;
-    const password = req.body.password;
-    const gender = req.body.gender;
-    const height = req.body.height;
-    const weight = req.body.weight;
-    const age = req.body.age;
+  const fname = req.body.fname;
+  const lname = req.body.lname;
+  const email = req.body.email;
+  const password = req.body.password;
+  const gender = req.body.gender;
+  const height = req.body.height;
+  const weight = req.body.weight;
+  const age = req.body.age;
 
-    // Check if a user with the provided fname and lname exists
-    con.query("SELECT * FROM users WHERE fname = ? AND lname = ?", [fname, lname], (err, result) => {
-        if (err) {
-            console.error("Database error:", err);
-            res.status(500).send({ message: "Internal server error" });
-            return;
-        }
-
-        if (result.length > 0) {
-            // If user exists, update their information
-            con.query("UPDATE users SET email = ?, password = ?, gender = ?, height = ?, weight = ?, age = ? WHERE fname = ? AND lname = ?", 
-                [email, password, gender, height, weight, age, fname, lname], (updateErr, updateResult) => {
-                    if (updateErr) {
-                        console.error("Error updating user details:", updateErr);
-                        res.status(500).send({ message: "Error updating user details" });
-                    } else {
-                        res.send({ message: "User details updated successfully" });
-                    }
-                });
-        } else {
-            res.status(404).send({ message: "User not found" });
-        }
-    });
+  // Check if a user with the provided fname and lname exists
+  con.query("SELECT * FROM users WHERE fname = ? AND lname = ?", [fname, lname], (err, result) => {
+    if (err) {
+        console.error("Database error:", err);
+        res.status(500).send({ message: "Internal server error" });
+        return;
+    }
+    if (result.length > 0) {
+        // If user exists, update their information
+        con.query("UPDATE users SET email = ?, password = ?, gender = ?, height = ?, weight = ?, age = ? WHERE fname = ? AND lname = ?", 
+            [email, password, gender, height, weight, age, fname, lname], (updateErr, updateResult) => {
+                if (updateErr) {
+                    console.error("Error updating user details:", updateErr);
+                    res.status(500).send({ message: "Error updating user details" });
+                } else {
+                    res.status(200).send({ message: "User Details Updated Successfully!!!" });
+                }
+            });
+    } else {
+      res.status(404).send({ message: "User not found" });
+    }
+  });
 });
 
  
@@ -181,13 +178,6 @@ app.post('/submitworkoutSummary', (req, res) => {
   const minutes = req.body.minutes;
   const seconds = req.body.seconds;
 
-
-  console.log("Received email:", email);
-  console.log("Received calories:", calories);
-  console.log("Received totalTime:",totalTime);
-  console.log("Received avgHeartRate:", avgHeartRate);
-
-
   con.query(
     "UPDATE users SET calories = ?, totalTime = ?,  avgHeartRate = ?, hours = ?, minutes = ?, seconds = ?  WHERE email = ?",
     [calories, totalTime, avgHeartRate, hours, minutes, seconds, email],
@@ -212,23 +202,24 @@ app.get("/userInfo", (req, res) => {
   const email = req.query.email; // Retrieve email from query parameters
 
   if (!email) {
-      return res.status(400).json({ error: "Email parameter is required" });
+    return res.status(400).json({ error: "Email parameter is required" });
   }
 
   con.query("SELECT * FROM users WHERE email = ?", [email], (err, result) => {
-      if (err) {
-          console.error("Error querying the database:", err);
-          return res.status(500).json({ message: "Internal server error" });
-      }
-      if (result.length > 0) {
-          const user = result[0]; // Assuming the query returns only one user for the given email
-          console.log(user)
-          return res.status(200).json(user);
-      } else {
-          return res.status(404).json({ message: "User not found" });
-      }
+    if (err) {
+      console.error("Error querying the database:", err);
+      return res.status(500).json({ message: "Internal server error" });
+    }
+    if (result.length > 0) {
+      const user = result[0]; // Assuming the query returns only one user for the given email
+      console.log(user)
+      return res.status(200).json(user);
+    } else {
+      return res.status(404).json({ message: "User not found" });
+    }
   });
 });
+
 
 app.listen(3000, () => {
     console.log("Running Exercise Break App Server!!");

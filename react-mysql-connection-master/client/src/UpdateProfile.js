@@ -91,7 +91,7 @@ const UpdateProfile = () => {
     };
 
     const userDetailsUpdated = () => {
-        window.alert("User Details Successfully Updated!!!");
+        window.alert("User Details Updated Successfully!!!");
     };
 
     const enableInputs = (field) => {

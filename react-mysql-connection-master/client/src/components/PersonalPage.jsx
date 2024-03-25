@@ -37,13 +37,6 @@ const PersonalPage = () => {
             fetchUserInfo();
         }
     }, [currEmail]);
-    
-    function convertTime(totalSeconds) {
-        const minutes = totalSeconds / 60;
-        const hours = minutes / 60;
-
-        return `${Math.floor(hours)}h ${minutes % 60}m ${totalSeconds % 60}s`;
-    }
 
     const handlePersonal = () => {
         console.log('menu is clicked')
