@@ -11,7 +11,8 @@ import UserContext from '../UserContext';
 /*
     Release 1 & Release 2: Sakinah Chadrawala's Contribution
 */
-const API  =  "AIzaSyCPHLxk3ef5RT8XbvSm3VaGrHgx4Nw2DcY"
+// music  UC9GoqHypa-SDrGPMyeBkjKw
+const API  =  "AIzaSyC42QkOO8nhcNzgOky6IsRbHW7p3qklTn0"
 const meditationChannelId = "UCVSaNtZoJMlx8SxLxsNa1lw"
 const musicChannelID = "UCGDPhXrv1Pwi8GvPrRgK_JA"
 
@@ -20,6 +21,11 @@ const Relax = () =>{
     const [musicVideos, setMusicnVideos] = useState([]);
     const navigate = useNavigate();
     const { userEmail } = useContext(UserContext);
+    const [musicTimer, setMusicTimer] = useState(0);
+    const [meditationTimer, setMeditationTimer] = useState(0);
+    const [watchStartTime, setWatchStartTime] = useState(null);
+    const [isWatchingVideo, setIsWatchingVideo] = useState(false);
+    const [videoType, setVideoType] = useState(null);
 
     useEffect(() => {
         fetchVideos(meditationChannelId)
@@ -61,30 +67,76 @@ const Relax = () =>{
     }
 
 
-    const handleButtonClick = (videos) => {
+    const handleButtonClick = (videos, type) => {
         if (videos.length === 0) return
 
         const randomIndex = Math.floor(Math.random() * videos.length)
         const videoUrl = `https://www.youtube.com/embed/${videos[randomIndex].id.videoId}`;
         window.open(videoUrl, '_blank')
-        // setTimeout(() => {
-        //   navigate('/resume');
-        // }, 20000);
+        setWatchStartTime(Date.now());
+        setIsWatchingVideo(true);
+   
+        if(type === 'meditation'){
+            setVideoType('meditation')
+        } else if(type === 'music'){
+            setVideoType('music')
+        }
     }
 
+    useEffect(() => {
+        const interval = setInterval(() => {
+            if (isWatchingVideo && watchStartTime) {
+                const elapsedTime = Math.floor((Date.now() - watchStartTime) / 1000);
+                if(videoType === 'meditation') {
+                    setMeditationTimer(elapsedTime)
+                } else if (videoType === 'music') {
+                    setMusicTimer(elapsedTime)
+                }
+            }
+        }, 1000);
+        return () => clearInterval(interval);
+    }, [isWatchingVideo, watchStartTime, videoType]);
+
+    const handlePageFocus = () => { // ensures correct video seconds have updated
+        if (isWatchingVideo) {
+            const elapsedTime = Math.floor((Date.now() - watchStartTime) / 1000);
+            if(videoType === 'meditation') {
+                setMeditationTimer(elapsedTime)
+            } else if (videoType === 'music') {
+                setMusicTimer(elapsedTime)
+            }
+            setIsWatchingVideo(false);
+        }
+    };
+
+    useEffect(() => {
+        window.addEventListener('focus', handlePageFocus);
+        return () => {
+            window.removeEventListener('focus', handlePageFocus);
+        };
+    }, [isWatchingVideo, watchStartTime]);
+
     const logoutClick = () => {
+        setIsWatchingVideo(false);
+        setWatchStartTime(null);
         navigate('/login');
     };
 
     const menuOptionClick = () => {
+        setIsWatchingVideo(false);
+        setWatchStartTime(null);
         navigate('/menu');
     };
 
     const profileClick = () => {
+        setIsWatchingVideo(false);
+        setWatchStartTime(null);
         navigate(`/personalPage?email=${encodeURIComponent(userEmail)}`);
     };
 
     const homeClick = () => {
+        setIsWatchingVideo(false);
+        setWatchStartTime(null);
         navigate(`/home?email=${encodeURIComponent(userEmail)}`);
     };
 
@@ -101,7 +153,8 @@ const Relax = () =>{
                 <div className = "relax-image-container">
                     <img src = {meditationImg} alt="meditation"/>
                 </div>
-                <button onClick={() => handleButtonClick(meditationVideos)} className="relax-btn"> Meditation</button>
+                <button onClick={() => handleButtonClick(meditationVideos, 'meditation')} className="relax-btn"> Meditation</button>
+                <span>{meditationTimer} seconds</span>
             </div>
             <div className="divider"></div>
             <h5>Listen To Good Music</h5>
@@ -109,7 +162,8 @@ const Relax = () =>{
                 <div className="relax-image-container">
                 <img src = {musicImg} alt="music"/>
                 </div>
-                <button onClick={() => handleButtonClick(musicVideos)} className="relax-btn"> Music</button>
+                <button onClick={() => handleButtonClick(musicVideos, 'music')} className="relax-btn"> Music</button>
+                <span>{musicTimer} seconds</span>
 
             </div>
             <div className="bottom-navbar-relax">
