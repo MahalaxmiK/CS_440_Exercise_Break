@@ -4,7 +4,7 @@ import Axios from "axios";
 import { useNavigate  } from "react-router-dom";
 
 /*
-  Mahin Patel Contribution
+  Release 1: Mahin Patel's Contribution
 */
 const home = require('./assets/homeIcon.png');
 const Logout = require('./assets/logout.png');

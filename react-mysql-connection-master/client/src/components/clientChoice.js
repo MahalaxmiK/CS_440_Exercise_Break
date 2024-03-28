@@ -3,7 +3,7 @@ import '../Home.css';
 import { useNavigate } from 'react-router-dom';
 
 /*
-    Noura Almasri Contribution
+    Release 1: Noura Almasri's Contribution
 */
 const ParentComponent = () => {
     const [action, setAction] = useState("Resume Workout");

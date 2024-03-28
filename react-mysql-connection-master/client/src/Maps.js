@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react';
 import { useNavigate } from "react-router-dom";
+import { FaHome, FaUser, FaSignOutAlt, FaBars } from 'react-icons/fa'; // Import bottom navigation bar & menu option icons
+import UserContext from './UserContext';
 
 /*
-  Mahalaxmi Kalappareddigari Contribution
+  Release 1 & Release 2: Mahalaxmi Kalappareddigari Contribution
+  NOTE: The bottom navigation bar will only look different for this page due to maps
 */
 const Maps = ({ google }) => {
   const [userLocation, setUserLocation] = useState(null);
@@ -21,6 +24,7 @@ const Maps = ({ google }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [userLocationAddress, setUserLocationAddress] = useState(null); // State to store user location address
+  const { userEmail } = useContext(UserContext);
 
   useEffect(() => {
     const getUserLocation = () => {
@@ -119,9 +123,9 @@ const Maps = ({ google }) => {
     calculateDirections('BICYCLING', store.geometry.location);
     calculateDirections('TRANSIT', store.geometry.location);
     calculateDirections('WALKING', store.geometry.location);
-    setTimeout(() => {
-        navigate('/resume');
-    }, 20000);
+    // setTimeout(() => {
+    //     navigate('/resume');
+    // }, 20000);
   };
 
   const calculateDirections = (mode, destination) => {
@@ -147,6 +151,28 @@ const Maps = ({ google }) => {
     }
   };
 
+  // Release 2 Sprint 1 -> Temporary Placeholder Logic For OnClick Functionality
+  const exitMaps = () => {
+    // Release 2 Sprint 2 -> Exit Maps OnClick, Redirect To Menu Option Page
+    navigate('/menu');
+  };
+
+  const menuOptionClick = () => {
+    navigate('/menu');
+  };
+
+  const logoutClick = () => {
+    navigate('/login');
+  };
+
+  const profileClick = () => {
+    navigate(`/personalPage?email=${encodeURIComponent(userEmail)}`);
+  };
+
+  const homeClick = () => {
+    navigate(`/home?email=${encodeURIComponent(userEmail)}`);
+  };
+
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -156,12 +182,28 @@ const Maps = ({ google }) => {
   }
 
   return (
-    <div>
+    <div classname="maps-container"> 
       <Map
         google={google}
+        style={{
+          width: '22%',
+          height: '90%',
+          borderTop: '8px solid #333', // Define top, left, & right borders to add bottom navigation bar better
+          borderLeft: '8px solid #333', 
+          borderRight: '8px solid #333', 
+          borderRadius: '40px', // Add border radius for nice look
+          margin: '22px auto',
+        }}
+        containerStyle={{
+          width: '100%',
+          height: '100%'
+        }}
         zoom={14}
         initialCenter={userLocation}
       >
+        <div className="exit-maps-btn">
+          <button onClick={exitMaps}>Exit Maps</button>
+        </div>
         {userLocation && (
           <Marker
             title="Your Location"
@@ -225,11 +267,33 @@ const Maps = ({ google }) => {
             </div>
           </InfoWindow>
         )}
+        <div
+          className="bottom-navbar-maps"
+          style={{
+            position: 'absolute',
+            bottom: '0',
+            transform: 'translateX(-1%)',
+            alignItems: 'center',
+            width: '20%',
+            backgroundColor: '#f3f3f3',
+            display: 'flex',
+            justifyContent: 'space-around',
+            padding: '4px 2px',
+            margin: '45px 617px',
+            borderRadius: '40px',
+            borderBottom: '7px solid #333', 
+        }}
+      >
+        <div><FaHome onClick={homeClick}/></div>  
+        <div><FaUser onClick={profileClick}/></div>
+        <div onClick={logoutClick}><FaSignOutAlt /></div>
+        <div onClick={menuOptionClick}><FaBars /></div>
+        </div>
       </Map>
     </div>
   );
 };
 
 export default GoogleApiWrapper({
-  apiKey: 'AIzaSyBbC24ktucWWxLeiVgwQ4LhnoT9NC3ebq0'
+  apiKey: 'AIzaSyCRgMOzSy-cuC42nDXo9j4GLGgovNxSIZI'
 })(Maps);

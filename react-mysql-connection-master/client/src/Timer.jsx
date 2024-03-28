@@ -3,7 +3,7 @@ import './Home.css';
 import CountDown from './components/CountDown.js';
 
 /*
-  Noura Almasri Contribution
+  Release 1: Noura Almasri's Contribution
 */
 function Timer() {
   return (
