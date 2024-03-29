@@ -1,0 +1,111 @@
+/*
+    Release 1: Sakinah Chadrawala's Sign Up CSS Contribution
+    Release 2: Mahin Patel Sign Up CSS Contribution
+*/
+
+.signup-container {
+    height: 700px;
+    /* final height */
+    width: 400px;
+    /* final weight */
+    padding: 0 20px;
+    border: 10px solid #000000;
+    /* Set border thickness and color */
+    background: #fffaf0;
+    border-radius: 40px;
+    margin: auto;
+    /* margin-top: 100px; */
+}
+
+/* Image CSS Start */
+.signup-container .app-logo {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 10px;
+    /* 20px from the top */
+    display: block;
+}
+
+/* Image CSS End */
+
+/* H4 CSS Start */
+.signup-container h4 {
+    font-size: 30px;
+    font-family: 'Georgia';
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 10px;
+}
+
+/* H4 CSS End */
+
+/* H3 CSS Start */
+.signup-container h3 {
+    font-size: 18px;
+    font-family: 'Georgia';
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 7px;
+}
+
+/* H3 CSS End */
+
+/* Input Box CSS Start */
+.inputs {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px
+}
+
+input {
+    width: 100%;
+    height: 35px;
+    outline: none;
+    margin-bottom: 2px;
+    padding: 0px 10px;
+    border: 2px solid rgb(32, 30, 30)
+}
+
+/* Input Box CSS End */
+
+/* Submit Btn CSS Start */
+.btn {
+    width: 300px;
+    height: 50px;
+    padding: 8px 30px;
+    margin-bottom: 20px;
+    text-align: center;
+    cursor: pointer;
+    border: 2px solid black;
+    border-radius: 5px;
+    font-family: Georgia;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #d3d3d3;
+    color: black;
+}
+
+.btn:hover {
+    background-color: #dcdcdc;
+}
+
+.text-dark {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+/* Submit Btn CSS End */
+
+.status-message {
+    color: black;
+    font-size: 14px; 
+    text-align: center; 
+    margin-bottom: 100px;
+    font-family: Georgia;
+    font-weight: bold;
+}
