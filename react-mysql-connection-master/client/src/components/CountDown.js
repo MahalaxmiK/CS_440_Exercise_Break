@@ -146,13 +146,11 @@ const CountDown = () => {
     };
 
     const maxReached = (heartRateRN) => {
-     
         const maxThres = 110 - (userInfo ? userInfo.age : 0); // Calculate max heart rate threshold based on user's age
        
-    
         if (heartRateRN >= maxThres && hasAlerted == false) {
             // Show the alert if it's not already shown
-            window.alert(`Your heart rate  has reached the maximum threshold. Please take a break!`);
+            window.alert(`Your heart rate has reached the maximum threshold. Please take a break!`);
             setShowAlert(true);
             hasAlerted = true;
         } else if (heartRateRN < maxThres && showAlert) {
