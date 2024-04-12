@@ -7,14 +7,16 @@ import { FaHome, FaUser } from 'react-icons/fa';
 import { IoMenu } from "react-icons/io5";
 import { HiOutlineLogout } from "react-icons/hi";
 import UserContext from '../UserContext';
+import axios from 'axios';
 
 /*
     Release 1 & Release 2: Sakinah Chadrawala's Contribution
 */
-// music  UC9GoqHypa-SDrGPMyeBkjKw
-const API  =  "AIzaSyC42QkOO8nhcNzgOky6IsRbHW7p3qklTn0"
-const meditationChannelId = "UCVSaNtZoJMlx8SxLxsNa1lw"
-const musicChannelID = "UCGDPhXrv1Pwi8GvPrRgK_JA"
+// meditation UCVSaNtZoJMlx8SxLxsNa1lw
+// music UCGDPhXrv1Pwi8GvPrRgK_JA
+const API  =  "AIzaSyCckLxBYlGf40ookjucQt1WoOQxolIMkr8"
+const meditationChannelId = "UCboqmwN682NPFew8Wp8Qdmg"
+const musicChannelID = "UCboqmwN682NPFew8Wp8Qdmg"
 
 const Relax = () =>{
     const[meditationVideos, setMeditationVideos] = useState([]);
@@ -26,6 +28,25 @@ const Relax = () =>{
     const [watchStartTime, setWatchStartTime] = useState(null);
     const [isWatchingVideo, setIsWatchingVideo] = useState(false);
     const [videoType, setVideoType] = useState(null);
+    const [updateStatus, setUpdateStatus] = useState("");
+    const [userInfo, setUserInfo] = useState(null);
+  
+    //  fetches userInfo upon email change
+    useEffect(() => {
+        const fetchUserInfo = async () => {
+            try {
+                const res = await axios.get("http://localhost:3000/userInfo", {
+                    params: { email: userEmail }
+                });
+                setUserInfo(res.data);
+            } catch (err) {
+                console.log(err);
+            }
+        };
+        if (userEmail) {
+            fetchUserInfo();
+        }
+    }, [userEmail]);
 
     useEffect(() => {
         fetchVideos(meditationChannelId)
@@ -97,24 +118,83 @@ const Relax = () =>{
         return () => clearInterval(interval);
     }, [isWatchingVideo, watchStartTime, videoType]);
 
-    const handlePageFocus = () => { // ensures correct video seconds have updated
-        if (isWatchingVideo) {
-            const elapsedTime = Math.floor((Date.now() - watchStartTime) / 1000);
-            if(videoType === 'meditation') {
-                setMeditationTimer(elapsedTime)
-            } else if (videoType === 'music') {
-                setMusicTimer(elapsedTime)
-            }
-            setIsWatchingVideo(false);
+   
+    //  monitor user activity for video watch time activity
+    useEffect(() => {
+        window.addEventListener('focus', endRelaxation);
+        return () => {
+            window.removeEventListener('focus', endRelaxation);
+        };
+    }, [isWatchingVideo, watchStartTime]);
+
+    //  fetches userInfo for quick multiple updates to db without re-login
+    const fetchUserInfo2 = async () => {
+        try {
+            const res = await axios.get("http://localhost:3000/userInfo", {
+                params: { email: userEmail }
+            });
+            setUserInfo(res.data);
+        } catch (err) {
+            console.log(err);
         }
     };
 
-    useEffect(() => {
-        window.addEventListener('focus', handlePageFocus);
-        return () => {
-            window.removeEventListener('focus', handlePageFocus);
-        };
-    }, [isWatchingVideo, watchStartTime]);
+    const endRelaxation = () => {
+        if (isWatchingVideo) {
+            const elapsedTime = Math.floor((Date.now() - watchStartTime) / 1000);
+            if(videoType === 'meditation') {
+                console.log("elapsedTime on line 129 : ",  elapsedTime)
+                setMeditationTimer(elapsedTime)
+
+                const totalMeditationSeconds = userInfo ? userInfo.meditationSeconds + elapsedTime : elapsedTime;
+                console.log("totalMedSec: ", totalMeditationSeconds);
+                
+
+                axios.post("http://localhost:3000/submitMeditationSeconds", {
+                    email: userEmail,
+                    meditationSeconds: totalMeditationSeconds,
+                }).then((response) => {
+                    console.log(response.data);
+                    if (response.data.message) {
+                        setUpdateStatus(response.data.message);
+                    } else {
+                        setUpdateStatus("Error updating relaxation seconds!!!");
+                    }
+                    fetchUserInfo2();
+                }).catch((error) => {
+                    console.error("Error updating meditation seconds:", error);
+                    setUpdateStatus("Error updating relaxation seconds. Please try again later.");
+                });
+            } else if (videoType === 'music') {
+                setMusicTimer(elapsedTime)
+                const totalMusicSeconds = userInfo ? userInfo.musicSeconds + elapsedTime : elapsedTime;
+                console.log("totalMusSec: ", totalMusicSeconds);
+                axios.post("http://localhost:3000/submitMusicSeconds", {
+                    email: userEmail,
+                    musicSeconds: totalMusicSeconds,
+                }).then((response) => {
+                    console.log(response.data);
+                    if (response.data.message) {
+                        setUpdateStatus(response.data.message);
+                    } else {
+                        setUpdateStatus("Error updating music seconds!!!");
+                    }
+                    fetchUserInfo2();
+                }).catch((error) => {
+                    console.error("Error updating relaxation seconds:", error);
+                    setUpdateStatus("Error updating relaxation seconds. Please try again later.");
+                });
+
+            }
+            setIsWatchingVideo(false);
+        console.log("user.meditationsSeconds on line 152: ", userInfo.meditationSeconds)
+        console.log("user.musicSeconds on line 152: ", userInfo.musicSeconds)
+
+
+    }
+            
+}  
+
 
     const logoutClick = () => {
         setIsWatchingVideo(false);
@@ -140,8 +220,6 @@ const Relax = () =>{
         navigate(`/home?email=${encodeURIComponent(userEmail)}`);
     };
 
-
-
     return(
         <div className="relax-container">
             <div className="relax-menu">
@@ -154,7 +232,7 @@ const Relax = () =>{
                     <img src = {meditationImg} alt="meditation"/>
                 </div>
                 <button onClick={() => handleButtonClick(meditationVideos, 'meditation')} className="relax-btn"> Meditation</button>
-                <span>{meditationTimer} seconds</span>
+                {/* <span>{meditationTimer} seconds</span> */}
             </div>
             <div className="divider"></div>
             <h5>Listen To Good Music</h5>
@@ -163,7 +241,7 @@ const Relax = () =>{
                 <img src = {musicImg} alt="music"/>
                 </div>
                 <button onClick={() => handleButtonClick(musicVideos, 'music')} className="relax-btn"> Music</button>
-                <span>{musicTimer} seconds</span>
+                {/* <span>{musicTimer} seconds</span> */}
 
             </div>
             <div className="bottom-navbar-relax">
@@ -185,3 +263,4 @@ const Relax = () =>{
 }
 
 export default Relax;
+

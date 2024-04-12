@@ -196,6 +196,51 @@ app.post('/submitworkoutSummary', (req, res) => {
     }
   );
 });
+
+app.post('/submitMeditationSeconds', (req, res) => {
+  const email = req.body.email;
+  const meditationSeconds = req.body.meditationSeconds;
+
+  con.query(
+    "UPDATE users SET meditationSeconds = ?  WHERE email = ?",
+    [meditationSeconds, email],
+    (err, result) => {
+      if (err) {
+        console.error('Error updating user relaxation seconds', err);
+        res.status(500).json({ message: "Internal Server Error" });
+      } else {
+        console.log(result);
+        if (result.affectedRows > 0) {
+          res.status(200).json({ message: "Successfully added relaxation seconds!" });
+        } else {
+          res.status(404).json({ message: "User not found!" });
+        }
+      }
+    }
+  );
+});
+
+app.post('/submitMusicSeconds', (req, res) => {
+  const email = req.body.email;
+  const musicSeconds = req.body.musicSeconds;
+  con.query(
+    "UPDATE users SET musicSeconds = ?  WHERE email = ?",
+    [ musicSeconds, email],
+    (err, result) => {
+      if (err) {
+        console.error('Error updating user relaxation seconds', err);
+        res.status(500).json({ message: "Internal Server Error" });
+      } else {
+        console.log(result);
+        if (result.affectedRows > 0) {
+          res.status(200).json({ message: "Successfully added relaxation seconds!" });
+        } else {
+          res.status(404).json({ message: "User not found!" });
+        }
+      }
+    }
+  );
+});
   
 
 app.get("/userInfo", (req, res) => {
