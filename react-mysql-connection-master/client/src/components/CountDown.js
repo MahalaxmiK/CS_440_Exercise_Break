@@ -2,12 +2,14 @@ import React, { useEffect, useRef, useState, useContext } from "react";
 import '../Home.css';
 import { useNavigate, useLocation} from "react-router-dom";
 import { FaHome } from "react-icons/fa";
+import { IoClose } from "react-icons/io5";
 import { FaUser } from "react-icons/fa";
 import { HiOutlineLogout } from "react-icons/hi";
 import { FaBluetooth } from "react-icons/fa6";
 import { IoMenu } from "react-icons/io5";
 import UserContext from '../UserContext';
 import axios from 'axios';
+import timerPic from '../assets/thisCount.png'
 
 const formatTime = (time) => {
     let minutes = Math.floor(time / 60)
@@ -33,8 +35,14 @@ const CountDown = () => {
     const timerId = useRef();
     const [updateStatus, setUpdateStatus] = useState("");
     const [userInfo, setUserInfo] = useState(null);
+    const [lastAlertTime, setLastAlertTime] = useState(0); // State to keep track of the last time the alert was shown
     const [showAlert, setShowAlert] = useState(false); 
     const { userEmail } = useContext(UserContext);
+    const [isOpen, setIsOpen] = useState(false);
+
+    console.log("EMAIL HERE: ", userEmail);
+    console.log("BEFORE initialDuration: ", initialDuration);
+    console.log("BEFORE countdown: ", countdown);
     useEffect(() => {
         const fetchUserInfo = async () => {
             try {
@@ -89,7 +97,6 @@ const CountDown = () => {
                     return { value: 2.5 };
             }
         };
-
         const MET = getMET(intensity);
         const TEE = (MET.value * weightKg * workoutDurationInMinutes.toFixed(2))/200;
         let userCalories = userInfo ? userInfo.calories : 0.0;
@@ -122,6 +129,26 @@ const CountDown = () => {
         setPaused(true);
     };
 
+
+
+    const toggleMenu = () => {
+        setIsOpen(!isOpen);
+    };
+
+
+
+    const handleWorkoutButton = () => {
+        navigate('/intensity')
+    };
+
+    const handleRelaxButton = () => {
+        navigate('/relax')
+    };
+
+    const handleMapButton = () => {
+        navigate('/maps')
+    };
+
     const resumeTimer = () => {
         timerId.current = setInterval(() => {
             setCountdown(prev => prev - 1);
@@ -133,9 +160,9 @@ const CountDown = () => {
         navigate('/login');
     };
 
-    const menuOptionClick = () => {
-        navigate('/menu');
-    };
+    // const menuOptionClick = () => {
+    //     navigate('/menu');
+    // };
 
     const profileClick = () => {
         navigate(`/personalPage?email=${encodeURIComponent(userEmail)}`);
@@ -145,29 +172,35 @@ const CountDown = () => {
         navigate(`/home?email=${encodeURIComponent(userEmail)}`);
     };
 
-    const maxReached = (heartRateRN) => {
-        const maxThres = 110 - (userInfo ? userInfo.age : 0); // Calculate max heart rate threshold based on user's age
+    const maxReached = (heartRateRN) =>{
+     
+        const maxThres = 100 - (userInfo ? userInfo.age : 0); // Calculate max heart rate threshold based on user's age
        
+    
         if (heartRateRN >= maxThres && hasAlerted == false) {
             // Show the alert if it's not already shown
-            window.alert(`Your heart rate has reached the maximum threshold. Please take a break!`);
+            window.alert(`Your heart rate  has reached the maximum threshold. Please take a break!`);
             setShowAlert(true);
             hasAlerted = true;
         } else if (heartRateRN < maxThres && showAlert) {
             // Dismiss the alert if it's currently shown
             setShowAlert(false);
         }
-    };
+    }
 
     const handleHeartRateChange = (event) => {
-        const heartRateValue = event.target.value.getUint8(1);
+        let heartRateValue = event.target.value.getUint8(1);
         setHeartRate(heartRateValue);
         setHeartRates(prevHeartRates => [...prevHeartRates, heartRateValue]); // Add the new heart rate to the heartRates array
         console.log('Heart Rate from this file heart:', heartRateValue);
         maxReached(heartRateValue);
+        
+       
     };
 
-    const connectBLEDevice = async () => {
+
+    const connectBLEDevice = async (event) => {
+        event.preventDefault(); 
         try {
             setIsConnecting(true);
     
@@ -207,17 +240,43 @@ const CountDown = () => {
     }
 
     return (
-        <div className="wrapper">
-            <div className="phone-container">
-                <div className="phone-screen">
-                    <div className="menu-ble-container">
-                        <div className="menu_button">
-                            <IoMenu size={35} onClick={menuOptionClick}/>
-                        </div>
-                        <div className="ble-button">
-                            <FaBluetooth  size={34} onClick={connectBLEDevice} style={{ color: 'c', cursor: 'pointer' }}/>
-                        </div>
+        <section className="home-section" style={{ backgroundImage: `url(${timerPic })`, backgroundSize: 'cover', backgroundPosition: 'center'  }}>
+        <header>
+        <ul className="navigation-count">
+                    <li><a href="#"  onClick={homeClick}>
+                    <div style={{ position: "relative" }}>
+                        Home
+                        <FaHome style={{ position: "absolute", top: 0, left: -20 }}/> {/* Using FaHome icon */}
                     </div>
+                    </a></li>
+                    <li><a href="#"  onClick={profileClick}>
+                        <div style={{ position: "relative" }}>
+                            User
+                             <FaUser style={{ position: "absolute", top: 0, left: -20 }}/>{/* Using FaHome icon */}
+                         </div>
+                    </a></li>
+                    <li><a href="#"  onClick={connectBLEDevice}>
+                        <div style={{ position: "relative", color:'#00f9f1' }}>
+                            Connect Device
+                            <FaBluetooth  style={{ position: "absolute", top: 0, left: -20,color:'#00f9f1'  }}/> {/* Using FaHome icon */}
+                         </div>
+                    </a></li>
+                    <li><a href="#"  onClick={logoutClick}>
+                        <div style={{ position: "relative" }}>
+                            Logout
+                            <HiOutlineLogout style={{ position: "absolute", top: 0, left: -20 }}/> {/* Using FaHome icon */}
+                         </div>
+                    </a></li>
+                 
+                </ul>
+                    {/* <div className="menu-ble-container"> */}
+                    <div className="menu-intensity-container">
+        <div className="intensity-menu">
+                <IoMenu size={35} onClick={toggleMenu} />
+            </div>
+        </div>
+                    {/* </div> */}
+                    <div className='The-container'>
                     <div className={`timer-container ${intensityColor()}`}>
                         <h2 className= "timer">{formatTime(countdown)}</h2>
                     </div>
@@ -228,24 +287,20 @@ const CountDown = () => {
                     <div className= "timer_endWorkout">
                         <button onClick={endWorkout} >End Workout</button>
                     </div>
-                    <div className="bottom-nav">
-                        <button className="icon-with-text" onClick={homeClick}>
-                            <FaHome />
-                            <span>Home</span>
-                        </button>
-                        <button className="icon-with-text" onClick={profileClick}>
-                            <FaUser />
-                            <span>User</span>
-                        </button>
-                        <button className="icon-with-text" onClick={logoutClick}>
-                            <HiOutlineLogout />
-                            <span>Logout</span>
-                        </button>
                     </div>
-                    <p>{updateStatus}</p>
-                </div>
-            </div>
-        </div>
+                    </header>
+                    <div className={`menu-overlay ${isOpen ? 'open' : ''}`}>
+    <button className="exit-icon" onClick={toggleMenu}>
+    <IoClose size={30} style = {{color: '#f78731', background:'transparent'}} />
+    </button>
+    <ul className="navigation_menu">
+        <li><a href="#" onClick={handleWorkoutButton}>Start Workout</a></li>
+        <li><a href="#" onClick={handleRelaxButton}>Relaxation Techniques</a></li>
+        <li><a href="#" onClick={handleMapButton}>Find a Nearby Store</a></li>
+    </ul>
+</div>
+ </section>
+              
     );
 }
 
