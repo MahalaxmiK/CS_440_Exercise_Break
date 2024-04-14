@@ -28,9 +28,9 @@ const HomeScreen = () => {
                     params: { email: currEmail }
                 });
                 setUserInfo(res.data);
-                setWorkout(res.data.minutes);
-                setMusic(12);
-                setVideo(17);
+                setWorkout(res.data.totalTime);
+                setMusic(res.data.musicSeconds);
+                setVideo(res.data.meditationSeconds);
             } catch (err) {
                 console.log(err);
             }
@@ -84,9 +84,9 @@ const HomeScreen = () => {
 
             {userInfo ? (
                 <>
-                    {workout === 1 ? (<h3 className="home-h3">Workout Progress: {workout} Minute</h3>) : (<h3 className="home-h3">Workout Progress: {workout} Minutes</h3>)}
-                    <h3 className="home-h3">Mindful Moments: {music} Minutes</h3>
-                    <h3 className="home-h3">Musical Bliss: {video} Minutes</h3>
+                    {workout === 1 ? (<h3 className="home-h3">Workout Progress: {workout} Second</h3>) : (<h3 className="home-h3">Workout Progress: {workout} Seconds</h3>)}
+                    <h3 className="home-h3">Mindful Moments: {music} Seconds</h3>
+                    <h3 className="home-h3">Musical Bliss: {video} Seconds</h3>
                 </>
             ) : (
                 <h1 className="home-h1">Error</h1>
