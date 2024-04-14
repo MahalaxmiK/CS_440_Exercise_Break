@@ -28,7 +28,7 @@
 
 ### Mahin's Contributions For Final Application
 
-### Updated Login & Sign Up Pages For Better UI Feel
+#### Updated Login & Sign Up Pages For Better UI Feel
 
 #### Added Has Drink Functionality With Database Update (No longer necessary but Mahin worked on this)
 
