@@ -6,7 +6,13 @@ import musicImg from '../assets/music.jpeg';
 import { FaHome, FaUser } from 'react-icons/fa';
 import { IoMenu } from "react-icons/io5";
 import { HiOutlineLogout } from "react-icons/hi";
+import { IoClose } from "react-icons/io5";
 import UserContext from '../UserContext';
+import relaxPic from '../assets/relax.png'
+import musicPic from '../assets/musicpic.png'
+import BackgroundPic from "../assets/backgroundAll.png"
+import tryPic from "../assets/try.png"
+import  usePic from "../assets/useThis.png"
 
 /*
     Release 1 & Release 2: Sakinah Chadrawala's Contribution
@@ -16,10 +22,28 @@ const meditationChannelId = "UCVSaNtZoJMlx8SxLxsNa1lw"
 const musicChannelID = "UCGDPhXrv1Pwi8GvPrRgK_JA"
 
 const Relax = () =>{
+    const [isOpen, setIsOpen] = useState(false);
     const[meditationVideos, setMeditationVideos] = useState([]);
     const [musicVideos, setMusicnVideos] = useState([]);
     const navigate = useNavigate();
     const { userEmail } = useContext(UserContext);
+
+    const toggleMenu = () => {
+        setIsOpen(!isOpen);
+    };
+
+
+    const handleWorkoutButton = () => {
+        navigate('/intensity')
+    };
+
+    const handleRelaxButton = () => {
+        navigate('/relax')
+    };
+
+    const handleMapButton = () => {
+        navigate('/maps')
+    };
 
     useEffect(() => {
         fetchVideos(meditationChannelId)
@@ -91,42 +115,55 @@ const Relax = () =>{
 
 
     return(
-        <div className="relax-container">
-            <div className="relax-menu">
-                <IoMenu size={35} onClick={menuOptionClick} />
-            </div>
-            <h4>Relaxation Techniques</h4>
-            <h5>Meditate & Enhance Inner Peace</h5>
-            <div className = "relax-button-container">
-                <div className = "relax-image-container">
-                    <img src = {meditationImg} alt="meditation"/>
-                </div>
-                <button onClick={() => handleButtonClick(meditationVideos)} className="relax-btn"> Meditation</button>
-            </div>
-            <div className="divider"></div>
-            <h5>Listen To Good Music</h5>
-            <div className="relax-button-container">
-                <div className="relax-image-container">
-                <img src = {musicImg} alt="music"/>
-                </div>
-                <button onClick={() => handleButtonClick(musicVideos)} className="relax-btn"> Music</button>
-
-            </div>
-            <div className="bottom-navbar-relax">
-                <button className="icon-with-text" onClick={homeClick}>
-                    <FaHome />
-                    <span>Home</span>
-                </button>
-                <button className="icon-with-text" onClick={profileClick}>
-                    <FaUser />
-                    <span>User</span>
-                </button>
-                <button className="icon-with-text" onClick={logoutClick}>
-                    <HiOutlineLogout />
-                    <span>Logout</span>
-                </button>
+        <section className="home-section" style={{ backgroundImage: `url(${ usePic})`, backgroundSize: 'cover', backgroundPosition: 'center'  }}>
+        <header>
+        <ul className="navigation-home">
+                    <li><a href="#"  onClick={homeClick}>
+                    <div style={{ position: "relatitve" }}>
+                        Home
+                        <FaHome style={{ position: "absolute", top: 0, left: -20 }}/> {/* Using FaHome icon */}
+                    </div>
+                    </a></li>
+                    <li><a href="#"  onClick={profileClick}>
+                        <div style={{ position: "relative" }}>
+                            User
+                             <FaUser style={{ position: "absolute", top: 0, left: -20 }}/>{/* Using FaHome icon */}
+                         </div>
+                    </a></li>
+                    <li><a href="#"  onClick={logoutClick}>
+                        <div style={{ position: "relative" }}>
+                            Logout
+                            <HiOutlineLogout style={{ position: "absolute", top: 0, left: -20 }}/> {/* Using FaHome icon */}
+                         </div>
+                    </a></li>
+                </ul>
+    
+    
+        {/* <div className="relax-container"> */}
+        <div className="menu-relax-container">
+        <div className="relax-menu">
+                <IoMenu size={35} onClick={toggleMenu} />
             </div>
         </div>
+            <div className = "relax-button-container">
+                <button onClick={() => handleButtonClick(meditationVideos)} className="relax-btn" style= {{backgroundColor: 'transparent', backgroundSize: 'cover', backgroundPosition: 'center', color: 'white', fontSize:'22px' }}>Meditate & Enhance Inner Peace</button>
+           
+            {/* <div className="relax-button-container"> */}
+                <button onClick={() => handleButtonClick(musicVideos)} className="relax-btn" style= {{ backgroundColor: 'transparent', backgroundPosition: 'center', color: 'white', fontSize:'22px' }} > Listen To Good Music</button>
+
+            </div>
+        </header>
+        <div className={`menu-overlay ${isOpen ? 'open' : ''}`}>
+                <button className="exit-icon" onClick={toggleMenu}>
+                <IoClose size={30} style = {{color: '#f78731', background:'transparent'}} />
+                </button>
+                <ul className="navigation_menu">
+                    <li><a href="#" onClick={handleWorkoutButton}>Start Workout</a></li>
+                    <li><a href="#" onClick={handleRelaxButton}>Relaxation Techniques</a></li>
+                    <li><a href="#" onClick={handleMapButton}>Find a Nearby Store</a></li>
+                </ul>
+            </div>
+        </section>
     )
 }
 

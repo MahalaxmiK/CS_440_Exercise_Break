@@ -17,6 +17,9 @@ import HomeScreen from "./components/homeScreen";
 import PersonalPage from "./components/PersonalPage";
 import AfterWorkout from "./components/AfterWorkout";
 import { UserProvider } from './UserContext';
+import EBAHomePage from './components/EBAHomePage';
+import About from './components/about';
+import Quote from './components/quote'
 
 /*
   Team Contribution
@@ -26,6 +29,9 @@ function App() {
     <UserProvider>
       <BrowserRouter>
         <Routes>
+        <Route path="/EBAHomePage" element={<EBAHomePage />} exact />  
+        <Route path="/about" element={<About />} exact />
+        <Route path="/quote" element={<Quote />} exact />
           <Route path="/signup" element={<Signup />} exact />
           <Route path="/login" element={<LoginPage />} exact />
           <Route path="/drinkOption" element={<HasDrink />} exact />

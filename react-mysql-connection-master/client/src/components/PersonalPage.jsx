@@ -10,6 +10,12 @@ import { BiSolidTimeFive } from "react-icons/bi";
 import { FaFireAlt } from "react-icons/fa";
 import { IoPersonSharp } from "react-icons/io5";
 import UserContext from '../UserContext';
+import { IoClose } from "react-icons/io5";
+import PersonalPic from "../assets/personal.png"
+import { FaUserEdit } from "react-icons/fa";
+import BackgroundPic from "../assets/backgroundAll.png"
+import newPersonal from "../assets/personalnew.png"
+
 
 /*
     Release 2: Sakinah Chadrawala's Contribution
@@ -19,7 +25,13 @@ const PersonalPage = () => {
     const location = useLocation();
     const currEmail = new URLSearchParams(location.search).get('email');
     const [userInfo, setUserInfo] = useState(null);
+    const [isOpen, setIsOpen] = useState(false);
     const { userEmail } = useContext(UserContext);
+
+    const toggleMenu = () => {
+        setIsOpen(!isOpen);
+    };
+
 
     useEffect(() => {
         const fetchUserInfo = async () => {
@@ -37,13 +49,6 @@ const PersonalPage = () => {
             fetchUserInfo();
         }
     }, [currEmail]);
-    
-    function convertTime(totalSeconds) {
-        const minutes = totalSeconds / 60;
-        const hours = minutes / 60;
-
-        return `${Math.floor(hours)}h ${minutes % 60}m ${totalSeconds % 60}s`;
-    }
 
     const handlePersonal = () => {
         console.log('menu is clicked')
@@ -54,9 +59,22 @@ const PersonalPage = () => {
         navigate('/login');
     };
 
-    const menuOptionClick = () => {
-        navigate('/menu');
+
+    const handleWorkoutButton = () => {
+        navigate('/intensity')
     };
+
+    const handleRelaxButton = () => {
+        navigate('/relax')
+    };
+
+    const handleMapButton = () => {
+        navigate('/maps')
+    };
+
+    // const menuOptionClick = () => {
+    //     navigate('/menu');
+    // };
 
     const profileClick = () => {
         navigate(`/personalPage?email=${encodeURIComponent(userEmail)}`);
@@ -72,17 +90,49 @@ const PersonalPage = () => {
 
     
     return (
-        <div className="profile-container">
-           
+        <section className="home-section" style={{ backgroundImage: `url(${newPersonal })`, backgroundSize: 'cover', backgroundPosition: 'center'  }}>
+    <header>
+    <ul className="navigation_home">
+                <li><a href="#"  onClick={homeClick}>
+                <div style={{ position: "relative" }}>
+                    Home
+                    <FaHome style={{ position: "absolute", top: 0, left: -20 }}/> {/* Using FaHome icon */}
+                </div>
+                </a></li>
+                <li><a href="#"  onClick={profileClick}>
+                    <div style={{ position: "relative" }}>
+                        User
+                         <FaUser style={{ position: "absolute", top: 0, left: -20 }}/>{/* Using FaHome icon */}
+                     </div>
+                </a></li>
+                <li><a href="#"  onClick={handlePersonal}>
+                    <div style={{ position: "relative" }}>
+                        Personal
+                        <FaUserEdit style={{ position: "absolute", top: 0, left: -20 }}/> {/* Using FaHome icon */}
+                     </div>
+                </a></li>
+                <li><a href="#"  onClick={logoutClick}>
+                    <div style={{ position: "relative" }}>
+                        Logout
+                        <HiOutlineLogout style={{ position: "absolute", top: 0, left: -20 }}/> {/* Using FaHome icon */}
+                     </div>
+                </a></li>
+               
+            </ul>
+
+            <div className="menu-container">
             <div className="profile-menu">
-                <IoMenu size={35} onClick={menuOptionClick} />
+                <IoMenu size={35} onClick={toggleMenu} />
             </div>
+            </div>
+
+
             <div>
                 <img src={person_logo} alt="#" className="person_logo" />
                 {userInfo ? (
                    <h1 className="personal-info">
-                    <span className="name">{userInfo.fname.charAt(0).toUpperCase() + userInfo.fname.slice(1)}</span><br />
-                    <span className="email">{userInfo.email}</span>
+                    <span className="name">{userInfo.fname.charAt(0).toUpperCase()  +  userInfo.fname.slice(1)+ ' ' +  userInfo.lname}</span><br />
+                    {/* <span className="email">{userInfo.email}</span> */}
                     <div className='timeicon-hourtext' >
                         <BiSolidTimeFive className='time-icon' /><br />
                         <span className="total-hours">{convertTime((userInfo))}</span>
@@ -97,29 +147,19 @@ const PersonalPage = () => {
                 <h1 >Error</h1>
             )}
             </div>
-
-            <div className="personal-wrapper" onClick={handlePersonal}>
-                <hr className='line' ></hr>
-                <IoPersonSharp className='personal-icon'  />
-                <span className='personal-text' >Personal</span>
-                <hr className='b-line'  ></hr>
-        </div>
-        <div className="update-bottom-nav">
-            <button className="icon-with-text" onClick={homeClick}>
-                <FaHome />
-                <span>Home</span>
-            </button>
-            <button className="icon-with-text" onClick={profileClick}>
-                <FaUser />
-                <span>User</span>
-            </button>
-            <button className="icon-with-text" onClick={logoutClick}>
-                <HiOutlineLogout />
-                <span>Logout</span>
-            </button>
-        </div>
-
-    </div>
+    </header>
+    <div className={`menu-overlay ${isOpen ? 'open' : ''}`}>
+    <button className="exit-icon" onClick={toggleMenu}>
+    <IoClose size={30} style = {{color: '#f78731', background:'black'}} />
+    </button>
+    <ul className="navigation_menu">
+        <li><a href="#" onClick={handleWorkoutButton}>Start Workout</a></li>
+        <li><a href="#" onClick={handleRelaxButton}>Relaxation Techniques</a></li>
+        <li><a href="#" onClick={handleMapButton}>Find a Nearby Store</a></li>
+    </ul>
+</div>
+ </section>
+   
     );
 }
 export default PersonalPage;

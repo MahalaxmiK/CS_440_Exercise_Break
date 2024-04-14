@@ -3,6 +3,7 @@
     Release 2: Mahalaxmi's Contribution To Relax Screen CSS Modifications
 */
 
+
 .relax-container {
     position: absolute;
     display: flex;
@@ -51,23 +52,27 @@
 
 .relax-btn {
     position: relative;
-    width: 100px;
-    height: 40px;
+    width: 250px;
+    height: 250px;
     color: #0e0d0d;
-    background: lightblue;
+    background: transparent;
     padding: 10px;
     margin-block: 30;
     font-weight: 700;
     cursor: pointer;
     margin-top: 10px;
     margin-left: 40px;
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add transition for smooth animation */
+    box-shadow: 0px 2px 5px rgba(246, 116, 116, 0.1); 
 }
 
 .relax-button-container {
-    position: relative;
-    align-items: center;
-    margin-bottom: 10px;
-    margin-top: 10px;
+    display: flex;
+    flex-direction: row; /* Stack items vertically */
+    align-items: center; 
+    margin-left: 340px;
+    margin-top: 150px;
 }
 
 .relax-divider {
@@ -79,6 +84,126 @@ img {
     height: 200px;
     object-fit: cover;
 }
+
+
+
+.menu-relax-container{
+    position: fixed; /* or absolute, depending on your layout */
+    top: 0;
+    left: 0;
+    width: 25vw; /* Set the width to 25% of the viewport width */
+  }
+
+.relax-menu {
+    position: absolute;
+    /* padding: 20px; */
+    top: -45px;
+    padding-left: 30px;
+    color: white;
+  }
+
+
+.navigation-home{
+    position: absolute;
+    top: 6%;
+    right: 20px; /* Adjust this value as needed */
+    transform: translateY(-50%);
+    display: flex;
+  }
+.navigation-home li{
+    list-style: none;
+  
+  }
+.navigation-home li a{
+    display: inline-block;
+    color: #f96b00;
+    margin-right: 40px;
+    text-decoration: none;
+  
+  }
+  
+.navigation-home li a:hover{
+    color: #03a9f4;
+  }
+
+
+
+  .navigation_relax{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  .navigation_relax li{
+    padding: 10px 0;
+  
+  }
+  .navigation_relax li a{
+    text-decoration: none;
+      color: #333; /* Set the desired text color */
+      font-size: 18px; /* Set the desired font size */
+      display: block;
+      padding: 10px;
+  
+  }
+  
+  .navigation_relax li a:hover{
+    color: #03a9f4;
+  }
+
+  .menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: black;
+    color: rgb(246, 245, 245);
+    width: 20%; /* Adjust this value to make it 1/4 of the screen */
+    background-color: rgb(9, 10, 9); /* Set the desired background color */
+    z-index: 999; /* Ensure it's above other content */
+    transition: transform 0.3s ease-in-out; /* Add transition for smooth animation */
+    transform: translateX(-100%);
+}
+
+.menu-overlay.open {
+    transform: translateX(0); /* Slide in from the left when menu is open */
+}
+
+.navigation_menu {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+
+}
+
+.navigation_menu li {
+    padding: 10px 0;
+}
+
+.navigation_menu li a {
+    text-decoration: none;
+    color: rgb(242, 230, 230); /* Set the desired text color */
+    font-size: 18px; /* Set the desired font size */
+    display: block;
+    padding: 10px;
+}
+
+.navigation_menu li a:hover {
+    background-color: #f78731; /* Set the desired hover background color */
+    color:rgb(11, 11, 11);
+}
+
+.exit-icon{
+    position: relative;
+    left: 220px;
+    /* top: 20px;
+    right: 20px; */
+}
+
+
+
+
+
+
 
 .relax-image-container {
     display: flex;

@@ -1,11 +1,15 @@
 import React, { useState, useEffect, useContext } from "react";
 import './App.css';
+import { IoClose } from "react-icons/io5";
+
 import { useNavigate, useLocation } from "react-router-dom";
 import { FaHome, FaUser } from "react-icons/fa";
 import { HiOutlineLogout } from "react-icons/hi";
 import { IoMenu } from "react-icons/io5";
 import profile_logo from './assets/profile.jpg';
 import axios from "axios";
+import { FaUserCircle } from "react-icons/fa";
+import progressPic from './assets/progress.png'
 import UserContext from './UserContext';
 
 /*
@@ -29,9 +33,31 @@ const UpdateProfile = () => {
         weight: false,
         age: false,
     });
+
     const currEmail = new URLSearchParams(location.search).get('email');
     const [userInfo, setUserInfo] = useState(null);
+    const [isOpen, setIsOpen] = useState(false);
+
     const { userEmail } = useContext(UserContext);
+
+
+
+    const handleWorkoutButton = () => {
+        navigate('/intensity')
+    };
+
+    const handleRelaxButton = () => {
+        navigate('/relax')
+    };
+
+    const handleMapButton = () => {
+        navigate('/maps')
+    };
+
+
+    const toggleMenu = () => {
+        setIsOpen(!isOpen);
+    };
 
     useEffect(() => {
         const fetchUserInfo = async () => {
@@ -74,9 +100,9 @@ const UpdateProfile = () => {
         });
     };
 
-    const menuOptionClick = () => {
-        navigate('/menu');
-    };
+    // const menuOptionClick = () => {
+    //     navigate('/menu');
+    // };
 
     const logoutClick = () => {
         navigate('/login');
@@ -91,7 +117,7 @@ const UpdateProfile = () => {
     };
 
     const userDetailsUpdated = () => {
-        window.alert("User Details Successfully Updated!!!");
+        window.alert("User Details Updated Successfully!!!");
     };
 
     const enableInputs = (field) => {
@@ -102,19 +128,46 @@ const UpdateProfile = () => {
     };
 
     return (
-        <div className="update-container">
-            <div className="update-menu">
-                <IoMenu size={35} onClick={menuOptionClick} />
-            </div>
-            <div>
-                
-                <img src={profile_logo} alt="#" className="profile_logo" />
-                {userInfo ? (
-                    <h1 style={{ fontFamily: 'Georgia' }}>{userInfo.fname.charAt(0).toUpperCase() + userInfo.fname.slice(1)} {userInfo.lname.charAt(0).toUpperCase() + userInfo.lname.slice(1)}</h1>
+        <section className="home-section" style={{ backgroundImage: `url(${progressPic})`, backgroundSize: 'cover', backgroundPosition: 'center'  }}>
+        <header>
+        <ul className="navigation_update">
+                    <li><a href="#"  onClick={homeClick}>
+                    <div style={{ position: "relative" }}>
+                        Home
+                        <FaHome style={{ position: "absolute", top: 0, left: -20 }}/> {/* Using FaHome icon */}
+                    </div>
+                    </a></li>
+                    <li><a href="#"  onClick={profileClick}>
+                        <div style={{ position: "relative" }}>
+                            User
+                             <FaUser style={{ position: "absolute", top: 0, left: -20 }}/>{/* Using FaHome icon */}
+                         </div>
+                    </a></li>
+                    <li><a href="#"  onClick={logoutClick}>
+                        <div style={{ position: "relative" }}>
+                            Logout
+                            <HiOutlineLogout style={{ position: "absolute", top: 0, left: -20 }}/> {/* Using FaHome icon */}
+                         </div>
+                    </a></li>
+                </ul>
+    
+        {/* <div className="update-container"> */}
+        <div className="update-menu">
+        {/* <div className="menu-icon"> */}
+        <IoMenu size={30} onClick={toggleMenu} />
+    {/* </div> */}
+            <div className="user-info">
+            <FaUserCircle size={90} className="user-icon-update" />
+                                {userInfo ? (
+                    <h1 style={{ fontFamily: 'Georgia'}}>{userInfo.fname.charAt(0).toUpperCase() + userInfo.fname.slice(1)} {userInfo.lname.charAt(0).toUpperCase() + userInfo.lname.slice(1)}</h1>
             ) : (
                 <h1 >Error</h1>
             )}
+            
             </div>
+            <div className="some" ></div>
+            < h3 className="update-info-text" style={{ color: "white", position: "absolute",  left: "93%", bottom:"-30px",transform: "translateX(-50%)",  textAlign: "center" ,  position: "relative",  fontSize: "30px", fontFamily:'Georgia' }}>Update Info</h3>
+            <div className="updates-container">
             <form onSubmit={handleSubmit} className="update-inputs">
                 <input
                     type="email"
@@ -166,21 +219,20 @@ const UpdateProfile = () => {
                 />
                 <button type="submit" className="update-submit" onClick={userDetailsUpdated}>Update Profile Info</button>
             </form>
-            <div className="update-bottom-nav">
-                <button className="icon-with-text" onClick={homeClick}>
-                    <FaHome />
-                    <span>Home</span>
-                </button>
-                <button className="icon-with-text" onClick={profileClick}>
-                    <FaUser />
-                    <span>User</span>
-                </button>
-                <button className="icon-with-text" onClick={logoutClick}>
-                    <HiOutlineLogout />
-                    <span>Logout</span>
-                </button>
             </div>
         </div>
+        </header>
+        <div className={`menu-overlay ${isOpen ? 'open' : ''}`}>
+                <button className="exit-icon" onClick={toggleMenu}>
+                <IoClose size={30} style = {{color: 'black', background:'white'}} />
+                </button>
+                <ul className="navigation_menu">
+                    <li><a href="#" onClick={handleWorkoutButton}>Start Workout</a></li>
+                    <li><a href="#" onClick={handleRelaxButton}>Relaxation Techniques</a></li>
+                    <li><a href="#" onClick={handleMapButton}>Find a Nearby Store</a></li>
+                </ul>
+            </div>
+        </section>
     );
 }
 

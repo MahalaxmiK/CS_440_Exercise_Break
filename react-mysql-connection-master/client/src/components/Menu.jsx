@@ -1,19 +1,27 @@
-import React, { useContext } from 'react';
+import React, { useContext,  useState } from 'react';
 import '../Menu.css';
 import { ImCross } from 'react-icons/im'; 
 import { useNavigate } from "react-router-dom";
-import meditationImg from "../assets/music.jpeg"; 
-import musicImg from "../assets/meditation.jpg"; 
+import exerciseImg from "../assets/start_workout.png"; 
+import meditationImg from "../assets/meditation.jpg"; 
 import googelImg from "../assets/maps.avif"; 
 import UserContext from '../UserContext';
+
+
+
+
+//No Need for This Any More
 
 /*
     Release 2: Sakinah Chadrawala's Contribution
 */
 const Relax = () =>{
-    //  const [icon, setIcon] = useState(true);
     const navigate = useNavigate();
+    const [isOpen, setIsOpen] = useState(false);
     const { userEmail } = useContext(UserContext);
+    const toggleMenu = () => {
+        setIsOpen(!isOpen);
+    };
 
     const handleWorkoutButton = () => {
         navigate('/intensity')
@@ -32,33 +40,25 @@ const Relax = () =>{
     };
 
     return(
-        <div className = "container">
-            <button className='exit-icon'>
-                <ImCross onClick={homeClick}/>
-            </button>
+        <div className ="menu_container" >
+            <button className="menu-toggle" onClick={toggleMenu}>Open Menu</button>
+            {/* Menu content */}
+            {isOpen && (
+                <div className="menu-overlay">
+                    <button className="exit-icon" onClick={toggleMenu}>
+                        <ImCross />
+                    </button>
+                    <ul className="navigation_menu">
+                        <li><a href="#" onClick={handleWorkoutButton}>Start Workout</a></li>
+                        <li><a href="#" onClick={handleRelaxButton}>Relaxation Techniques</a></li>
+                        <li><a href="#" onClick={handleMapButton}>Find a Nearby Store</a></li>
+                    </ul>
+                </div>
+            )}
+            </div>
+    );
+            }
+    
 
-            <div className= "msg">Let's start your journey for the day!!</div>
-            <div className="button-container">
-                <div className="image-container">
-                <img src = {musicImg} alt="music"/>
-                </div>
-                <button className="w-btn" onClick={handleWorkoutButton}>Start Workout</button>
-            </div>
-            <div className = "button-container" onClick={handleRelaxButton}>
-                <div className = "image-container">
-                    <img src = {meditationImg} alt="meditation"/>
-                </div>
-                <button className="technique-btn">Relaxation Techniques</button>
-            </div>
-            
-            <div className="button-container">
-                <div className="image-container">
-                <img src = {googelImg} alt="google"/>
-                </div>
-                <button className="g-btn" onClick={handleMapButton}>Find Nearby Store</button>
-            </div>
-        </div>
-    )
-}
 
 export default Relax;

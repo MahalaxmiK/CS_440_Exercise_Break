@@ -1,4 +1,4 @@
-.profile-container {
+/* .profile-container {
   position: absolute;
   display: flex;
   justify-content: center;
@@ -16,16 +16,16 @@
   margin: 0 auto;
   position: relative;
   background-color: rgb(213, 210, 204);
-}
+} */
 
 .profile-menu {
   position: absolute;
   text-align: center;
   margin-right: 320px;
-  margin-bottom: 680px;
+  margin-bottom: 600px;
   margin-top: 60px;
 }
-
+/* 
 .update-bottom-nav {
   position: absolute;
   bottom: 20px;
@@ -37,77 +37,104 @@
   border-radius: 0px 0px 23px 23px;
   background-color: rgb(82, 79, 79);
   padding: 10px;
-}
+} */
 
 .person_logo {
   width: 125px;
   height: 125px; 
   border-radius: 50%;
   background-color: black;
-  margin: -300px auto 10px;
+  margin-left: 540px;
+  margin-top: 40px;
+  /* margin:10px; */
   display: block;
 }
+
+/* .person_info_container{
+  position: relative;
+  margin-top: 20px; 
+} */
   
 .personal-info {
   font-size: 16px;
   text-align: center;
+  margin-top: 20px;
+  padding-left: 530px;
+
+
 }
   
 .personal-info .name {
   font-size: 22px;
+
+  color: white;
+
 }
   
 .personal-info .email {
   font-size: 15px;
+  color: white;
+  /* padding-left: 430px; */
 }
 
 .total-hours {
   position: absolute;
-  left: 40px;
-  margin-top: 120px;
+  left: 500px;
+  margin-top: 240px;
   font-family: 'Georgia';
+  color: white;
 }
 
 .total-hours-text {
   text-align: center;
   position: absolute;
-  left: 35px;
-  margin-top: 145px;
-  margin-bottom: 90px;
+  left: 500px;
+  margin-top: 260px;
+  margin-bottom: 50px;
   font-family: 'Georgia';
+  color: white;
 }
 
 .time-icon {
   font-size: 80px;
   position: absolute;
-  left: 40px;
-  top: 270px;
+  left: 500px;
+  top: 405px;
+  color: whitesmoke;
 }
 
 .timeicon-hourtext {
   text-align: center;
   font-family: 'Georgia';
+  color: white;
+  padding-bottom: 100px;
+  padding-right: 50px;
 }
 
 .burn-icon {
   font-size: 80px;
   position: absolute;
-  right: 40px;
-  top: 270px;
+  right: 500px;
+  color: rgb(224, 89, 41);
+  top: 400px;
 }
 
 .calorie-count {
   position: absolute;
-  right: 45px;
-  margin-top: 105px;
+  /* left: 257px;
+  margin-top: 310px; */
+  right: 500px;
+  margin-top: 220px;
+  color: white;
   font-family: 'Georgia';
 }
 
 .burned-text {
   position:absolute;
   text-align: center;
-  right: 51px;
-  margin-top: 112px;
+  right: 500px;
+  color: white;
+  margin-top: 224px;
   font-family: 'Georgia';
 }
 
@@ -126,13 +153,26 @@
   font-size: 35px;
   left: 50px;
   margin-top: 350px;
+  color: white;
 }
 
+.exit-icon_personal{
+border: none;
+  position: relative;
+  left: 260px;
+}
+.profile-menu {
+  position: absolute;
+  padding: 20px;
+  top: -40px;
+  color: white;
+}
 .personal-text {
   position: absolute;
   margin-top: 350px; 
   font-weight: bold;
   left: 250px;
+  color: white;
   font-size: 20px;
 }
 
@@ -144,8 +184,86 @@
   left: 20px;
 }
 
+
+.navigation_personal{
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+.navigation_personal li{
+  padding: 10px 0;
+
+}
+.navigation_personal li a{
+  text-decoration: none;
+    color: #333; /* Set the desired text color */
+    font-size: 18px; /* Set the desired font size */
+    display: block;
+    padding: 10px;
+
+}
+
+.navigation_personal li a:hover{
+  color: #03a9f4;
+}
+
+
 .personal-wrapper {
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  margin-top: 350px;
+
+}
+
+
+
+.menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: black;
+  color: rgb(246, 245, 245);
+  width: 20%; /* Adjust this value to make it 1/4 of the screen */
+  background-color: rgb(9, 10, 9); /* Set the desired background color */
+  z-index: 999; /* Ensure it's above other content */
+  transition: transform 0.3s ease-in-out; /* Add transition for smooth animation */
+  transform: translateX(-100%);
+}
+
+.menu-overlay.open {
+  transform: translateX(0); /* Slide in from the left when menu is open */
+}
+
+.navigation_menu {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+
+}
+
+.navigation_menu li {
+  padding: 10px 0;
+}
+
+.navigation_menu li a {
+  text-decoration: none;
+  color: rgb(242, 230, 230); /* Set the desired text color */
+  font-size: 18px; /* Set the desired font size */
+  display: block;
+  padding: 10px;
+}
+
+.navigation_menu li a:hover {
+  background-color: #f78731; /* Set the desired hover background color */
+  color:rgb(11, 11, 11);
+}
+
+.exit-icon{
+  position: relative;
+  left: 220px;
+  border: none;
+  /* top: 20px;
+  right: 20px; */
 }

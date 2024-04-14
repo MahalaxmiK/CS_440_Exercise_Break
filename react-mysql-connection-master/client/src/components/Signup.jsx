@@ -4,6 +4,7 @@ import Axios from 'axios';
 import login_logo from '../assets/logos.png';
 import { useNavigate } from 'react-router-dom';
 import UserContext from '../UserContext';
+import signupPic from '../assets/signuppic.png'
 
 /*
     Release 1: Sakinah Chadrawala's Contribution
@@ -23,6 +24,21 @@ const Signup = () => {
 
     const navigate = useNavigate();
     const { setUserEmail } = useContext(UserContext); // Access setUserEmail from UserContext
+
+      
+  const HomeClick = () => {
+    navigate('/EBAHomePage');
+};
+
+const aboutClick = () => {
+    navigate('/about');
+};
+const QuoteClick = () => {
+    navigate('/quote');
+};
+const LoginClick = () => {
+    navigate('/login');
+};
 
     const register = async (e) => {
         e.preventDefault();
@@ -56,11 +72,18 @@ const Signup = () => {
     };
 
     return (
+        <section className="home-section" style={{ backgroundImage: `url(${signupPic})`, backgroundSize: 'cover', backgroundPosition: 'center'  }}>
+    <header>
+    <ul className="navigation_signup">
+                <li><a href="#"  onClick={HomeClick}>Home</a></li>
+                <li><a href="#"  onClick={aboutClick}>About</a></li>
+                <li><a href="#" onClick={QuoteClick}>Quote</a></li>
+                <li><a href="#" onClick={LoginClick}>Login</a></li>
+            </ul>
+            <a href="#" className="logo"  style={{ color: "white", position: "absolute", top: "20px", left: "7%" }}> Exercise Break</a>
+           < h3 style={{ color: "white", position: "absolute", bottom: '-120%', left: "50%", transform: "translateX(-50%)", fontFamily: 'Georgia' }}>CREATE NEW ACCOUNT!</h3>
         <div className="signup-container">
             <form>
-                <img src={login_logo} alt="#" className="app-logo" />
-                <h4>Exercise Break App</h4>
-                <h3>Create New Account!</h3>
                 <div className="inputs">
                     <input type="text" onChange={(e) => setFname(e.target.value)} placeholder="Enter your First Name" />
                     <input type="text" onChange={(e) => setLname(e.target.value)} placeholder="Enter your Last Name" />
@@ -79,6 +102,8 @@ const Signup = () => {
             </form>
             {registerStatus && <div className="status-message">{registerStatus}</div>}
         </div>
+        </header>
+            </section>
     );
 };
 
