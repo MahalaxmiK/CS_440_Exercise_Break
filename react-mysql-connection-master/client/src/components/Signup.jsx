@@ -1,7 +1,6 @@
 import React, { useState, useContext } from 'react';
 import '../Signup.css';
 import Axios from 'axios';
-import login_logo from '../assets/logos.png';
 import { useNavigate } from 'react-router-dom';
 import UserContext from '../UserContext';
 import signupPic from '../assets/signuppic.png'
@@ -9,6 +8,7 @@ import signupPic from '../assets/signuppic.png'
 /*
     Release 1: Sakinah Chadrawala's Contribution
     Release 2: Mahin Patel's Contribution
+    Release 2: Noura's Contribution
 */
 const Signup = () => {
     const [fname, setFname] = useState('');
@@ -27,7 +27,7 @@ const Signup = () => {
 
       
   const HomeClick = () => {
-    navigate('/EBAHomePage');
+    navigate('/');
 };
 
 const aboutClick = () => {

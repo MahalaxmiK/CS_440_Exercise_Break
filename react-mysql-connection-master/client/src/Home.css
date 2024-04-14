@@ -1,15 +1,15 @@
 /*
     Release 1 & Release 2: Mahin Patel Pages CSS Contribution
+    Release 3 - Noura's Contribution To This CSS File
 */
 @import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap');
-
-
 
 * {
     box-sizing: border-box;
 
 }
-section{
+
+section {
     position: relative;
     width: 100%;
     min-height:100vh;
@@ -18,7 +18,8 @@ section{
     align-items: center;  
     padding: 100px;
 }
-header{
+
+header {
     position: absolute;
     top: 0;
     left: 0;
@@ -27,13 +28,13 @@ header{
     display: flex;
     justify-content: space-between;
     align-items: center;
-
 }
-header .logo{
+
+header .logo {
     position: relative;
     font-size: 2em;
     margin-left: -45px;
-   
+
     text-transform: uppercase;
     /* transition: 0.5s; */
     font-weight: 700;
@@ -44,24 +45,25 @@ header .logo{
     text-decoration: none;
     letter-spacing: 1px;
 }
-header .navigation{
+
+header .navigation {
     position: relative;
     display: flex;
 }
-header .navigation li{
-    list-style: none;
 
+header .navigation li {
+    list-style: none;
 }
-header .navigation li a{
+
+header .navigation li a {
     display: inline-block;
     color: #F96B00;
     font-weight: bold;
     margin-right: 40px;
     text-decoration: none;
-
 }
 
-header .navigation li a:hover{
+header .navigation li a:hover {
     color: #03a9f4;
 }
 
@@ -95,8 +97,6 @@ header .navigation li a:hover{
   white-space: nowrap;
   will-change: box-shadow,transform;
   font-size: 18px;
-
-
 }
 
 .pushable:focus {
@@ -114,68 +114,68 @@ header .navigation li a:hover{
 }
 
 
-
-
-
-.content_home{
+.content_home {
     max-width: 600px;
     /* if you want to put it back to the left remove next two lines */
     margin-left: auto; 
     margin-right: 0px;
 }
-.content_home_about{
+
+.content_home_about {
     max-width: 600px;
-    
 }
-.content_home_about .contentBx_about h2{
+
+.content_home_about .contentBx_about h2 {
     font-size: 1.5em;
     color: #fff;
     line-height: 1em;
 }
 
-.content_home_quote{
-    max-width: 600px;
-    
+.content_home_quote { 
+    max-width: 600px; 
 }
-.content_home_quote .contentBx_quote h2{
+
+.content_home_quote .contentBx_quote h2 {
     font-size: 1.5em;
     color: #fff;
     line-height: 1em;
-
 }
 
-.content_home .contentBx h2{
+.content_home .contentBx h2 {
     font-size: 4em;
     color: #fff;
     line-height: 1em;
 }
-.content_home .contentBx a{
+
+.content_home .contentBx a {
     display: inline-block;
     padding: 10px 30px;
     background: linear-gradient(90deg, rgba(249,107,0,1) 0%, rgba(70,86,208,1) 50%, rgba(249,107,0,1) 100%);
     ;
     color: #fff;
-    
     text-decoration: none;
     font-weight: 500;
     letter-spacing: 1px;
 }
-.sci{
+
+.sci {
     position: absolute;
     bottom: 30px;
     display: flex;
 }
-.sci li{
+
+.sci li {
     list-style: none;
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
-.toggleMenu{
+
+.toggleMenu {
     display: none;
 }
-.sci li a{
+
+.sci li a {
     position: relative;
     display: inline-block;
     margin-right: 20px;
@@ -183,17 +183,17 @@ header .navigation li a:hover{
     transform: scale(1.5);
 }
 
-@media (max-width: 991px){
-    header{
+@media (max-width: 991px) {
+    header {
         padding: 15px 40px;
     }
-    section{
+    section {
         padding: 40px;
     }
-    .content_home .contentBx h2{
+    .content_home .contentBx h2 {
         font-size: 2.5em;
     }
-    header .navigation{
+    header .navigation {
         position: fixed;
         top: 0;
         right: 0;
@@ -206,14 +206,14 @@ header .navigation li a:hover{
         align-items: center;
         flex-direction: column;
     }
-    header .navigation.active{
+    header .navigation.active {
         display: flex;
     }
-    header .navigation li a{
+    header .navigation li a {
         font-size: 24px;
         margin: 10px 0;
     }
-    .toggleMenu{
+    .toggleMenu {
         position: relative;
         width: 30px;
         height: 30px;
@@ -221,40 +221,28 @@ header .navigation li a:hover{
         z-index: 11;
         display: block;
     }
-    .toggleMenu.active{
+    .toggleMenu.active {
         cursor: pointer;
         z-index: 11;
-
     }
-
-
  
 }
 
-
-
-
-
-
-
-
-
-
-.workout_sum{
-   
+.workout_sum {
     margin-left: 180px;
     margin-top: 120px;
 }
-.workout-title-after{
+
+.workout-title-after {
     align-items: center;
-     color: white;
-     font-size: 25px;
-     font-family: 'Georgia';  
-}
-.after-buttons{
-    align-items: column;
+    color: white;
+    font-size: 25px;
+    font-family: 'Georgia';  
 }
 
+.after-buttons {
+    align-items: column;
+}
 
 .login-container {
     display: flex;
@@ -266,7 +254,6 @@ header .navigation li a:hover{
     width: 400px;
     border: 1px solid rgb(219, 219, 219);
     margin: 50px auto 0;
-
 }
 
 .app-logo {
@@ -288,8 +275,6 @@ header .navigation li a:hover{
     margin: auto;
     padding-bottom: 30px;
 }
-
-
 
 .submit {
     display: flex;
@@ -315,14 +300,14 @@ header .navigation li a:hover{
     text-align: center;
 } */
 
-
 .timer-container {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
 }
-.The-container{
+
+.The-container {
     margin-left: 400px;
     margin-top: 145px;
 }
@@ -348,7 +333,6 @@ header .navigation li a:hover{
     font-size: 19px;
     font-weight: 700;
     cursor: pointer;
-
 }
 
 .button:active {
@@ -370,7 +354,6 @@ header .navigation li a:hover{
 
 * {
     box-sizing: border-box;
-
 }
 
 .login-container {
@@ -405,8 +388,6 @@ header .navigation li a:hover{
     margin: auto;
     padding-bottom: 30px;
 }
-
-
 
 .submit {
     display: flex;
@@ -452,7 +433,6 @@ header .navigation li a:hover{
     background-color: rgb(213, 210, 204);
 }
 
-
 .timer-container {
     display: flex;
     justify-content: center;
@@ -467,11 +447,9 @@ header .navigation li a:hover{
 
 }
 
-
 .timer {
     text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
     font-size: 5em;
-
 }
 
 .timer_buttons {
@@ -481,7 +459,6 @@ header .navigation li a:hover{
     flex-direction: row;
     margin-top: 50px;
     gap: 20px;
-
 }
 
 .timer_buttons button {
@@ -493,17 +470,16 @@ header .navigation li a:hover{
     border: none;
     outline: none;
     background-color: #2b8ce8;
-
     color: lightgreen;
     box-shadow: -3px -3px 15px rgb(54, 54, 54),
-        3px 3px 15px rgb(0, 0, 0);
+    3px 3px 15px rgb(0, 0, 0);
 
 
 }
 
 .timer_buttons button:active {
     box-shadow: inset 3px 3px 10px rgb(13, 13, 13),
-        inset -3px -3px 10px rgb(68, 68, 68);
+    inset -3px -3px 10px rgb(68, 68, 68);
 }
 
 
@@ -523,7 +499,6 @@ header .navigation li a:hover{
     font-size: 19px;
     font-weight: 700;
     cursor: pointer;
-
 }
 
 .button:active {
@@ -551,14 +526,14 @@ header .navigation li a:hover{
 
     color: lightgreen;
     box-shadow: -3px -3px 15px rgb(54, 54, 54),
-        3px 3px 15px rgb(0, 0, 0);
+    3px 3px 15px rgb(0, 0, 0);
 
 
 }
 
 .timer_endWorkout button:active {
     box-shadow: inset 3px 3px 10px rgb(13, 13, 13),
-        inset -3px -3px 10px rgb(68, 68, 68);
+    inset -3px -3px 10px rgb(68, 68, 68);
 }
 
 
@@ -655,9 +630,6 @@ menu-ble-container {
     fill: rgb(17, 149, 225);
 }
 
-
-
-
 .icon-with-text {
     display: flex;
     flex-direction: column;
@@ -681,7 +653,7 @@ menu-ble-container {
 
     color: lightgreen;
     box-shadow: -3px -3px 15px rgb(99, 94, 94),
-        3px 3px 15px rgb(0, 0, 0);
+    3px 3px 15px rgb(0, 0, 0);
 }
 
 .icon-with-text button:active {
@@ -722,8 +694,6 @@ menu-ble-container {
 .select-clicked {
     border: 2px #26489a solid;
     box-shadow: 0 0 0.8em #26489a;
-
-
 }
 
 .select:hover {
@@ -737,7 +707,6 @@ menu-ble-container {
     border-right: 5px solid transparent;
     border-top: 6px solid #fff;
     transition: 0.3s;
-
 }
 
 .caret-rotate {
@@ -768,7 +737,6 @@ menu-ble-container {
     margin: 0.3em 0;
     border-radius: 0.5em;
     cursor: pointer;
-
 }
 
 .menu li:hover {
@@ -777,7 +745,6 @@ menu-ble-container {
 
 .active {
     background: #23242a;
-
 }
 
 .menu-open {
@@ -805,15 +772,13 @@ menu-ble-container {
     background-color: rgb(213, 210, 204);
 }
 .intensity-container{
-        display: flex; 
-        /* /* flex-direction: row; */
-        margin: 300px auto;
-        
-
-        margin-bottom: 100px;
-        margin-left: 290px;
-        /* padding-right: 500px; */
-    }
+    display: flex; 
+    /* /* flex-direction: row; */
+    margin: 300px auto;
+    margin-bottom: 100px;
+    margin-left: 290px;
+    /* padding-right: 500px; */
+}
     
 
 .workout-title {
@@ -825,9 +790,6 @@ menu-ble-container {
     top: 280px;
     left: 500px;
     z-index: 999;
-    /* margin-bottom: 250px;
-    margin-left: 420px; */
-
 }
 
 
@@ -888,8 +850,6 @@ menu-ble-container {
     gap: 30px
 }
 
-
-
 .button_one,
 .button_two {
     display: flex;
@@ -922,7 +882,7 @@ menu-ble-container {
 .button_one button:active,
 .button_two button:active {
     box-shadow: inset 3px 3px 10px rgb(13, 13, 13),
-        inset -3px -3px 10px rgb(68, 68, 68);
+    inset -3px -3px 10px rgb(68, 68, 68);
 }
 
 .afterworkout_wrapper {
@@ -947,7 +907,6 @@ menu-ble-container {
 
 .workout-title {
     padding-bottom: 40px;
-
 }
 
 .workout-title-other {
@@ -971,9 +930,6 @@ menu-ble-container {
     justify-content: center;
     align-items: center;
     padding: 20px;
-    /* margin-top: 10px; */
-
-
 }
 
 .start_New_Workout button,
@@ -990,163 +946,120 @@ menu-ble-container {
 
     color: lightgreen;
     box-shadow: -3px -3px 15px rgb(54, 54, 54),
-        3px 3px 15px rgb(0, 0, 0);
-
+    3px 3px 15px rgb(0, 0, 0);
 
 }
+
 .navigation-count {
   position: absolute;
-top: 6%;
-right: 20px; /* Adjust this value as needed */
-transform: translateY(-50%);
-display: flex;
+    top: 6%;
+    right: 20px; /* Adjust this value as needed */
+    transform: translateY(-50%);
+    display: flex;
 }
-.navigation-count li{
-list-style: none;
 
+.navigation-count li {
+    list-style: none;
 }
-.navigation-count li a{
 
+.navigation-count li a {
     display: inline-block;
     color: #f96b00;
     margin-right: 40px;
     text-decoration: none;
-  
-  
-
 }
 
-.navigation-count li a:hover{
-color: #03a9f4;
+.navigation-count li a:hover {
+    color: #03a9f4;
 }
-.navigation-home{
+
+.navigation-home {
     position: absolute;
     top: 6%;
     right: 20px; 
     transform: translateY(-50%);
     display: flex;
-  }
-.navigation-home li{
+}
+
+.navigation-home li {
     list-style: none;
-  
-  }
-.navigation-home li a{
- 
-        display: inline-block;
-        color: #F96B00;
-        margin-right: 40px;
-        text-decoration: none;
-      
-      
-  
-  }
+}
+
+.navigation-home li a {
+    display: inline-block;
+    color: #F96B00;
+    margin-right: 40px;
+    text-decoration: none;  
+}
   
 .navigation-home li a:hover{
     color: #03a9f4;
-  }
+}
 
-
-
-
-  .navigation-WI{
+.navigation-WI {
     position: fixed;
     transform: translateY(-50%);
     display: flex;
     top: 5%;
     right: 20px; 
     z-index: 999;
-  }
-.navigation-WI li{
+}
+
+.navigation-WI li {
     list-style: none;
-  
-  }
-.navigation-WI li a{
- 
-        display: inline-block;
-        color: #F96B00;
-        margin-right: 40px;
-        text-decoration: none;
-      
-      
-  
-  }
+}
+
+.navigation-WI li a {
+    display: inline-block;
+    color: #F96B00;
+    margin-right: 40px;
+    text-decoration: none;
+}
   
 .navigation-WI li a:hover{
     color: #03a9f4;
-  }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
+}
 
 .menu-intensity-container{
     position: fixed; /* or absolute, depending on your layout */
     top: 0;
     left: 0;
     /* width: 25vw; Set the width to 25% of the viewport width */
-  }
+}
 
 .intensity-menu {
     position: absolute;
     padding: 20px;
     color: white;
-  }
+}
 
-
-
-  .navigation_intensity{
+.navigation_intensity {
     list-style-type: none;
     padding: 0;
     margin: 0;
-  }
-  .navigation_intensity li{
+}
+
+.navigation_intensity li {
     padding: 10px 0;
-  
-  }
-  .navigation_intensity li a{
+}
+
+.navigation_intensity li a {
     text-decoration: none;
-      color: #333; /* Set the desired text color */
-      font-size: 18px; /* Set the desired font size */
-      display: block;
-      padding: 10px;
-  
-  }
-  .exit-icon_intensity{
+    color: #333; /* Set the desired text color */
+    font-size: 18px; /* Set the desired font size */
+    display: block;
+    padding: 10px; 
+}
+
+.exit-icon_intensity {
     border: none;
-      position: relative;
-      left: 260px;
-    }
+    position: relative;
+    left: 260px;
+}
   
-  .navigation_intensity li a:hover{
+.navigation_intensity li a:hover {
     color: #03a9f4;
-  }
-
-
-
-
-
-
-
-
-
-
-
-
+}
 
 .menu-overlay {
     position: fixed;
@@ -1170,7 +1083,6 @@ color: #03a9f4;
     list-style-type: none;
     padding: 0;
     margin: 0;
-
 }
 
 .navigation_menu li {
@@ -1190,9 +1102,7 @@ color: #03a9f4;
     color:rgb(11, 11, 11);
 }
 
-.exit-icon{
+.exit-icon {
     position: relative;
     left: 220px;
-    /* top: 20px;
-    right: 20px; */
 }

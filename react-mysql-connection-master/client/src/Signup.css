@@ -1,6 +1,7 @@
 /*
     Release 1: Sakinah Chadrawala's Sign Up CSS Contribution
-    Release 2: Mahin Patel Sign Up CSS Contribution
+    Release 2: Mahin Patel's Sign Up CSS Contribution
+    Release 3: Noura's Contribution To This CSS File
 */
 
 .signup-container {
@@ -13,7 +14,6 @@
     background-color: transparent ;
     border: 1px solid #ccc;
     padding: 20px;
-    /* margin-top: 100px; */
 }
 
 /* Image CSS Start */
@@ -51,29 +51,28 @@
     padding-bottom: 7px;
 }
 
-
-header .navigation_signup{
+header .navigation_signup {
     position: absolute;
     top: 50%;
     right: 20px; /* Adjust this value as needed */
     transform: translateY(-50%);
     display: flex;
-  }
-  header .navigation_signup li{
+}
+
+header .navigation_signup li {
     list-style: none;
+}
   
-  }
-  header .navigation_signup li a{
+header .navigation_signup li a {
     display: inline-block;
     color: #F96B00;
     margin-right: 40px;
     text-decoration: none;
+}
   
-  }
-  
-  header .navigation_signup li a:hover{
+header .navigation_signup li a:hover {
     color: #03a9f4;
-  }
+}
 
 /* H3 CSS End */
 

@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import axios from "axios";
-
 import { PieChart, Pie, Tooltip } from 'recharts';
 import '../homeScreen.css';
 import { IoClose } from "react-icons/io5";
@@ -13,6 +12,7 @@ import progressPic from '../assets/progress.png'
 
 /*
     Release 2: Mahin Patel's Contribution
+    Release 3: Mahalaxmi & Noura's Contribution
 */
 const HomeScreen = () => {
     const navigate = useNavigate();
@@ -65,8 +65,6 @@ const HomeScreen = () => {
     const homeClick = () => {
         navigate(`/home?email=${encodeURIComponent(userEmail)}`);
     };
-
-
 
     const handleWorkoutButton = () => {
         navigate('/intensity')
@@ -135,9 +133,9 @@ const HomeScreen = () => {
 <div className='bottom_container_sum' >
             {userInfo ? (
                 <>
-                    {workout === 1 ? (<h3 className="home-h6">Workout Progress: {workout} Minute</h3>) : (<h3 className="home-h6">Workout Progress: {workout} Minutes</h3>)}
-                    <h3 className="home-h7">Mindful Moments: {music} Hours</h3>
-                    <h3 className="home-h8">Musical Bliss: {video} Hours</h3>
+                    {workout === 1 ? (<h3 className="home-h6">Workout Progress: {workout} Second</h3>) : (<h3 className="home-h6">Workout Progress: {workout} Seconds</h3>)}
+                    {music === 1 ? (<h3 className="home-h7">Mindful Moments: {music} Second</h3>) : (<h3 className="home-h7">Mindful Moments: {music} Seconds</h3>)}
+                    {video === 1 ? (<h3 className="home-h8">Musical Bliss: {video} Second</h3>) : (<h3 className="home-h8">Musical Bliss: {video} Seconds</h3>)}
                 </>
             ) : (
                 <h1 className="home-h1">Error</h1>

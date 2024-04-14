@@ -11,6 +11,9 @@ import UserContext from '../UserContext';
 import axios from 'axios';
 import timerPic from '../assets/thisCount.png'
 
+/*
+    Release 2 & 3: Noura Almasri's Contribution
+*/
 const formatTime = (time) => {
     let minutes = Math.floor(time / 60)
     let seconds = Math.floor(time - minutes * 60)
@@ -35,7 +38,6 @@ const CountDown = () => {
     const timerId = useRef();
     const [updateStatus, setUpdateStatus] = useState("");
     const [userInfo, setUserInfo] = useState(null);
-    const [lastAlertTime, setLastAlertTime] = useState(0); // State to keep track of the last time the alert was shown
     const [showAlert, setShowAlert] = useState(false); 
     const { userEmail } = useContext(UserContext);
     const [isOpen, setIsOpen] = useState(false);
@@ -43,6 +45,7 @@ const CountDown = () => {
     console.log("EMAIL HERE: ", userEmail);
     console.log("BEFORE initialDuration: ", initialDuration);
     console.log("BEFORE countdown: ", countdown);
+    
     useEffect(() => {
         const fetchUserInfo = async () => {
             try {
@@ -77,7 +80,7 @@ const CountDown = () => {
         const weightKg = userWeight * 0.453592; 
         const totalTimeSeconds = (workoutDurationInMinutes * 60) + userTotalTime;
         
-        // MODIFIED Calculations
+        // MODIFIED Calculations (Mahalaxmi's Contribution, lines 85 to 90)
         var hours = Math.floor(totalTimeSeconds / (60 * 60));
         var divisor_for_minutes = totalTimeSeconds % (60 * 60);
         var minutes = Math.floor(divisor_for_minutes / 60);
@@ -97,6 +100,7 @@ const CountDown = () => {
                     return { value: 2.5 };
             }
         };
+
         const MET = getMET(intensity);
         const TEE = (MET.value * weightKg * workoutDurationInMinutes.toFixed(2))/200;
         let userCalories = userInfo ? userInfo.calories : 0.0;
@@ -129,13 +133,9 @@ const CountDown = () => {
         setPaused(true);
     };
 
-
-
     const toggleMenu = () => {
         setIsOpen(!isOpen);
     };
-
-
 
     const handleWorkoutButton = () => {
         navigate('/intensity')
@@ -160,10 +160,6 @@ const CountDown = () => {
         navigate('/login');
     };
 
-    // const menuOptionClick = () => {
-    //     navigate('/menu');
-    // };
-
     const profileClick = () => {
         navigate(`/personalPage?email=${encodeURIComponent(userEmail)}`);
     };
@@ -173,10 +169,8 @@ const CountDown = () => {
     };
 
     const maxReached = (heartRateRN) =>{
-     
         const maxThres = 100 - (userInfo ? userInfo.age : 0); // Calculate max heart rate threshold based on user's age
        
-    
         if (heartRateRN >= maxThres && hasAlerted == false) {
             // Show the alert if it's not already shown
             window.alert(`Your heart rate  has reached the maximum threshold. Please take a break!`);
@@ -194,10 +188,7 @@ const CountDown = () => {
         setHeartRates(prevHeartRates => [...prevHeartRates, heartRateValue]); // Add the new heart rate to the heartRates array
         console.log('Heart Rate from this file heart:', heartRateValue);
         maxReached(heartRateValue);
-        
-       
     };
-
 
     const connectBLEDevice = async (event) => {
         event.preventDefault(); 

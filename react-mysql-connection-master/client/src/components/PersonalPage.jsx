@@ -8,17 +8,15 @@ import { HiOutlineLogout } from "react-icons/hi";
 import person_logo from '../assets/person.jpeg';
 import { BiSolidTimeFive } from "react-icons/bi";
 import { FaFireAlt } from "react-icons/fa";
-import { IoPersonSharp } from "react-icons/io5";
 import UserContext from '../UserContext';
 import { IoClose } from "react-icons/io5";
-import PersonalPic from "../assets/personal.png"
 import { FaUserEdit } from "react-icons/fa";
-import BackgroundPic from "../assets/backgroundAll.png"
 import newPersonal from "../assets/personalnew.png"
 
 
 /*
     Release 2: Sakinah Chadrawala's Contribution
+    Release 3: Noura's Contribution
 */
 const PersonalPage = () => {
     const navigate = useNavigate();
@@ -31,7 +29,6 @@ const PersonalPage = () => {
     const toggleMenu = () => {
         setIsOpen(!isOpen);
     };
-
 
     useEffect(() => {
         const fetchUserInfo = async () => {
@@ -59,7 +56,6 @@ const PersonalPage = () => {
         navigate('/login');
     };
 
-
     const handleWorkoutButton = () => {
         navigate('/intensity')
     };
@@ -71,10 +67,6 @@ const PersonalPage = () => {
     const handleMapButton = () => {
         navigate('/maps')
     };
-
-    // const menuOptionClick = () => {
-    //     navigate('/menu');
-    // };
 
     const profileClick = () => {
         navigate(`/personalPage?email=${encodeURIComponent(userEmail)}`);
@@ -162,4 +154,5 @@ const PersonalPage = () => {
    
     );
 }
+
 export default PersonalPage;

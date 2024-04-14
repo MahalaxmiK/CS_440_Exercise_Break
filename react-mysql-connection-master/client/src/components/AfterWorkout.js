@@ -10,6 +10,9 @@ import '../Home.css';
 import UserContext from '../UserContext';
 import afterPic from '../assets/after.png'
 
+/*
+    Release 2 & Release 3: Noura Almasri's Contribution
+*/
 const AfterWorkout = () => {
     const navigate = useNavigate();
     const location = useLocation();
@@ -23,7 +26,6 @@ const AfterWorkout = () => {
     const toggleMenu = () => {
         setIsOpen(!isOpen);
     };
-
 
     const handleWorkoutButton = () => {
         navigate('/intensity')
@@ -61,11 +63,6 @@ const AfterWorkout = () => {
     const exitWorkout = () => {
         navigate(`/home?email=${encodeURIComponent(userEmail)}`);
     };
-  
-  
-    // const menuOptionClick = () => {
-    //     navigate('/menu');
-    // };
 
     const logoutClick = () => {
         navigate('/login');
@@ -122,7 +119,7 @@ return (
         <div class= "exit_workout">
         <button onClick={exitWorkout}>Exit</button>
         </div>
-        </div>
+    </div>
      
     </header>
         <div className={`menu-overlay ${isOpen ? 'open' : ''}`}>
@@ -139,7 +136,8 @@ return (
   
 )
 }
-export default AfterWorkout
+
+export default AfterWorkout;
 
 
 

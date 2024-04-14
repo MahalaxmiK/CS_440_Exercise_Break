@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, useContext } from "react";
+import React, { useState } from "react";
 import '../Home.css';
 import { useNavigate} from "react-router-dom";
 import { FaSquareFacebook } from "react-icons/fa6";
@@ -8,12 +8,14 @@ import { IoMenuSharp } from "react-icons/io5";
 import { IoClose } from "react-icons/io5";
 import quoteImage from '../assets/Quote.png'; 
 
-
+/*
+    Release 3: Noura's Contribution
+*/
 function Quote() {
     const navigate = useNavigate();
 
     const HomeClick = () => {
-        navigate('/EBAHomePage');
+        navigate('/');
     };
 
     const aboutClick = () => {
@@ -28,13 +30,15 @@ function Quote() {
 
 
     const [menuActive, setMenuActive] = useState(false);
-        // Define toggleMenu function here
-        function toggleMenu() {
-            const toggleMenu = document.querySelector('.toggleMenu');
-            const navigation = document.querySelector('.navigation');
-            toggleMenu.classList.toggle('active');
-            setMenuActive(prevMenuActive => !prevMenuActive);
-        }
+    
+    // Define toggleMenu function here
+    function toggleMenu() {
+        const toggleMenu = document.querySelector('.toggleMenu');
+        const navigation = document.querySelector('.navigation');
+        toggleMenu.classList.toggle('active');
+        setMenuActive(prevMenuActive => !prevMenuActive);
+    }
+
     return (
 
    
@@ -69,6 +73,6 @@ function Quote() {
 
 );
 
-    
 }
+
 export default Quote;

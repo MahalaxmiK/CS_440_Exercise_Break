@@ -1,8 +1,8 @@
 /*
     Release 1 & 2: Sakinah's Contribution To Relax Screen CSS
     Release 2: Mahalaxmi's Contribution To Relax Screen CSS Modifications
+    Release 3: Noura's Contribution To This File
 */
-
 
 .relax-container {
     position: absolute;
@@ -85,9 +85,7 @@ img {
     object-fit: cover;
 }
 
-
-
-.menu-relax-container{
+.menu-relax-container {
     position: fixed; /* or absolute, depending on your layout */
     top: 0;
     left: 0;
@@ -96,11 +94,10 @@ img {
 
 .relax-menu {
     position: absolute;
-    /* padding: 20px; */
     top: -45px;
     padding-left: 30px;
     color: white;
-  }
+}
 
 
 .navigation-home{
@@ -109,48 +106,48 @@ img {
     right: 20px; /* Adjust this value as needed */
     transform: translateY(-50%);
     display: flex;
-  }
-.navigation-home li{
+} 
+
+.navigation-home li {
     list-style: none;
   
-  }
-.navigation-home li a{
+}
+
+.navigation-home li a {
     display: inline-block;
     color: #f96b00;
     margin-right: 40px;
     text-decoration: none;
+}
   
-  }
-  
-.navigation-home li a:hover{
+.navigation-home li a:hover {
     color: #03a9f4;
-  }
+}
 
-
-
-  .navigation_relax{
+.navigation_relax {
     list-style-type: none;
     padding: 0;
     margin: 0;
-  }
-  .navigation_relax li{
-    padding: 10px 0;
-  
-  }
-  .navigation_relax li a{
-    text-decoration: none;
-      color: #333; /* Set the desired text color */
-      font-size: 18px; /* Set the desired font size */
-      display: block;
-      padding: 10px;
-  
-  }
-  
-  .navigation_relax li a:hover{
-    color: #03a9f4;
-  }
+}
 
-  .menu-overlay {
+.navigation_relax li {
+    padding: 10px 0;
+}
+
+.navigation_relax li a { 
+    text-decoration: none;
+    color: #333; /* Set the desired text color */
+    font-size: 18px; /* Set the desired font size */
+    display: block;
+    padding: 10px;
+
+}
+  
+.navigation_relax li a:hover {
+    color: #03a9f4;
+}
+
+.menu-overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -172,7 +169,6 @@ img {
     list-style-type: none;
     padding: 0;
     margin: 0;
-
 }
 
 .navigation_menu li {
@@ -195,15 +191,7 @@ img {
 .exit-icon{
     position: relative;
     left: 220px;
-    /* top: 20px;
-    right: 20px; */
 }
-
-
-
-
-
-
 
 .relax-image-container {
     display: flex;

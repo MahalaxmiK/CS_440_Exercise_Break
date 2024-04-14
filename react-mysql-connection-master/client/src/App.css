@@ -7,6 +7,8 @@
 /*
   Release 1 - Login CSS For Mahalaxmi's Screen
   Release 2 - Login CSS for Mahin's Screen
+  Release 1, 2, 3 - Mahalaxmi's Contribution To This CSS File
+  Release 3 - Noura's Contribution To This CSS File
 */
 
 /*
@@ -27,8 +29,6 @@
   background-color: transparent ;
   border: 1px solid #ccc;
   padding: 20px;
-
-
 }
 
 .exercisecontainer {
@@ -40,23 +40,11 @@
   grid-area: title_component;
 }
 
-.container_Login .loginForm {
-  /* margin: 100px auto; */
-}
-
 .container_Login .loginForm form {
-  /* background-color: #fffaf0; */
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
-   /* height: 680px; */
-  /* final height */
-  /* width: 375px; */
-  /* final weight */
- /* padding: 0 20px; */
-  /* Set border thickness and color */
-  /* border-radius: 40px;  */
 }
 
 /* h4 CSS Start */
@@ -86,7 +74,6 @@
   color: white;
 }
 
-
 .signup-link {
   text-decoration: none;
   cursor: pointer;
@@ -96,7 +83,8 @@
   text-decoration: underline;
   /* Underline on hover */
 }
-header .logo{
+
+header .logo {
   position: relative;
   font-size: 2em;
   color: #fff;
@@ -130,7 +118,8 @@ header .logo{
   /* 20px from the top */
   display: block;
 }
-.navigation_update{
+
+.navigation_update {
   position:absolute;
   top: 50%;
   right: 20px; /* Adjust this value as needed */
@@ -139,31 +128,32 @@ header .logo{
   display: flex;
 }
 
-header .navigation_login{
+header .navigation_login {
   position: absolute;
   top: 50%;
   right: 20px; /* Adjust this value as needed */
   transform: translateY(-50%);
   display: flex;
 }
-header .navigation_login li,
-.navigation_update li{
-  list-style: none;
 
+header .navigation_login li,
+.navigation_update li {
+  list-style: none;
 }
+
 header .navigation_login li a,
 .navigation_update li a {
   display: inline-block;
   color:  #F96B00;
   margin-right: 40px;
   text-decoration: none;
-
 }
 
-header .navigation_login li a:hover{
+header .navigation_login li a:hover {
   color: #03a9f4;
 }
-.navigation_update li a:hover{
+
+.navigation_update li a:hover {
   color: #03a9f4;
 }
 
@@ -207,7 +197,6 @@ header .navigation_login li a:hover{
 
 .container_Login .loginForm form .button:hover {
   background-color: #dcdcdc;
-
 }
 
 /* Submit Button CSS End */
@@ -310,31 +299,28 @@ label i {
 
 }
 
-
-.navigation-map{
+.navigation-map {
   position: absolute;
   top: 6%;
   right: 20px; /* Adjust this value as needed */
   transform: translateY(-50%);
   display: flex;
 }
-.navigation-map li{
+.navigation-map li {
   list-style: none;
-
 }
-.navigation-map li a{
+
+.navigation-map li a {
   display: inline-block;
   color: #f38735;
   font-weight: bold;
   margin-right: 40px;
   text-decoration: none;
-
 }
 
-.navigation-map li a:hover{
+.navigation-map li a:hover {
   color: #03a9f4;
 }
-
 
 .menu-map-container{
   position: fixed; /* or absolute, depending on your layout */
@@ -350,64 +336,57 @@ label i {
   color: black;
 }
 
-
-.navigation_map{
+.navigation_map {
   list-style-type: none;
   padding: 0;
   margin: 0;
 }
-.navigation_map li{
+
+.navigation_map li {
   padding: 10px 0;
 
 }
-.navigation_map li a{
+
+.navigation_map li a {
   text-decoration: none;
-    color: #333; /* Set the desired text color */
-    font-size: 18px; /* Set the desired font size */
-    display: block;
-    padding: 10px;
-
+  color: #333; /* Set the desired text color */
+  font-size: 18px; /* Set the desired font size */
+  display: block;
+  padding: 10px;
 }
-.exit-icon_map{
-  border: none;
-    position: relative;
-    left: 260px;
-  }
 
-.navigation_map li a:hover{
+.exit-icon_map {
+  border: none;
+  position: relative;
+  left: 260px;
+}
+
+.navigation_map li a:hover {
   color: #03a9f4;
 }
 
-
-
-
 .map-overlay {
   position: fixed;
-    top: 0;
-    left: 0;
-    height: 100%;
-    background-color: black;
-    color: white;
-    width: 25%; /* Adjust this value to make it 1/4 of the screen */
-    background-color: #fff; /* Set the desired background color */
-    z-index: 999; /* Ensure it's above other content */
-    transition: transform 0.3s ease-in-out; /* Add transition for smooth animation */
-    transform: translateX(-100%);
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: black;
+  color: white;
+  width: 25%; /* Adjust this value to make it 1/4 of the screen */
+  background-color: #fff; /* Set the desired background color */
+  z-index: 999; /* Ensure it's above other content */
+  transition: transform 0.3s ease-in-out; /* Add transition for smooth animation */
+  transform: translateX(-100%);
 }
+
 .map-overlay.open {
   transform: translateX(0); /* Slide in from the left when menu is open */
 }
-.exit-icon_map{
+
+.exit-icon_map {
   position: relative;
   left: 260px;
-  }
-
-
-
-
-
-
-
+}
 
 .exit-maps-btn {
   display: flex;
@@ -433,19 +412,18 @@ label i {
 
   color: darkgreen;
   box-shadow: -3px -3px 15px rgb(54, 54, 54),
-    3px 3px 15px rgb(0, 0, 0);
+  3px 3px 15px rgb(0, 0, 0);
 }
 
 .exit-maps-btn button:active {
   box-shadow: inset 3px 3px 10px rgb(13, 13, 13),
-    inset -3px -3px 10px rgb(68, 68, 68);
+  inset -3px -3px 10px rgb(68, 68, 68);
 }
 
 
 /*
   Update Profile Page CSS
 */
-
 .updates-container{
   position: fixed;
   top: 62%;
@@ -490,16 +468,15 @@ label i {
   margin: 45px auto 10px;
   /* 20px from the top */
   display: block;
- 
 }
-.user-info{
+
+.user-info {
   margin-left: 620px;
-  /* padding-bottom: 20px; */
 }
-.user-icon-update{
+
+.user-icon-update { 
   margin-left: 10px;
   padding-top: 40px;
-
 }
 
 .update-inputs {
@@ -512,7 +489,6 @@ label i {
 }
 
 .update-submit {
-  
   width: 300px;
   height: 50px;
   margin-left: 30px;
@@ -528,6 +504,7 @@ label i {
   background-color: darkgrey;
   color: black;
 }
+
 .update-submit:hover {
   background-color: #dcdcdc;
 }

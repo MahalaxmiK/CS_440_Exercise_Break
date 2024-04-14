@@ -1,6 +1,5 @@
-import React, { useEffect, useRef, useState, useContext } from "react";
+import React, { useState } from "react";
 import '../Home.css';
-// import { useNavigate, useLocation} from "react-router-dom";
 import { FaSquareFacebook } from "react-icons/fa6";
 import { FaInstagram } from "react-icons/fa6";
 import { FaSquareTwitter } from "react-icons/fa6";
@@ -9,8 +8,9 @@ import { IoClose } from "react-icons/io5";
 import { useNavigate} from "react-router-dom";
 import homescreenImage from '../assets/homescreen.png'; // Import the image
 
-
-
+/*
+    Release 3: Noura Almasri's Contribution
+*/
 function EBAHomePage() {
     const navigate = useNavigate();
 
@@ -19,7 +19,7 @@ function EBAHomePage() {
     };
 
     const HomeClick = () => {
-        navigate('/EBAHomePage');
+        navigate('/');
     };
 
     const aboutClick = () => {
@@ -32,20 +32,15 @@ function EBAHomePage() {
         navigate('/login');
     };
 
-
-
-
-    
-
-
     const [menuActive, setMenuActive] = useState(false);
-        // Define toggleMenu function here
-        function toggleMenu() {
-            const toggleMenu = document.querySelector('.toggleMenu');
-            const navigation = document.querySelector('.navigation');
-            toggleMenu.classList.toggle('active');
-            setMenuActive(prevMenuActive => !prevMenuActive);
-        }
+    
+    // Define toggleMenu function here
+    function toggleMenu() {
+        const toggleMenu = document.querySelector('.toggleMenu');
+        const navigation = document.querySelector('.navigation');
+        toggleMenu.classList.toggle('active');
+        setMenuActive(prevMenuActive => !prevMenuActive);
+    }
         
     return(
 <body>
@@ -85,4 +80,5 @@ function EBAHomePage() {
 </body>
     );
 }
+
 export default EBAHomePage;

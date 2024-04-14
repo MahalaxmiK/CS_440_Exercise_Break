@@ -1,33 +1,39 @@
-# CS_440_Exercise_Break
+# CS 440 Exercise Break
 
-### Noura's Contributions So Far:
+## FINAL CS 440 TEAM CONTRIBUTIONS
 
-#### Added Login/Signup Page
+### Noura's Contributions For Final Application
 
-#### Added Exercise Timer
+#### Added Workout Timer With Chosen Intensity & Duration
 
-#### Added Resume Workout and End Session Functionalities
+#### Updated Existing Application Style To Be Web Friendly (About, Quote, Home Pages Added)
 
-### Sakinah's Contributions Made So Far:
+#### Added Workout Session Calculations (Calories Burned, Time Worked Out, & Heart Rate)
 
-#### Added Signup Page For First Time User With Database Update
+### Sakinah's Contributions For Final Application
 
-#### Added Youtube Random Meditation Video Play
+#### Added Profile Page (Provided User's Workout Time & Calories Burned)
 
-#### Added Spotify Song/Playlist Play
+#### Updated Relaxation Techniques Page (Calculated Time Spent Listening To Music & Meditating)
 
-### Mahalaxmi's Contributions Made So Far:
+#### Helped Noura With Making Application Into Website (Styling & UI suggestions, Helped Noura Implement Some of the Stylistic & UI updates)
 
-#### Added Existing User Login Screen
-
-#### Added Exercise Dashboard Screen (Start Workout or Exit App)
+### Mahalaxmi's Contributions For Final Application
 
 #### Added Google Maps Functionality (Finds Nearby Stores Selling Sports Drinks, Water, or Snacks)
 
-### Mahin's Contributions Made So Far:
+#### Added Edit User Profile Information Page (Updated User's Profile Information)
 
-#### Added Has Drink Functionality With Database Update
+#### Helped Noura With Making Application Into Website (Styling & UI suggestions, Helped Noura Implement Some of the Stylistic & UI updates)
 
-#### Added Wants Drink Functionality With Database Update
+### Mahin's Contributions For Final Application
 
-#### Added Logout Functionality For Pages
+### Updated Login & Sign Up Pages For Better UI Feel
+
+#### Added Has Drink Functionality With Database Update (No longer necessary but Mahin worked on this)
+
+#### Added Wants Drink Functionality With Database Update (No longer necessary but Mahin worked on this)
+
+#### Added HomeScreen Page (User can view their overall time spent to workout or relax)
+
+#### Helped Noura With Making Application Into Website (Styling & UI suggestions, Helped Noura Implement Some of the Stylistic & UI updates)

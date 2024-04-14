@@ -1,12 +1,10 @@
 import React, { useState, useEffect, useContext } from "react";
 import './App.css';
 import { IoClose } from "react-icons/io5";
-
 import { useNavigate, useLocation } from "react-router-dom";
 import { FaHome, FaUser } from "react-icons/fa";
 import { HiOutlineLogout } from "react-icons/hi";
 import { IoMenu } from "react-icons/io5";
-import profile_logo from './assets/profile.jpg';
 import axios from "axios";
 import { FaUserCircle } from "react-icons/fa";
 import progressPic from './assets/progress.png'
@@ -14,6 +12,7 @@ import UserContext from './UserContext';
 
 /*
   Release 2: Mahalaxmi Kalappareddigari's Contribution
+  Release 3: Noura's Contribution
 */
 const UpdateProfile = () => {
     const navigate = useNavigate();
@@ -37,10 +36,7 @@ const UpdateProfile = () => {
     const currEmail = new URLSearchParams(location.search).get('email');
     const [userInfo, setUserInfo] = useState(null);
     const [isOpen, setIsOpen] = useState(false);
-
     const { userEmail } = useContext(UserContext);
-
-
 
     const handleWorkoutButton = () => {
         navigate('/intensity')
@@ -53,7 +49,6 @@ const UpdateProfile = () => {
     const handleMapButton = () => {
         navigate('/maps')
     };
-
 
     const toggleMenu = () => {
         setIsOpen(!isOpen);
@@ -99,10 +94,6 @@ const UpdateProfile = () => {
             setUpdateStatus("Error updating user details. Please try again later.");
         });
     };
-
-    // const menuOptionClick = () => {
-    //     navigate('/menu');
-    // };
 
     const logoutClick = () => {
         navigate('/login');

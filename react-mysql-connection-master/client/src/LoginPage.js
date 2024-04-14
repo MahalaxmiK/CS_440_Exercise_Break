@@ -2,13 +2,13 @@ import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import "./App.css";
 import Axios from "axios";
-import login_logo from './assets/logos.png';
 import UserContext from './UserContext'; // Import UserContext
 import loginPic from './assets/homeLogin.png'; 
 
 /*
   Release 1 & Release 2: Mahalaxmi Kalappareddigari's Contribution
   Release 2: Mahin Patel's Contribution
+  Release 3 - Noura's Contribution
 */
 function LoginPage() {
   const [email, setEmail] = useState("");
@@ -21,20 +21,21 @@ function LoginPage() {
     navigate('/signup');
   }
 
-  
   const HomeClick = () => {
-    navigate('/EBAHomePage');
-};
+    navigate('/');
+  };
 
-const aboutClick = () => {
+  const aboutClick = () => {
     navigate('/about');
-};
-const QuoteClick = () => {
+  };
+
+  const QuoteClick = () => {
     navigate('/quote');
-};
-const LoginClick = () => {
+  };
+
+  const LoginClick = () => {
     navigate('/login');
-};
+  };
 
   const login = (e) => {
     e.preventDefault();
@@ -83,7 +84,7 @@ const LoginClick = () => {
           <input className="button" type="submit" onClick={login} value="Log In"/>
           <br></br>
           <h5>New User? <span className="signup-link" onClick={navigateToSignUp}>Sign Up</span></h5>
-          <h1 style={{ color: "black", fontSize: "15px", textAlign: "center", marginTop: "20px", fontFamily: 'Georgia' }}>{loginStatus}</h1>
+          <h1 style={{ color: "white", fontSize: "15px", textAlign: "center", marginTop: "20px", fontFamily: 'Georgia' }}>{loginStatus}</h1>
         
         </form>
       </div>

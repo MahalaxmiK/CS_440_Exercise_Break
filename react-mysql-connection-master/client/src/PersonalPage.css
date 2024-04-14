@@ -1,22 +1,7 @@
-/* .profile-container {
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  flex-direction: column;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  margin-bottom: 300px;
-  border: 12px solid #333;
-  border-radius: 40px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-  padding: 20px;
-  max-width: 400px;
-  margin: 0 auto;
-  position: relative;
-  background-color: rgb(213, 210, 204);
-} */
+/*
+  Release 2 - Sakinah's Contribution To This File
+  Release 3 - Noura's Contribution To This File
+*/
 
 .profile-menu {
   position: absolute;
@@ -25,19 +10,6 @@
   margin-bottom: 600px;
   margin-top: 60px;
 }
-/* 
-.update-bottom-nav {
-  position: absolute;
-  bottom: 20px;
-  width: 100%;
-  bottom: 0.2px;
-  left: 0;
-  display: flex;
-  justify-content: space-around;
-  border-radius: 0px 0px 23px 23px;
-  background-color: rgb(82, 79, 79);
-  padding: 10px;
-} */
 
 .person_logo {
   width: 125px;
@@ -46,35 +18,25 @@
   background-color: black;
   margin-left: 540px;
   margin-top: 40px;
-  /* margin:10px; */
   display: block;
 }
 
-/* .person_info_container{
-  position: relative;
-  margin-top: 20px; 
-} */
   
 .personal-info {
   font-size: 16px;
   text-align: center;
   margin-top: 20px;
   padding-left: 530px;
-
-
 }
   
 .personal-info .name {
   font-size: 22px;
-
   color: white;
-
 }
   
 .personal-info .email {
   font-size: 15px;
   color: white;
-  /* padding-left: 430px; */
 }
 
 .total-hours {
@@ -121,8 +83,6 @@
 
 .calorie-count {
   position: absolute;
-  /* left: 257px;
-  margin-top: 310px; */
   right: 500px;
   margin-top: 220px;
   color: white;
@@ -156,17 +116,19 @@
   color: white;
 }
 
-.exit-icon_personal{
+.exit-icon_personal {
 border: none;
   position: relative;
   left: 260px;
 }
+
 .profile-menu {
   position: absolute;
   padding: 20px;
   top: -40px;
   color: white;
 }
+
 .personal-text {
   position: absolute;
   margin-top: 350px; 
@@ -184,17 +146,17 @@ border: none;
   left: 20px;
 }
 
-
 .navigation_personal{
   list-style-type: none;
   padding: 0;
   margin: 0;
 }
-.navigation_personal li{
+.navigation_personal li {
   padding: 10px 0;
 
 }
-.navigation_personal li a{
+
+.navigation_personal li a {
   text-decoration: none;
     color: #333; /* Set the desired text color */
     font-size: 18px; /* Set the desired font size */
@@ -203,7 +165,7 @@ border: none;
 
 }
 
-.navigation_personal li a:hover{
+.navigation_personal li a:hover {
   color: #03a9f4;
 }
 
@@ -213,10 +175,7 @@ border: none;
   align-items: center;
   justify-content: flex-start;
   margin-top: 350px;
-
 }
-
-
 
 .menu-overlay {
   position: fixed;
@@ -240,7 +199,6 @@ border: none;
   list-style-type: none;
   padding: 0;
   margin: 0;
-
 }
 
 .navigation_menu li {
@@ -264,6 +222,4 @@ border: none;
   position: relative;
   left: 220px;
   border: none;
-  /* top: 20px;
-  right: 20px; */
 }

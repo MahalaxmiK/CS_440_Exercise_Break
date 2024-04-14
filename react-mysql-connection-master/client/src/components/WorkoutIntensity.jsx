@@ -9,8 +9,9 @@ import { HiOutlineLogout } from "react-icons/hi";
 import { IoMenu } from "react-icons/io5";
 import UserContext from '../UserContext';
 import IntensePic from "../assets/intensepic.png"
+
 /*
-    Release 2: Noura Almasri's Contribution
+    Release 2 & 3: Noura Almasri's Contribution
 */
 const Workout = () => {
     const navigate = useNavigate();
@@ -34,10 +35,7 @@ const Workout = () => {
         setTime(`${label}`);
         setSelectedTimeVal(value); 
         setTimeChoosen(false);
-
-
     };
-
 
     const handleWorkoutButton = () => {
         navigate('/intensity')
@@ -55,19 +53,14 @@ const Workout = () => {
     const handleIntensityChange = (value) => {
         setIntensity(value);
         setIntensityChoosen(false);
-
     };
+
     const handleStart = () => {
-        
         console.log("Selected Time:", selectedTime);
         console.log("Selected Intensity:", selectedIntensity);
    
         navigate("/countdown", {state:{initialDuration: selectedTimeVal, intensity: selectedIntensity}});
     };
-
-    // const menuOptionClick = () => {
-    //     navigate('/menu');
-    // };
 
     const logoutClick = () => {
         navigate('/login');

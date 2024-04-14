@@ -8,21 +8,70 @@ import { IoMenu } from "react-icons/io5";
 import { HiOutlineLogout } from "react-icons/hi";
 import { IoClose } from "react-icons/io5";
 import UserContext from '../UserContext';
+import axios from 'axios';
+import relaxPic from '../assets/relax.png'
+import musicPic from '../assets/musicpic.png'
+import BackgroundPic from "../assets/backgroundAll.png"
+import tryPic from "../assets/try.png"
+import  usePic from "../assets/useThis.png"
 
 /*
     Release 1 & Release 2: Sakinah Chadrawala's Contribution
+    Release 3: Noura's Contribution
 */
+
 // music  UC9GoqHypa-SDrGPMyeBkjKw
 const API  =  "AIzaSyCckLxBYlGf40ookjucQt1WoOQxolIMkr8"
 const meditationChannelId = "UCVSaNtZoJMlx8SxLxsNa1lw"
 const musicChannelID = "UCGDPhXrv1Pwi8GvPrRgK_JA"
 
-const Relax = () =>{
+const Relax = () => {
     const [isOpen, setIsOpen] = useState(false);
     const[meditationVideos, setMeditationVideos] = useState([]);
     const [musicVideos, setMusicnVideos] = useState([]);
     const navigate = useNavigate();
     const { userEmail } = useContext(UserContext);
+    const [musicTimer, setMusicTimer] = useState(0);
+    const [meditationTimer, setMeditationTimer] = useState(0);
+    const [watchStartTime, setWatchStartTime] = useState(null);
+    const [isWatchingVideo, setIsWatchingVideo] = useState(false);
+    const [videoType, setVideoType] = useState(null);
+    const [updateStatus, setUpdateStatus] = useState("");
+    const [userInfo, setUserInfo] = useState(null);
+
+    const toggleMenu = () => {
+        setIsOpen(!isOpen);
+    };
+
+    const handleWorkoutButton = () => {
+        navigate('/intensity')
+    };
+
+    const handleRelaxButton = () => {
+        navigate('/relax')
+    };
+
+    const handleMapButton = () => {
+        navigate('/maps')
+    };
+
+  
+    //  fetches userInfo upon email change
+    useEffect(() => {
+        const fetchUserInfo = async () => {
+            try {
+                const res = await axios.get("http://localhost:3000/userInfo", {
+                    params: { email: userEmail }
+                });
+                setUserInfo(res.data);
+            } catch (err) {
+                console.log(err);
+            }
+        };
+        if (userEmail) {
+            fetchUserInfo();
+        }
+    }, [userEmail]);
 
     useEffect(() => {
         fetchVideos(meditationChannelId)
@@ -178,12 +227,6 @@ const Relax = () =>{
         navigate('/login');
     };
 
-    const menuOptionClick = () => {
-        setIsWatchingVideo(false);
-        setWatchStartTime(null);
-        navigate('/menu');
-    };
-
     const profileClick = () => {
         setIsWatchingVideo(false);
         setWatchStartTime(null);
@@ -196,7 +239,7 @@ const Relax = () =>{
         navigate(`/home?email=${encodeURIComponent(userEmail)}`);
     };
 
-    return(
+     return(
         <section className="home-section" style={{ backgroundImage: `url(${ usePic})`, backgroundSize: 'cover', backgroundPosition: 'center'  }}>
         <header>
         <ul className="navigation-home">
@@ -228,18 +271,10 @@ const Relax = () =>{
             </div>
         </div>
             <div className = "relax-button-container">
-                <div className = "relax-image-container">
-                    <img src = {meditationImg} alt="meditation"/>
-                </div>
-                <button onClick={() => handleButtonClick(meditationVideos)} className="relax-btn"> Meditation</button>
-            </div>
-            <div className="divider"></div>
-            <h5>Listen To Good Music</h5>
-            <div className="relax-button-container">
-                <div className="relax-image-container">
-                <img src = {musicImg} alt="music"/>
-                </div>
-                <button onClick={() => handleButtonClick(musicVideos)} className="relax-btn"> Music</button>
+                <button onClick={() => handleButtonClick(meditationVideos)} className="relax-btn" style= {{backgroundColor: 'transparent', backgroundSize: 'cover', backgroundPosition: 'center', color: 'white', fontSize:'22px' }}>Meditate & Enhance Inner Peace</button>
+           
+            {/* <div className="relax-button-container"> */}
+                <button onClick={() => handleButtonClick(musicVideos)} className="relax-btn" style= {{ backgroundColor: 'transparent', backgroundPosition: 'center', color: 'white', fontSize:'22px' }} > Listen To Good Music</button>
 
             </div>
         </header>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react';
 import { useNavigate } from "react-router-dom";
-import { FaHome, FaUser, FaSignOutAlt, FaBars } from 'react-icons/fa'; // Import bottom navigation bar & menu option icons
+import { FaHome, FaUser } from 'react-icons/fa'; // Import bottom navigation bar & menu option icons
 import UserContext from './UserContext';
 import { IoMenu } from "react-icons/io5";
 import { HiOutlineLogout } from "react-icons/hi";
@@ -9,7 +9,7 @@ import { IoClose } from "react-icons/io5";
 
 /*
   Release 1 & Release 2: Mahalaxmi Kalappareddigari Contribution
-  NOTE: The bottom navigation bar will only look different for this page due to maps
+  Release 3 - Noura's Contribution 
 */
 const Maps = ({ google }) => {
   const [userLocation, setUserLocation] = useState(null);
@@ -33,23 +33,19 @@ const Maps = ({ google }) => {
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
-};
+  };
 
+  const handleWorkoutButton = () => {
+    navigate('/intensity')
+  };
 
-const handleWorkoutButton = () => {
-  navigate('/intensity')
-};
+  const handleRelaxButton = () => {
+    navigate('/relax')
+  };
 
-const handleRelaxButton = () => {
-  navigate('/relax')
-};
-
-const handleMapButton = () => {
-  navigate('/maps')
-};
-
-
-
+  const handleMapButton = () => {
+    navigate('/maps')
+  };
 
   useEffect(() => {
     const getUserLocation = () => {
@@ -148,9 +144,6 @@ const handleMapButton = () => {
     calculateDirections('BICYCLING', store.geometry.location);
     calculateDirections('TRANSIT', store.geometry.location);
     calculateDirections('WALKING', store.geometry.location);
-    // setTimeout(() => {
-    //     navigate('/resume');
-    // }, 20000);
   };
 
   const calculateDirections = (mode, destination) => {
@@ -174,16 +167,6 @@ const handleMapButton = () => {
         }
       );
     }
-  };
-
-  // Release 2 Sprint 1 -> Temporary Placeholder Logic For OnClick Functionality
-  // const exitMaps = () => {
-  //   // Release 2 Sprint 2 -> Exit Maps OnClick, Redirect To Menu Option Page
-  //   navigate('/menu');
-  // };
-
-  const menuOptionClick = () => {
-    navigate('/menu');
   };
 
   const logoutClick = () => {
