@@ -271,10 +271,10 @@ const Relax = () => {
             </div>
         </div>
             <div className = "relax-button-container">
-                <button onClick={() => handleButtonClick(meditationVideos)} className="relax-btn" style= {{backgroundColor: 'transparent', backgroundSize: 'cover', backgroundPosition: 'center', color: 'white', fontSize:'22px' }}>Meditate & Enhance Inner Peace</button>
+                <button onClick={() => handleButtonClick(meditationVideos, 'meditation')} className="relax-btn" style= {{backgroundColor: 'transparent', backgroundSize: 'cover', backgroundPosition: 'center', color: 'white', fontSize:'22px' }}>Meditate & Enhance Inner Peace</button>
            
             {/* <div className="relax-button-container"> */}
-                <button onClick={() => handleButtonClick(musicVideos)} className="relax-btn" style= {{ backgroundColor: 'transparent', backgroundPosition: 'center', color: 'white', fontSize:'22px' }} > Listen To Good Music</button>
+                <button onClick={() => handleButtonClick(musicVideos, 'music')} className="relax-btn" style= {{ backgroundColor: 'transparent', backgroundPosition: 'center', color: 'white', fontSize:'22px' }} > Listen To Good Music</button>
 
             </div>
         </header>

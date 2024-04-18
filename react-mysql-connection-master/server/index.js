@@ -44,7 +44,8 @@ app.post('/register', (req, res) => {
     (err, result) => {
         if(result){
           res.send(result);
-        }else{
+        } else {
+          console.log(result);
           res.send({message: "ENTER CORRECT ASKED DETAILS!"})
         }
     }
