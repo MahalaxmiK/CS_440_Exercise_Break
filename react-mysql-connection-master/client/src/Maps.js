@@ -331,5 +331,5 @@ const handleMapButton = () => {
 };
 
 export default GoogleApiWrapper({
-  apiKey: 'AIzaSyCRgMOzSy-cuC42nDXo9j4GLGgovNxSIZI'
+  #apiKey: 'NA'
 })(Maps);
