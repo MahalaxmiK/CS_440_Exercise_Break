@@ -8,10 +8,10 @@ import { useNavigate  } from "react-router-dom";
 import meditationImg from "../Assets/music.jpeg"; 
 import musicImg from "../Assets/meditation.jpg"; 
 
-const API  =  "AIzaSyCPHLxk3ef5RT8XbvSm3VaGrHgx4Nw2DcY"
+const API  =  "N/A"
 
-const meditationChannelId = "UCVSaNtZoJMlx8SxLxsNa1lw"
-const musicChannelID = "UCGDPhXrv1Pwi8GvPrRgK_JA"
+const meditationChannelId = "N/A"
+const musicChannelID = "N/A"
 
 const fetchURL = `https://www.googleapis.com/youtube/v3/search?key=${API}&channelId=${meditationChannelId}&part=snippet,id&order=date&maxResult=10`;
 
