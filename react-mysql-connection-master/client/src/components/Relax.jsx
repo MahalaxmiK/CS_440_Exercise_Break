@@ -11,9 +11,9 @@ import UserContext from '../UserContext';
 /*
     Release 1 & Release 2: Sakinah Chadrawala's Contribution
 */
-const API  =  "AIzaSyCPHLxk3ef5RT8XbvSm3VaGrHgx4Nw2DcY"
-const meditationChannelId = "UCVSaNtZoJMlx8SxLxsNa1lw"
-const musicChannelID = "UCGDPhXrv1Pwi8GvPrRgK_JA"
+const API  =  "N/A"
+const meditationChannelId = "N/A"
+const musicChannelID = "N/A"
 
 const Relax = () =>{
     const[meditationVideos, setMeditationVideos] = useState([]);
