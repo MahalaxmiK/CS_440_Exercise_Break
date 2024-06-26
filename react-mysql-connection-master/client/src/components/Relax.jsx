@@ -12,11 +12,11 @@ import axios from 'axios';
 /*
     Release 1 & Release 2: Sakinah Chadrawala's Contribution
 */
-// meditation UCVSaNtZoJMlx8SxLxsNa1lw
-// music UCGDPhXrv1Pwi8GvPrRgK_JA
-const API  =  "AIzaSyCckLxBYlGf40ookjucQt1WoOQxolIMkr8"
-const meditationChannelId = "UCboqmwN682NPFew8Wp8Qdmg"
-const musicChannelID = "UCboqmwN682NPFew8Wp8Qdmg"
+// meditation 
+// music 
+const API  =  "N/A"
+const meditationChannelId = "N/A"
+const musicChannelID = "N/A"
 
 const Relax = () =>{
     const[meditationVideos, setMeditationVideos] = useState([]);
