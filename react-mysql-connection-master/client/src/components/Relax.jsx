@@ -20,10 +20,10 @@ import  usePic from "../assets/useThis.png"
     Release 3: Noura's Contribution
 */
 
-// music  UC9GoqHypa-SDrGPMyeBkjKw
-const API  =  "AIzaSyCckLxBYlGf40ookjucQt1WoOQxolIMkr8"
-const meditationChannelId = "UCVSaNtZoJMlx8SxLxsNa1lw"
-const musicChannelID = "UCGDPhXrv1Pwi8GvPrRgK_JA"
+// music
+const API  =  "N/A"
+const meditationChannelId = "N/A"
+const musicChannelID = "N/A"
 
 const Relax = () => {
     const [isOpen, setIsOpen] = useState(false);
