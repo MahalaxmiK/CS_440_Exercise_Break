@@ -171,9 +171,8 @@ const CountDown = () => {
     const homeClick = () => {
         navigate(`/home?email=${encodeURIComponent(userEmail)}`);
     };
-
+  
     const maxReached = (heartRateRN) =>{
-     
         const maxThres = 100 - (userInfo ? userInfo.age : 0); // Calculate max heart rate threshold based on user's age
        
     
@@ -194,8 +193,6 @@ const CountDown = () => {
         setHeartRates(prevHeartRates => [...prevHeartRates, heartRateValue]); // Add the new heart rate to the heartRates array
         console.log('Heart Rate from this file heart:', heartRateValue);
         maxReached(heartRateValue);
-        
-       
     };
 
 
