@@ -60,14 +60,16 @@ app.post("/login", (req, res) => {
             res.status(500).send({ message: "Internal server error" });
         } else {
             if (result.length > 0) {
-              res.status(200).send({ message: "Successfully logged in!" });
+              res.status(200).send({ message: "Successfully logged in!"});
+              
             } else {
               // Send HTTP status code 401 for unauthorized access
               res.status(401).send({ message: "Wrong email or password or both!" });
             }
         }
+        
     }
-  )
+  );
 });
 
 app.post('/api/heart-rate', (req, res) => {

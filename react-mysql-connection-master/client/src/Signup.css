@@ -4,16 +4,15 @@
 */
 
 .signup-container {
-    height: 700px;
-    /* final height */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 400px;
-    /* final weight */
-    padding: 0 20px;
-    border: 10px solid #000000;
-    /* Set border thickness and color */
-    background: #fffaf0;
-    border-radius: 40px;
-    margin: auto;
+    height: 480px;
+    background-color: transparent ;
+    border: 1px solid #ccc;
+    padding: 20px;
     /* margin-top: 100px; */
 }
 
@@ -44,11 +43,37 @@
 .signup-container h3 {
     font-size: 18px;
     font-family: 'Georgia';
-    display: flex;
-    flex-direction: column;
+    color: white;
+    text-align: center;
+    /* display: flex; */
+    /* flex-direction: column; */
     align-items: center;
     padding-bottom: 7px;
 }
+
+
+header .navigation_signup{
+    position: absolute;
+    top: 50%;
+    right: 20px; /* Adjust this value as needed */
+    transform: translateY(-50%);
+    display: flex;
+  }
+  header .navigation_signup li{
+    list-style: none;
+  
+  }
+  header .navigation_signup li a{
+    display: inline-block;
+    color: #F96B00;
+    margin-right: 40px;
+    text-decoration: none;
+  
+  }
+  
+  header .navigation_signup li a:hover{
+    color: #03a9f4;
+  }
 
 /* H3 CSS End */
 

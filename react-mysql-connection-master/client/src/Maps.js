@@ -3,6 +3,9 @@ import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react';
 import { useNavigate } from "react-router-dom";
 import { FaHome, FaUser, FaSignOutAlt, FaBars } from 'react-icons/fa'; // Import bottom navigation bar & menu option icons
 import UserContext from './UserContext';
+import { IoMenu } from "react-icons/io5";
+import { HiOutlineLogout } from "react-icons/hi";
+import { IoClose } from "react-icons/io5";
 
 /*
   Release 1 & Release 2: Mahalaxmi Kalappareddigari Contribution
@@ -25,6 +28,28 @@ const Maps = ({ google }) => {
   const [error, setError] = useState(null);
   const [userLocationAddress, setUserLocationAddress] = useState(null); // State to store user location address
   const { userEmail } = useContext(UserContext);
+  const [isOpen, setIsOpen] = useState(false);
+
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+};
+
+
+const handleWorkoutButton = () => {
+  navigate('/intensity')
+};
+
+const handleRelaxButton = () => {
+  navigate('/relax')
+};
+
+const handleMapButton = () => {
+  navigate('/maps')
+};
+
+
+
 
   useEffect(() => {
     const getUserLocation = () => {
@@ -152,10 +177,10 @@ const Maps = ({ google }) => {
   };
 
   // Release 2 Sprint 1 -> Temporary Placeholder Logic For OnClick Functionality
-  const exitMaps = () => {
-    // Release 2 Sprint 2 -> Exit Maps OnClick, Redirect To Menu Option Page
-    navigate('/menu');
-  };
+  // const exitMaps = () => {
+  //   // Release 2 Sprint 2 -> Exit Maps OnClick, Redirect To Menu Option Page
+  //   navigate('/menu');
+  // };
 
   const menuOptionClick = () => {
     navigate('/menu');
@@ -182,17 +207,17 @@ const Maps = ({ google }) => {
   }
 
   return (
-    <div classname="maps-container"> 
+    // <div classname="maps-container"> 
       <Map
         google={google}
         style={{
-          width: '22%',
-          height: '90%',
-          borderTop: '8px solid #333', // Define top, left, & right borders to add bottom navigation bar better
-          borderLeft: '8px solid #333', 
-          borderRight: '8px solid #333', 
-          borderRadius: '40px', // Add border radius for nice look
-          margin: '22px auto',
+          // width: '22%',
+          // height: '90%',
+          // borderTop: '8px solid #333', // Define top, left, & right borders to add bottom navigation bar better
+          // borderLeft: '8px solid #333', 
+          // borderRight: '8px solid #333', 
+          // borderRadius: '40px', // Add border radius for nice look
+          // margin: '22px auto',
         }}
         containerStyle={{
           width: '100%',
@@ -201,8 +226,30 @@ const Maps = ({ google }) => {
         zoom={14}
         initialCenter={userLocation}
       >
-        <div className="exit-maps-btn">
-          <button onClick={exitMaps}>Exit Maps</button>
+    <ul className="navigation-map">
+                <li><a href="#"  onClick={homeClick}>
+                <div style={{ position: "relative" }}>
+                    Home
+                    <FaHome style={{ position: "absolute", top: 0, left: -20 }}/> {/* Using FaHome icon */}
+                </div>
+                </a></li>
+                <li><a href="#"  onClick={profileClick}>
+                    <div style={{ position: "relative" }}>
+                        User
+                         <FaUser style={{ position: "absolute", top: 0, left: -20 }}/>{/* Using FaHome icon */}
+                     </div>
+                </a></li>
+                <li><a href="#"  onClick={logoutClick}>
+                    <div style={{ position: "relative" }}>
+                        Logout
+                        <HiOutlineLogout style={{ position: "absolute", top: 0, left: -20 }}/> {/* Using FaHome icon */}
+                     </div>
+                </a></li>
+            </ul>
+            <div className="menu-map-container">
+        <div className="map-menu">
+                <IoMenu size={35} onClick={toggleMenu} />
+            </div>
         </div>
         {userLocation && (
           <Marker
@@ -267,33 +314,22 @@ const Maps = ({ google }) => {
             </div>
           </InfoWindow>
         )}
-        <div
-          className="bottom-navbar-maps"
-          style={{
-            position: 'absolute',
-            bottom: '0',
-            transform: 'translateX(-1%)',
-            alignItems: 'center',
-            width: '20%',
-            backgroundColor: '#f3f3f3',
-            display: 'flex',
-            justifyContent: 'space-around',
-            padding: '4px 2px',
-            margin: '45px 617px',
-            borderRadius: '40px',
-            borderBottom: '7px solid #333', 
-        }}
-      >
-        <div><FaHome onClick={homeClick}/></div>  
-        <div><FaUser onClick={profileClick}/></div>
-        <div onClick={logoutClick}><FaSignOutAlt /></div>
-        <div onClick={menuOptionClick}><FaBars /></div>
-        </div>
+       
+         <div className={`menu-overlay ${isOpen ? 'open' : ''}`}>
+    <button className="exit-icon" onClick={toggleMenu}>
+    <IoClose size={30} style = {{color: '#f78731', background:'transparent'}} />
+    </button>
+    <ul className="navigation_menu">
+        <li><a href="#" onClick={handleWorkoutButton}>Start Workout</a></li>
+        <li><a href="#" onClick={handleRelaxButton}>Relaxation Techniques</a></li>
+        <li><a href="#" onClick={handleMapButton}>Find a Nearby Store</a></li>
+    </ul>
+</div>
       </Map>
-    </div>
+    // </div>
   );
 };
 
 export default GoogleApiWrapper({
-  #apiKey: 'N/A'
+  #apiKey: 'NA'
 })(Maps);
